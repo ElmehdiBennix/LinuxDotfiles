@@ -1,0 +1,63 @@
+
+wal
+waypaper || wallrizz 
+
+hyprland
+hyprpaper
+waybar || eww || HyprPanel
+rofi-wayland
+swaync
+wlogout || or just rofi
+
+hyprpick || color picker
+hyprlock
+hypridle
+hyprsunset || to able to control blue light
+hyprcursor || dont know wtf is this tbh
+
+some clipboard manager
+
+hyprpolkitagent || for sudo in gui apps
+xdg-desktop-portal-hyprland
+
+pipewire || audio
+easyeffects || dont know
+Woomer || for desktop zoom
+
+hyprlux || flux like tool
+hyprswitch || alt + shift
+
+screenshot utility
+
+nwg-displays
+nwg-shell-config || to configure hyprland at runtime
+nwg-look for gtk apps
+***** for qt apps 
+hyprland-qt-support
+
+
+=========================================================
+
+stow
+zellij
+fzf
+zoxide
+exa
+zsh
+
+ghostty || kitty
+zen-browser
+nautris
+vscode
+Mcontrolcenter
+rofi
+micro
+keepass
+cockpit
+obs
+
+nm-applet
+blueman || applet
+
+flatpak
+pamac || buah
