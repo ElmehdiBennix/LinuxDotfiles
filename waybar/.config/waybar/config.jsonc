@@ -1,0 +1,148 @@
+{
+    "layer": "top",
+    "position": "top",
+    "margin-bottom": 0,
+    "modules-left": [
+        "custom/logo",
+        "custom/separator",
+        "hyprland/workspaces",
+        "custom/separator",
+        "temperature",
+        "cpu",
+        "memory"
+    ],
+    "modules-center": [
+        "clock",
+        "custom/weather"
+    ],
+    "modules-right": [
+        "tray",
+        "pulseaudio",
+        "battery",
+        // "custom/separator",
+        "custom/notifications"
+    ],
+
+
+
+    "custom/weather": {
+        "exec": "curl -s 'wttr.in/?format=1'",
+        "interval": 3600,
+        "format": "{}",
+        "on-click": "ghostty",
+        "on-click-right": "notify-send \"Right Click\"",
+        "on-hover": "notify-send \"Hovered\""
+    },
+
+    "custom/logo": {
+        "exec": "echo \"LOGO \"",
+        "format": "{}"
+        // "on-click": "swaync-client -t",
+        // "on-click-right": "notify-send \"Right Click\""
+        // "on-hover": "notify-send \"Hovered\""
+    },
+    "custom/notifications": {
+        // "exec": "notify-send \"Hello\"",
+        // "interval": 60,
+        "exec": "echo \"NOTIF\"",
+        "format": "{}",
+        "on-click": "swaync-client -t",
+        "on-click-right": "notify-send \"Right Click\""
+        // "on-hover": "notify-send \"Hovered\""
+    },
+    "custom/separator": {
+        "exec": "echo \"|\"",
+        "format": "{}"
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8
+    },
+    "clock": {
+        // 24 hour
+        // "format": " {:%H:%M} ",
+        // 12 hour
+        "format": " 󰸗 {:%I:%M %p} ",
+        "interval": 60,
+        "tooltip": true,
+        "tooltip-format": "{:%d %B %H:%M}"
+    },
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "separate-outputs": false,
+        "active-only": false,
+        // turn on true to show same all workspaces on each monitor
+        "all-outputs": false,
+        "format-icons": {
+            // 1-10
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "10",
+            // 11-10
+            "11": "1",
+            "12": "2",
+            "13": "3",
+            "14": "4",
+            "15": "5",
+            "16": "6",
+            "17": "7",
+            "18": "8",
+            "19": "9",
+            "110": "10"
+        }
+    },
+    "hyprland/window": {
+        "format": "{}"
+    },
+    "network": {
+        "format": " 󰖩",
+        // "tooltip": "{ifname}",
+        "tooltip-format": "{essid}",
+        "interval": 2
+    },
+    "temperature": {
+        "format": "{icon} {temperatureC}°C ",
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        "format-icons": [
+            "",
+            "",
+            ""
+        ]
+    },
+    "memory": {
+        "format": "󰫗 {}% ",
+        "tooltip": "false"
+    },
+    "cpu": {
+        "format": " {usage}% ",
+        "tooltip": "false"
+    },
+    "pulseaudio": {
+        "format": " {volume}%",
+        "scroll-step": 1,
+        "on-click": "pavucontrol"
+    },
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    }
+    // "custom/powermenu": {
+    //     "format": "  ",
+    //     "tooltip": false,
+    //     "on-click": "exec wlogout -p layer-shell"
+    // }
+}
