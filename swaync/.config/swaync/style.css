@@ -1,47 +1,174 @@
 /* Colors */
 
-@import '../../.cache/wal/colors-waybar.css';
-@define-color background #242424;
-@define-color groupbackground #363636;
-@define-color buttoncolor #4a4a4a;
-@define-color bordercolor @color11;
-@define-color fontcolor #FFFFFF;
+@import '/home/rambeau/.cache/wal/colors-swaync.css';
 
 * {
-    font-family: "Fira Sans Semibold";
+    font-family: "JetBrains Sans Nerd Font", "Roboto", sans-serif;
+    font-size: 13px;
+}
+
+/* Floating Notifications */
+.floating-notifications.background {
+    background: transparent;
+}
+
+.floating-notifications NotificationWindow {
+    background: transparent;
 }
 
 /* Control Center */
-
 .control-center {
-    border: 3px solid @bordercolor;
-    padding: 10px;
+    border-radius: 12px;
+    padding: 8px;
+    margin: 8px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+    border-width: 2px;
+    border-style: solid;
 }
 
-button {
-    border: 0px;
-    min-width: 35px;
-    background: @buttoncolor;
+.control-center-list {
+    background: transparent;
 }
 
-.notification-group-header {
-    font-size: 14px;
+.control-center-list-placeholder {
+    opacity: 0.5;
 }
 
-.widget-buttons-grid > flowbox > flowboxchild > button {
-    margin:5px;
-}
-
-/* Notification */
-
+/* Notifications */
 .notification {
-    border: 3px solid @bordercolor;
-	border-radius: 10px;
-    padding:10px;
+    border-radius: 10px;
+    margin: 8px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+    padding: 8px;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.notification-content {
+    padding: 8px;
+    color: @noti-fg;
+}
+
+.notification-default-action,
+.notification-action {
+    padding: 4px;
+    margin: 0;
+    border-radius: 6px;
+    border-width: 2px;
+    border-style: solid;
 }
 
 .notification-default-action:hover,
 .notification-action:hover {
-    color: #ffffff;
-    background: transparent;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.notification-title {
+    font-weight: bold;
+    color: @noti-fg;
+}
+
+.notification-body {
+    color: @noti-fg;
+}
+
+/* Widgets */
+.widget-title {
+    margin: 8px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.widget-buttons-grid {
+    padding: 8px;
+    margin: 8px;
+    border-radius: 12px;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button {
+    border-radius: 8px;
+    padding: 8px;
+    margin: 4px;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button:hover {
+    background: @noti-button-bg-hover;
+    color: @noti-button-fg-hover;
+    border: 2px solid @noti-border-color;
+}
+
+/* Toggles like DND */
+.widget-dnd {
+    margin: 8px;
+    padding: 8px;
+    border-radius: 12px;
+}
+
+.widget-dnd>switch {
+    border-radius: 12px;
+    background: @noti-button-bg;
+}
+
+.widget-dnd>switch:checked {
+    background: @noti-button-bg-hover;
+}
+
+/* Volume and Brightness sliders */
+.widget-volume,
+.widget-backlight {
+    margin: 8px;
+    padding: 8px;
+    border-radius: 12px;
+}
+
+.widget-volume>box>scale,
+.widget-backlight>box>scale {
+    margin: 0 8px;
+}
+
+.widget-volume>box>scale>trough>highlight,
+.widget-backlight>box>scale>trough>highlight {
+    border-radius: 8px;
+}
+
+.widget-volume>box>scale>trough,
+.widget-backlight>box>scale>trough {
+    border-radius: 8px;
+    min-height: 5px;
+}
+
+/* MPRIS Widget */
+.widget-mpris {
+    margin: 8px;
+    padding: 8px;
+    border-radius: 12px;
+}
+
+.widget-mpris>box>button {
+    border-radius: 8px;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.widget-mpris>box>button:hover {
+    background: @noti-button-bg-hover;
+    color: @noti-button-fg-hover;
+    border: 2px solid @noti-border-color;
+}
+
+/* Title Widget */
+.widget-title>button {
+    border-radius: 8px;
+    padding: 4px 8px;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.widget-title>button:hover {
+    background: @noti-button-bg-hover;
+    color: @noti-button-fg-hover;
+    border: 2px solid @noti-border-color;
 }

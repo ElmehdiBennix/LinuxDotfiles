@@ -1,148 +1,135 @@
 {
     "layer": "top",
     "position": "top",
-    "margin-bottom": 0,
+    "height": 35,
+    "margin-top": 5,
+    "margin-left": 5,
+    "margin-right": 5,
+    "spacing": 0,
     "modules-left": [
         "custom/logo",
-        "custom/separator",
         "hyprland/workspaces",
-        "custom/separator",
-        "temperature",
         "cpu",
-        "memory"
+        "memory",
+        "temperature",
+        "mpd"
     ],
     "modules-center": [
         "clock",
         "custom/weather"
     ],
     "modules-right": [
+        "custom/cava",
         "tray",
         "pulseaudio",
         "battery",
-        // "custom/separator",
         "custom/notifications"
     ],
 
 
-
-    "custom/weather": {
-        "exec": "curl -s 'wttr.in/?format=1'",
-        "interval": 3600,
-        "format": "{}",
-        "on-click": "ghostty",
-        "on-click-right": "notify-send \"Right Click\"",
-        "on-hover": "notify-send \"Hovered\""
-    },
-
     "custom/logo": {
-        "exec": "echo \"LOGO \"",
-        "format": "{}"
-        // "on-click": "swaync-client -t",
-        // "on-click-right": "notify-send \"Right Click\""
-        // "on-hover": "notify-send \"Hovered\""
+        "format": "󰣇",
+        "tooltip": false,
+        "on-click": "rofi -show drun"
+    },
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "on-click": "activate",
+        "all-outputs": true,
+        "format-icons": {
+            "active": "",
+            "default": ""
+        },
+        "sort-by-number": true
+    },
+    "mpd": {
+        "format": "{stateIcon} {artist} - {title}",
+        "format-disconnected": "󰎊 Disconnected",
+        "format-stopped": "󰓛 Stopped",
+        "state-icons": {
+            "paused": "󰏤",
+            "playing": "󰐊"
+        },
+        "tooltip-format": "{artist} - {album} - {title}",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    "custom/weather": {
+        "format": "󰖐 {}",
+        "exec": "curl -s 'wttr.in/?format=1'",
+        "exec-on-event": true,
+        "interval": 3600,
+        "on-click": "curl -s 'wttr.in' | less",
+        "tooltip-format": "{}"
+    },
+    "custom/cava": {
+        "exec": "cava -p ~/.config/cava/config | sed -u 's/;//g;s/0/▁/g;s/1/▂/g;s/2/▃/g;s/3/▄/g;s/4/▅/g;s/5/▆/g;s/6/▇/g;s/7/█/g;'",
+        "tooltip": false
     },
     "custom/notifications": {
-        // "exec": "notify-send \"Hello\"",
-        // "interval": 60,
-        "exec": "echo \"NOTIF\"",
-        "format": "{}",
+        "format": "󰂚",
         "on-click": "swaync-client -t",
-        "on-click-right": "notify-send \"Right Click\""
-        // "on-hover": "notify-send \"Hovered\""
-    },
-    "custom/separator": {
-        "exec": "echo \"|\"",
-        "format": "{}"
+        "tooltip": false
     },
     "tray": {
         "icon-size": 16,
         "spacing": 8
     },
     "clock": {
-        // 24 hour
-        // "format": " {:%H:%M} ",
-        // 12 hour
-        "format": " 󰸗 {:%I:%M %p} ",
-        "interval": 60,
-        "tooltip": true,
-        "tooltip-format": "{:%d %B %H:%M}"
-    },
-    "hyprland/workspaces": {
-        "format": "{icon}",
-        "separate-outputs": false,
-        "active-only": false,
-        // turn on true to show same all workspaces on each monitor
-        "all-outputs": false,
-        "format-icons": {
-            // 1-10
-            "1": "1",
-            "2": "2",
-            "3": "3",
-            "4": "4",
-            "5": "5",
-            "6": "6",
-            "7": "7",
-            "8": "8",
-            "9": "9",
-            "10": "10",
-            // 11-10
-            "11": "1",
-            "12": "2",
-            "13": "3",
-            "14": "4",
-            "15": "5",
-            "16": "6",
-            "17": "7",
-            "18": "8",
-            "19": "9",
-            "110": "10"
-        }
-    },
-    "hyprland/window": {
-        "format": "{}"
-    },
-    "network": {
-        "format": " 󰖩",
-        // "tooltip": "{ifname}",
-        "tooltip-format": "{essid}",
-        "interval": 2
-    },
-    "temperature": {
-        "format": "{icon} {temperatureC}°C ",
-        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        "format-icons": [
-            "",
-            "",
-            ""
-        ]
-    },
-    "memory": {
-        "format": "󰫗 {}% ",
-        "tooltip": "false"
+        "format": "󰥔 {:%H:%M}",
+        "format-alt": "󰃭 {:%Y-%m-%d}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "cpu": {
-        "format": " {usage}% ",
-        "tooltip": "false"
+        "format": "󰻠 CPU {usage}%",
+        "tooltip": true,
+        "interval": 1
     },
-    "pulseaudio": {
-        "format": " {volume}%",
-        "scroll-step": 1,
-        "on-click": "pavucontrol"
+    "memory": {
+        "format": "󰍛 RAM {percentage}%",
+        "tooltip": true,
+        "interval": 1
+    },
+    "temperature": {
+        "thermal-zone": 2,
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        "format-critical": "󱃂 {temperatureC}°C",
+        "format": "󰔏 {temperatureC}°C"
     },
     "battery": {
-        "format": "{capacity}% {icon}",
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󱟢 {capacity}%",
+        "format-alt": "{time} {icon}",
         "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰂂",
+            "󰁹"
         ]
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟 Muted",
+        "format-icons": {
+            "default": [
+                "󰕿",
+                "󰖀",
+                "󰕾"
+            ]
+        },
+        "on-click": "pavucontrol",
+        "tooltip": true
     }
-    // "custom/powermenu": {
-    //     "format": "  ",
-    //     "tooltip": false,
-    //     "on-click": "exec wlogout -p layer-shell"
-    // }
 }
