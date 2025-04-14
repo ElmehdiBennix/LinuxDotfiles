@@ -1,174 +1,170 @@
-/* Colors */
-
-@import '/home/rambeau/.cache/wal/colors-swaync.css';
+@import url("/home/rambeau/.cache/wal/colors-swaync.css");
 
 * {
-    font-family: "JetBrains Sans Nerd Font", "Roboto", sans-serif;
-    font-size: 13px;
+    /* Use system fonts for better consistency */
+    font-family: "Roboto", sans-serif;
 }
 
-/* Floating Notifications */
-.floating-notifications.background {
-    background: transparent;
-}
-
-.floating-notifications NotificationWindow {
-    background: transparent;
-}
-
-/* Control Center */
 .control-center {
-    border-radius: 12px;
-    padding: 8px;
+    background: rgba(30, 30, 30, 0.95);
+    border-radius: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
+                0 8px 24px rgba(0, 0, 0, 0.2);
     margin: 8px;
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
-    border-width: 2px;
-    border-style: solid;
+    padding: 16px;
 }
 
-.control-center-list {
-    background: transparent;
+/* Title and DND Section */
+.widget-title, .widget-dnd {
+    margin: 8px 16px;
+    padding: 8px;
+    font-size: 20px;
+    font-weight: 500;
+    color: @noti-fg;
 }
 
-.control-center-list-placeholder {
-    opacity: 0.5;
+.widget-dnd > switch {
+    border-radius: 32px;
+    background: @noti-button-bg;
+    min-height: 28px;
+    min-width: 56px;
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Notifications */
+.widget-dnd > switch:checked {
+    background: @noti-button-bg-hover;
+}
+
+.widget-dnd > switch slider {
+    background: @noti-fg;
+    border-radius: 50%;
+    margin: 2px;
+    min-height: 24px;
+    min-width: 24px;
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Notification Styles */
 .notification {
-    border-radius: 10px;
+    background: @noti-bg;
+    border-radius: 12px;
+    margin: 8px 0;
+    padding: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+                0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.notification:hover {
+    background: @noti-bg-hover;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2),
+                0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* MPRIS Player */
+.widget-mpris-player {
+    background: @noti-bg-alt;
+    border-radius: 16px;
+    margin: 16px 8px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.widget-mpris-album-art {
+    border-radius: 12px;
+    margin-right: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.widget-mpris .horizontal > button {
+    border-radius: 50%;
+    padding: 12px;
+    margin: 4px;
+    background: @noti-button-bg;
+    color: @noti-button-fg;
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.widget-mpris .horizontal > button:hover {
+    background: @noti-button-bg-hover;
+    transform: scale(1.1);
+}
+
+/* Volume and Backlight Widgets */
+.widget-volume, .widget-backlight {
+    background: @noti-bg;
+    border-radius: 12px;
     margin: 8px;
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
-    padding: 8px;
-    border-width: 2px;
-    border-style: solid;
+    padding: 16px;
 }
 
-.notification-content {
-    padding: 8px;
-    color: @noti-fg;
+.widget-volume scale, .widget-backlight scale {
+    min-height: 8px;
+    border-radius: 4px;
 }
 
-.notification-default-action,
-.notification-action {
-    padding: 4px;
-    margin: 0;
-    border-radius: 6px;
-    border-width: 2px;
-    border-style: solid;
+.widget-volume scale trough, .widget-backlight scale trough {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
 }
 
-.notification-default-action:hover,
-.notification-action:hover {
-    border-width: 2px;
-    border-style: solid;
+.widget-volume scale highlight, .widget-backlight scale highlight {
+    background: @noti-button-bg-hover;
+    border-radius: 4px;
 }
 
-.notification-title {
-    font-weight: bold;
-    color: @noti-fg;
-}
-
-.notification-body {
-    color: @noti-fg;
-}
-
-/* Widgets */
-.widget-title {
-    margin: 8px;
-    font-size: 14px;
-    font-weight: bold;
-}
-
+/* Buttons Grid */
 .widget-buttons-grid {
     padding: 8px;
     margin: 8px;
+    background: @noti-bg;
     border-radius: 12px;
 }
 
-.widget-buttons-grid>flowbox>flowboxchild>button {
-    border-radius: 8px;
-    padding: 8px;
+.widget-buttons-grid button {
+    padding: 16px;
     margin: 4px;
-    border-width: 2px;
-    border-style: solid;
-}
-
-.widget-buttons-grid>flowbox>flowboxchild>button:hover {
-    background: @noti-button-bg-hover;
-    color: @noti-button-fg-hover;
-    border: 2px solid @noti-border-color;
-}
-
-/* Toggles like DND */
-.widget-dnd {
-    margin: 8px;
-    padding: 8px;
-    border-radius: 12px;
-}
-
-.widget-dnd>switch {
     border-radius: 12px;
     background: @noti-button-bg;
+    color: @noti-button-fg;
+    font-size: 24px;
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.widget-dnd>switch:checked {
+.widget-buttons-grid button:hover {
     background: @noti-button-bg-hover;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Volume and Brightness sliders */
-.widget-volume,
-.widget-backlight {
+/* Menu Bar */
+.widget-menubar {
     margin: 8px;
     padding: 8px;
+    background: @noti-bg;
     border-radius: 12px;
 }
 
-.widget-volume>box>scale,
-.widget-backlight>box>scale {
-    margin: 0 8px;
-}
-
-.widget-volume>box>scale>trough>highlight,
-.widget-backlight>box>scale>trough>highlight {
+.widget-menubar button {
+    padding: 8px 16px;
+    margin: 4px;
     border-radius: 8px;
+    background: @noti-button-bg;
+    color: @noti-button-fg;
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.widget-volume>box>scale>trough,
-.widget-backlight>box>scale>trough {
+.widget-menubar button:hover {
+    background: @noti-button-bg-hover;
+}
+
+/* Per-app volume controls */
+.per-app-volume {
+    background: @noti-bg-alt;
     border-radius: 8px;
-    min-height: 5px;
-}
-
-/* MPRIS Widget */
-.widget-mpris {
-    margin: 8px;
+    margin: 4px 0;
     padding: 8px;
-    border-radius: 12px;
-}
-
-.widget-mpris>box>button {
-    border-radius: 8px;
-    border-width: 2px;
-    border-style: solid;
-}
-
-.widget-mpris>box>button:hover {
-    background: @noti-button-bg-hover;
-    color: @noti-button-fg-hover;
-    border: 2px solid @noti-border-color;
-}
-
-/* Title Widget */
-.widget-title>button {
-    border-radius: 8px;
-    padding: 4px 8px;
-    border-width: 2px;
-    border-style: solid;
-}
-
-.widget-title>button:hover {
-    background: @noti-button-bg-hover;
-    color: @noti-button-fg-hover;
-    border: 2px solid @noti-border-color;
 }
