@@ -147,9 +147,9 @@ window#waybar.hidden {
 #battery:hover,
 #pulseaudio:hover,
 #cpu:hover,
-#memory:hover {
+/* #memory:hover {
     background: rgba(137, 180, 250, 0.2);
-}
+}, */
 
 /* Tooltip styling */
 tooltip {

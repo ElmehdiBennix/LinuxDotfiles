@@ -1,0 +1,28 @@
+configuration {
+    /*---------- General settings ----------*/
+    modi:                       "drun,run,window,ssh";
+    show-icons:                 true;
+    font:                       "JetBrainsMono Nerd Font 11";
+    terminal:                   "kitty";
+
+    /*---------- Display Settings ----------*/
+    drun-display-format:        "{name}";
+    run-display-format:         "{name}";
+    display-drun:               " Apps";
+    display-run:                " Run";
+    display-window:             " Windows";
+    display-ssh:                " SSH";
+
+    /*---------- Behavior ----------*/
+    case-sensitive:             false;
+    cycle:                      true;
+    hide-scrollbar:             true;
+
+    /*---------- Keybindings ----------*/
+    /* You can find a full list of keys with `rofi -show keys` */
+    kb-accept-entry:            "Return,KP_Enter";
+    kb-remove-to-eol:           "Control+k";
+    kb-mode-next:               "Shift+Right,Control+Tab";
+    kb-mode-previous:           "Shift+Left,Control+Shift+Tab";
+}
+

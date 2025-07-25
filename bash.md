@@ -3,27 +3,6 @@
 
 A quick reference for writing Bash shell scripts.
 
----
-
-## 📌 Script Basics
-
-```bash
-#!/bin/bash     # Shebang to specify interpreter
-# This is a comment
-```
-
-```bash
-echo "Hello, World!"     # Output text
-```
-
-Run script:
-```bash
-chmod +x script.sh
-./script.sh
-```
-
----
-
 ## 📦 Variables
 
 ```bash
@@ -197,8 +176,3 @@ set +x     # Disable debug
 - [ShellCheck](https://www.shellcheck.net/) — Lint your scripts!
 
 ---
-
-Happy scripting! 🚀
-```
-
-Let me know if you want to add more topics like arrays, traps, or cron jobs!

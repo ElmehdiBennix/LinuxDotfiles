@@ -146,16 +146,17 @@ setopt hist_find_no_dups
 # aliases
 #########################################################################
 
+alias fetch="fastfetch --config examples/13.jsonc"
 alias code="code --reuse-window"
-alias tree="lsd --tree"
-alias ls="lsd"
+alias tree="eza --icons=always --colour=always --tree"
+alias ls="eza --icons=always --colour=always"
 alias cd="z"
 alias cat="bat --color=always"
 alias grep="rg"
 alias size="dust -d 1"
 alias zshrc="vim ~/.zshrc"
 alias f="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
-alias d="find . -type d 2>/dev/null | fzf --height 40% --preview='lsd --tree --depth 2 {}'"
+alias d="find . -type d 2>/dev/null | fzf --height 40% --preview='eza --icons=always --long --tree --level 2 {}'"
 # alias cpfile="copyfile"
 # alias cppath="copypath"
 
@@ -177,11 +178,56 @@ ghf() {
     fi
 }
 
-# Folder search with fzf and lsd tree preview
+# Folder search with fzf and eza tree preview
 c() {
   local dir
-  dir=$(find $HOME -type d 2>/dev/null | fzf --height 40% --preview="lsd --tree --depth 2 {}")
+  dir=$(find $HOME -type d 2>/dev/null | fzf --height 40% --preview="eza --icons=always --long --tree --level 2 {}")
   [ -n "$dir" ] && z "$dir"  # Change to `cd "$dir"` if not using z
+}
+
+# Function to load environment variables from a .env file
+# Usage: loadenv [filename]
+# Defaults to .env if no filename is provided
+loadenv() {
+  local env_file
+  if [ -n "$1" ]; then
+    env_file="$1"
+  else
+    env_file=".env"
+  fi
+
+  if [ -f "$env_file" ]; then
+    # Use the robust method to export vars, handling comments and spaces
+    source <(grep -v '^#' "$env_file" | sed 's/^/export /')
+    echo "✅ Loaded environment variables from '$env_file'"
+  else
+    echo "❌ Error: '$env_file' not found." >&2
+    return 1
+  fi
+}
+
+# Function to unload environment variables from a .env file
+# Usage: unloadenv [filename]
+# Defaults to .env if no filename is provided
+unloadenv() {
+  local env_file
+  if [ -n "$1" ]; then
+    env_file="$1"
+  else
+    env_file=".env"
+  fi
+
+  if [ -f "$env_file" ]; then
+    # Unset the variables by reading their names from the file
+    # `cut -d'=' -f1` gets everything before the first '='
+    for var in $(grep -v '^#' "$env_file" | cut -d'=' -f1); do
+      unset "$var"
+    done
+    echo "💨 Unloaded environment variables from '$env_file'"
+  else
+    echo "❌ Error: '$env_file' not found." >&2
+    return 1
+  fi
 }
 
 #########################################################################
@@ -190,4 +236,10 @@ c() {
 
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
+eval "$(direnv hook zsh)"
+eval "$(register-python-argcomplete pipx)"
 
+# Created by `pipx` on 2025-07-10 09:40:53
+export PATH="$PATH:/home/rambeau/.local/bin"
+
+fetch

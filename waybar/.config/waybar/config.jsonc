@@ -2,40 +2,35 @@
     "layer": "top",
     "position": "top",
     "height": 36,
-    "margin-top": 5,
-    "margin-left": 5,
-    "margin-right": 5,
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": 0,
     "spacing": 0,
+
     "modules-left": [
-        "custom/logo",
         "hyprland/workspaces",
         "cpu",
         "memory",
         "temperature"
     ],
     "modules-center": [
-        "clock",
         "custom/weather"
     ],
     "modules-right": [
         "tray",
         "pulseaudio",
         "battery",
+        "clock",
         "custom/notifications"
     ],
-    "custom/logo": {
-        "format": "󰣇",
-        "tooltip": false,
-        "on-click": "rofi -show drun"
-    },
     "hyprland/workspaces": {
-        "format": "{name}",
+        "format": "{icon}",
+        "format-icons": {
+            "active": "",
+            "default": ""
+        },
         "on-click": "activate",
         "all-outputs": true,
-        "format-icons": {
-            "active": "",
-            "default": ""
-        },
         "sort-by-number": true
     },
     "custom/weather": {
@@ -71,7 +66,7 @@
         "spacing": 8
     },
     "clock": {
-        "format": "󰥔 {:%H:%M}",
+        "format": "󰥔 {:%H:%M | %A %d-%m-%Y}",
         "format-alt": "󰃭 {:%Y-%m-%d}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
@@ -87,7 +82,7 @@
     },
     "temperature": {
         "thermal-zone": 2,
-        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "hwmon-path": "/sys/class/hwmon/hwmon6/temp1_input",
         "critical-threshold": 80,
         "format-critical": "󱃂 {temperatureC}°C",
         "format": "󰔏 {temperatureC}°C"

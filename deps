@@ -1,78 +1,110 @@
 
-pywal
-waypaper
-
-
-kitty
-ghostty
-kdeconnect
-keepassxc
+# admin / servers
+ly
+ssh
+ufw
 sunshine
-vlc
-discord
-zellij
-nautitus
-obsidian
-podman
-ags
-gh
-btop
-buah
+# cockpit
+auto-cpufreq
+envycontrol
+libva-utils | vainfo to check hardware acceleration drivers for intel
 
+# dev / terminal
+zsh
+zellij
+git
+gh
+neovim
+exa
+zoxide
+bat
+ripgrep
+fzf
+btop
+stow
+python-pywal
+gemini
+nmap
+docker
+docker-buildx
+docker-compose
+lazydocker
+nodejs
+yarn
+python3
+python-pip
+python-pipx
+go
+gcc
+make
+lazygit
+sqlite
+distrobox
+
+# desktop env
+waypaper
 swww
 hyprland
-waybar
-rofi-wayland
-swaync
-
 hyprlock
 hypridle
-
-hyprsunset || to able to control blue light
-hyprcursor || dont know wtf is this tbh
-
-some clipboard manager
-
-hyprpolkitagent || for sudo in gui apps
-xdg-desktop-portal-hyprland
-
-pipewire || audio
-easyeffects || dont know
-Woomer || for desktop zoom
-
-hyprlux || flux like tool
 hyprswitch || alt + shift
-
-screenshot utility
-
+waybar
+swaync
+rofi-wayland
 nwg-displays
-nwg-shell-config || to configure hyprland at runtime
-nwg-look for gtk apps
-***** for qt apps
-hyprland-qt-support
+nwg-look
+materia-gtk-theme
+qt5-base
+polkit-gnome
 
-mpv
-=========================================================
+# desktop-portal
+pipewire The media server
+wireplumber The modern session manager for PipeWire
+xdg-desktop-portal The generic portal framework
+xdg-desktop-portal-hyprland specific implementation that allows the portal to work with Hyprland
 
-stow
-zellij
-fzf
-zoxide
-exa
-zsh
-
-ghostty || kitty
-zen-browser
-nautris
+# desktop apps
+nemo
 vscode
-Mcontrolcenter
-rofi
-keepass
-cockpit
+zen-browser
+kitty
 obs
+vlc
 
+# background apps
+KeePassXc
 nm-applet
 blueman || applet
+kdeconnect
+Mcontrolcenter
 
+# package management
+pamac
+paru
+nixpkgs
 flatpak
-pamac || buah
+
+========================================================================================
+
+hyprsunset || to able to control blue light
+hyprcursor ||
+
+brightnessctl
+nerdfonts
+grim
+slurp
+
+hyprlux || flux like tool
+
+starship
+pavucontrol
+rofi-power-menu
+
+some clipboard manager
+wl-clipboard
+cliphist
+
+
+wpgtk
+
+zenity
