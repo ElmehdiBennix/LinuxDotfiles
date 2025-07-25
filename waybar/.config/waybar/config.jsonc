@@ -8,13 +8,13 @@
     "spacing": 0,
 
     "modules-left": [
-        "hyprland/workspaces",
         "cpu",
         "memory",
-        "temperature"
+        "temperature",
+        "custom/weather"
     ],
     "modules-center": [
-        "custom/weather"
+        "hyprland/workspaces"
     ],
     "modules-right": [
         "tray",

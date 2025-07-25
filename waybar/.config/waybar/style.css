@@ -4,109 +4,102 @@
     border: none;
     border-radius: 0;
     font-family: "JetBrains Sans Nerd Font Propo", "Roboto", monospace;
-    font-size: 13px;
+    font-size: 12px;
+    /* Reduced font size */
     min-height: 0;
-    transition: all 0.3s ease;
 }
 
 window#waybar {
     background: transparent;
+    color: @foreground;
 }
 
-window#waybar.hidden {
-    opacity: 0.2;
+/* --- Pill style for Left and Center modules --- */
+#workspaces,
+#cpu,
+#memory,
+#temperature,
+#custom-weather {
+    padding: 3px 10px;
+    /* Reduced vertical padding */
+    margin: 4px;
+    /* Reduced margin */
+    color: @foreground;
+    background-color: @color1;
+    border: 1px solid @color8;
+    border-radius: 8px;
+    /* Slimmer roundness */
 }
 
-#workspaces {
-    background-color: @background;
-    margin: 5px;
-    padding: 0 5px;
-    border-radius: 10px;
+/* --- Grouped style for Right modules --- */
+#tray,
+#pulseaudio,
+#battery,
+#clock,
+#custom-notifications {
+    padding: 3px 10px;
+    /* Reduced vertical padding */
+    margin: 4px 0;
+    /* Reduced margin, no horizontal margin */
+    color: @foreground;
+    background-color: @color1;
+    /* Apply only top and bottom borders to all modules in the group */
+    border-top: 1px solid @color8;
+    border-bottom: 1px solid @color8;
 }
+
+/* Round the corners and add side borders for the first and last module */
+#tray {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    margin-left: 4px;
+    /* Add the left border ONLY to the first module */
+    border-left: 1px solid @color8;
+}
+
+#custom-notifications {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    margin-right: 4px;
+    /* Add the right border ONLY to the last module */
+    border-right: 1px solid @color8;
+}
+
+
+/* --- General Module States & Hovers --- */
 
 #workspaces button {
     padding: 0 5px;
-    margin: 4px 3px;
-    border-radius: 10px;
-    color: @color7;
-    background: transparent;
-}
-
-#workspaces button.active {
-    color: @background;
-    background-color: @color4;
-    border: 2px solid @color4;
-    padding: 0 10px;
+    color: @foreground;
+    background-color: transparent;
 }
 
 #workspaces button:hover {
-    background-color: @color4;
-    color: @background;
+    background-color: @color2;
 }
 
-#custom-weather,
-#custom-logo,
-#custom-notifications,
-#custom-cava,
-#temperature,
-#clock,
-#battery,
-#pulseaudio,
-#cpu,
-#memory,
-#mpd,
-#tray {
-    background-color: @background;
-    padding: 0 10px;
-    margin: 5px;
-    border-radius: 10px;
+#workspaces button.focused {
+    background-color: @color2;
+    border-bottom: 2px solid @foreground;
 }
 
-#custom-cava {
-    font-family: monospace;
-    color: @color4;
+#workspaces button.urgent {
+    background-color: @color3;
 }
 
-#clock {
-    color: @color4;
+#battery.charging {
+    background-color: @color2;
 }
 
-#cpu {
-    color: @color4;
-}
-
-#memory {
-    color: @color5;
-}
-
-#temperature {
-    color: @color3;
-}
-
-#temperature.critical {
-    background-color: @color1;
-    color: @background;
-}
-
-#pulseaudio {
-    color: @color6;
-}
-
-#pulseaudio.muted {
-    color: @color1;
-}
-
-#battery {
-    color: @color2;
-}
-
-#battery.charging,
-#battery.plugged {
-    color: @color2;
+@keyframes blink {
+    to {
+        background-color: @foreground;
+        color: @background;
+    }
 }
 
 #battery.critical:not(.charging) {
-    color: @color1;
+    background-color: @color3;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -114,58 +107,11 @@ window#waybar.hidden {
     animation-direction: alternate;
 }
 
-#custom-weather {
-    color: @color7;
+#network.disconnected,
+#temperature.critical {
+    background-color: @color3;
 }
 
-#custom-logo {
-    color: @color4;
-}
-
-#custom-notifications {
-    color: @color5;
-}
-
-#mpd {
-    color: @color5;
-}
-
-#mpd.playing {
-    color: @color4;
-}
-
-#mpd.paused {
-    color: @color3;
-}
-
-/* Module hover effects */
-#custom-weather:hover,
-#custom-logo:hover,
-#custom-notifications:hover,
-#temperature:hover,
-#clock:hover,
-#battery:hover,
-#pulseaudio:hover,
-#cpu:hover,
-/* #memory:hover {
-    background: rgba(137, 180, 250, 0.2);
-}, */
-
-/* Tooltip styling */
-tooltip {
-    background-color: @background;
-    border: 2px solid @color4;
-    border-radius: 10px;
-}
-
-tooltip label {
-    color: @foreground;
-    padding: 5px;
-}
-
-@keyframes blink {
-    to {
-        background-color: @color1;
-        color: @background;
-    }
+#pulseaudio.muted {
+    background-color: @color4;
 }
