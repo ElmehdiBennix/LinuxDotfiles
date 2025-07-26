@@ -1,17 +1,19 @@
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
 configuration {
     /*---------- General settings ----------*/
     modi:                       "drun,run,window,ssh";
     show-icons:                 true;
-    font:                       "JetBrainsMono Nerd Font 11";
+    font:                       "JetBrainsMono Nerd Font 13"; /* Updated font size */
     terminal:                   "kitty";
 
     /*---------- Display Settings ----------*/
     drun-display-format:        "{name}";
     run-display-format:         "{name}";
-    display-drun:               " Apps";
-    display-run:                " Run";
-    display-window:             " Windows";
-    display-ssh:                " SSH";
+    display-drun:               " Apps ";
+    display-run:                " Run ";
+    display-window:             " Windows ";
+    display-ssh:                " SSH ";
 
     /*---------- Behavior ----------*/
     case-sensitive:             false;
@@ -26,3 +28,45 @@ configuration {
     kb-mode-previous:           "Shift+Left,Control+Shift+Tab";
 }
 
+window {
+    background-color: @background;
+    border-radius: 15px;
+    padding: 8px;
+}
+
+inputbar {
+    background-color: @background;
+    text-color: @background;
+    border-radius: 15px;
+    padding: 3px 10px;
+    margin: 10px 0px;
+}
+
+listview {
+    background-color: @background;
+    columns: 1;
+    lines: 8;
+    spacing: 5px;
+    scrollbar: false;
+}
+
+element {
+    background-color: @background;
+    text-color: @background;
+    border-radius: 15px;
+    padding: 3px 10px;
+}
+
+element selected {
+    background-color: @background;
+    text-color: @background;
+}
+
+element-icon {
+    size: 2em;
+    margin: 0 10px 0 0;
+}
+
+element-text {
+    vertical-align: 0.5;
+}

@@ -11,7 +11,8 @@
 
 window#waybar {
     background: transparent;
-    color: @color7; /* Ensure light text on dark background */
+    color: @color7;
+    /* Ensure light text on dark background */
 }
 
 /* --- Pill style for Left and Center modules --- */
@@ -24,10 +25,12 @@ window#waybar {
     /* Reduced vertical padding */
     margin: 4px;
     /* Reduced margin */
-    color: @color7; /* Ensure light text */
-    background-color: @color0; /* Ensure dark background */
+    color: @color7;
+    /* Ensure light text */
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Semi-transparent dark background */
 
-    border-radius: 8px;
+    border-radius: 15px;
     /* Slimmer roundness */
 }
 
@@ -41,25 +44,27 @@ window#waybar {
     /* Reduced vertical padding */
     margin: 4px 0;
     /* Reduced margin, no horizontal margin */
-    color: @color7; /* Ensure light text */
-    background-color: @color0; /* Ensure dark background */
+    color: @color7;
+    /* Ensure light text */
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Semi-transparent dark background */
     /* Apply only top and bottom borders to all modules in the group */
 
 }
 
 /* Round the corners and add side borders for the first and last module */
 #tray {
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
     margin-left: 4px;
-    padding-left: 10px;
+    padding-left: 8px;
 }
 
 #custom-notifications {
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
     margin-right: 4px;
-    padding-right: 10px;
+    padding-right: 8px;
 }
 
 
@@ -67,36 +72,45 @@ window#waybar {
 
 #workspaces button {
     padding: 0 5px;
-    color: @color7; /* Ensure light text */
+    color: @color7;
+    /* Ensure light text */
     background-color: transparent;
 }
 
 #workspaces button:hover {
-    background-color: @color2; /* A slightly different dark color for hover */
+    background-color: rgba(100, 100, 100, 0.6);
+    /* Semi-transparent hover */
 }
 
 #workspaces button.focused {
-    background-color: @color2; /* A slightly different dark color for focused */
-    border-bottom: 2px solid @color7; /* Light border for focused */
+    background-color: rgba(100, 100, 100, 0.8);
+    /* More opaque for focused */
+    border-bottom: 2px solid @color7
+        /* Light border for focused */
 }
 
 #workspaces button.urgent {
-    background-color: @color3; /* Red for urgent */
+    background-color: rgba(255, 0, 0, 0.6);
+    /* Semi-transparent red for urgent */
 }
 
 #battery.charging {
-    background-color: @color2; /* A slightly different dark color */
+    background-color: rgba(0, 255, 0, 0.4);
+    /* Semi-transparent green for charging */
 }
 
 @keyframes blink {
     to {
-        background-color: @color7; /* Light background for blink */
-        color: @color0; /* Dark text for blink */
+        background-color: @color7;
+        /* Light background for blink */
+        color: @color0;
+        /* Dark text for blink */
     }
 }
 
 #battery.critical:not(.charging) {
-    background-color: @color3; /* Red for critical */
+    background-color: @color3;
+    /* Red for critical */
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -106,9 +120,11 @@ window#waybar {
 
 #network.disconnected,
 #temperature.critical {
-    background-color: @color3; /* Red for disconnected/critical */
+    background-color: @color3;
+    /* Red for disconnected/critical */
 }
 
 #pulseaudio.muted {
-    background-color: @color4; /* Purple/magenta for muted */
+    background-color: @color4;
+    /* Purple/magenta for muted */
 }

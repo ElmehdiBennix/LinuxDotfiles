@@ -2,6 +2,9 @@
 # ZINIT
 #########################################################################
 
+# Source Pywal colors
+source "${XDG_CACHE_HOME:-$HOME/.cache}/wal/colors.sh"
+
 #zinit plugin mannager
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -56,7 +59,7 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -1 --color=always $realpath'
 zstyle ':fzf-tab:complete:z:*' fzf-preview 'lsd -1 --color=always $realpath'
 # custom fzf flags
 # NOTE: fzf-tab does not follow FZF_DEFAULT_OPTS by default
-zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2
+zstyle ':fzf-tab:*' fzf-flags --color=fg:$color7,fg+:$color0
 # To make fzf-tab follow FZF_DEFAULT_OPTS.
 # NOTE: This may lead to unexpected behavior since some flags break this plugin. See Aloxaf/fzf-tab#455.
 zstyle ':fzf-tab:*' use-fzf-default-opts yes

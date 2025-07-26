@@ -10,6 +10,7 @@ envycontrol
 libva-utils | vainfo to check hardware acceleration drivers for intel
 
 # dev / terminal
+fastfetch
 zsh
 zellij
 git
@@ -30,7 +31,7 @@ docker-buildx
 docker-compose
 lazydocker
 nodejs
-yarn
+pnpm
 python3
 python-pip
 python-pipx
@@ -38,7 +39,6 @@ go
 gcc
 make
 lazygit
-sqlite
 distrobox
 
 # desktop env
@@ -70,6 +70,7 @@ zen-browser
 kitty
 obs
 vlc
+mpv
 
 # background apps
 KeePassXc
@@ -98,7 +99,6 @@ hyprlux || flux like tool
 
 starship
 pavucontrol
-rofi-power-menu
 
 some clipboard manager
 wl-clipboard
@@ -106,5 +106,3 @@ cliphist
 
 
 wpgtk
-
-zenity
