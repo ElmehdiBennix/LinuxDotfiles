@@ -1,4 +1,4 @@
-@import "~/.cache/wal/colors-rofi-dark.rasi"
+@import "~/.config/rofi/style.rasi"
 
 configuration {
     /*---------- General settings ----------*/
@@ -26,47 +26,4 @@ configuration {
     kb-remove-to-eol:           "Control+k";
     kb-mode-next:               "Shift+Right,Control+Tab";
     kb-mode-previous:           "Shift+Left,Control+Shift+Tab";
-}
-
-window {
-    background-color: @background;
-    border-radius: 15px;
-    padding: 8px;
-}
-
-inputbar {
-    background-color: @background;
-    text-color: @background;
-    border-radius: 15px;
-    padding: 3px 10px;
-    margin: 10px 0px;
-}
-
-listview {
-    background-color: @background;
-    columns: 1;
-    lines: 8;
-    spacing: 5px;
-    scrollbar: false;
-}
-
-element {
-    background-color: @background;
-    text-color: @background;
-    border-radius: 15px;
-    padding: 3px 10px;
-}
-
-element selected {
-    background-color: @background;
-    text-color: @background;
-}
-
-element-icon {
-    size: 2em;
-    margin: 0 10px 0 0;
-}
-
-element-text {
-    vertical-align: 0.5;
 }

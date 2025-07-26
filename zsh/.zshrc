@@ -150,10 +150,14 @@ setopt hist_find_no_dups
 #########################################################################
 
 alias fetch="fastfetch --config examples/13.jsonc"
+alias CODE="/bin/code"
 alias code="code --reuse-window"
 alias tree="eza --icons=always --colour=always --tree"
+alias LS="/bin/ls"
 alias ls="eza --icons=always --colour=always"
+alias CD="/bin/cd"
 alias cd="z"
+alias CAT="/bin/cat"
 alias cat="bat --color=always"
 alias grep="rg"
 alias size="dust -d 1"
