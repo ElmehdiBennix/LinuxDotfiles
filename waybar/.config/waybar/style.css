@@ -4,14 +4,14 @@
     border: none;
     border-radius: 0;
     font-family: "JetBrains Sans Nerd Font Propo", "Roboto", monospace;
-    font-size: 12px;
+    font-size: 13px;
     /* Reduced font size */
     min-height: 0;
 }
 
 window#waybar {
     background: transparent;
-    color: @foreground;
+    color: @color7; /* Ensure light text on dark background */
 }
 
 /* --- Pill style for Left and Center modules --- */
@@ -24,9 +24,9 @@ window#waybar {
     /* Reduced vertical padding */
     margin: 4px;
     /* Reduced margin */
-    color: @foreground;
-    background-color: @color1;
-    border: 1px solid @color8;
+    color: @color7; /* Ensure light text */
+    background-color: @color0; /* Ensure dark background */
+
     border-radius: 8px;
     /* Slimmer roundness */
 }
@@ -37,15 +37,14 @@ window#waybar {
 #battery,
 #clock,
 #custom-notifications {
-    padding: 3px 10px;
+    padding: 3px 5px;
     /* Reduced vertical padding */
     margin: 4px 0;
     /* Reduced margin, no horizontal margin */
-    color: @foreground;
-    background-color: @color1;
+    color: @color7; /* Ensure light text */
+    background-color: @color0; /* Ensure dark background */
     /* Apply only top and bottom borders to all modules in the group */
-    border-top: 1px solid @color8;
-    border-bottom: 1px solid @color8;
+
 }
 
 /* Round the corners and add side borders for the first and last module */
@@ -53,16 +52,14 @@ window#waybar {
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
     margin-left: 4px;
-    /* Add the left border ONLY to the first module */
-    border-left: 1px solid @color8;
+    padding-left: 10px;
 }
 
 #custom-notifications {
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
     margin-right: 4px;
-    /* Add the right border ONLY to the last module */
-    border-right: 1px solid @color8;
+    padding-right: 10px;
 }
 
 
@@ -70,36 +67,36 @@ window#waybar {
 
 #workspaces button {
     padding: 0 5px;
-    color: @foreground;
+    color: @color7; /* Ensure light text */
     background-color: transparent;
 }
 
 #workspaces button:hover {
-    background-color: @color2;
+    background-color: @color2; /* A slightly different dark color for hover */
 }
 
 #workspaces button.focused {
-    background-color: @color2;
-    border-bottom: 2px solid @foreground;
+    background-color: @color2; /* A slightly different dark color for focused */
+    border-bottom: 2px solid @color7; /* Light border for focused */
 }
 
 #workspaces button.urgent {
-    background-color: @color3;
+    background-color: @color3; /* Red for urgent */
 }
 
 #battery.charging {
-    background-color: @color2;
+    background-color: @color2; /* A slightly different dark color */
 }
 
 @keyframes blink {
     to {
-        background-color: @foreground;
-        color: @background;
+        background-color: @color7; /* Light background for blink */
+        color: @color0; /* Dark text for blink */
     }
 }
 
 #battery.critical:not(.charging) {
-    background-color: @color3;
+    background-color: @color3; /* Red for critical */
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -109,9 +106,9 @@ window#waybar {
 
 #network.disconnected,
 #temperature.critical {
-    background-color: @color3;
+    background-color: @color3; /* Red for disconnected/critical */
 }
 
 #pulseaudio.muted {
-    background-color: @color4;
+    background-color: @color4; /* Purple/magenta for muted */
 }
