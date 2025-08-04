@@ -55,8 +55,8 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
 zstyle ':completion:*' menu no
 # preview directory's content with eza when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -1 --color=always $realpath'
-zstyle ':fzf-tab:complete:z:*' fzf-preview 'lsd -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --icons=always $realpath'
+zstyle ':fzf-tab:complete:z:*' fzf-preview 'eza --icons=always $realpath'
 # custom fzf flags
 # NOTE: fzf-tab does not follow FZF_DEFAULT_OPTS by default
 zstyle ':fzf-tab:*' fzf-flags --color=fg:$color7,fg+:$color0
@@ -246,7 +246,7 @@ eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
 eval "$(register-python-argcomplete pipx)"
 
-# Created by `pipx` on 2025-07-10 09:40:53
-export PATH="$PATH:/home/rambeau/.local/bin"
+export GEMINI_API_KEY="AIzaSyDpVgFAZLRza3miBf-baz16ZkaJzOAyhIc"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.local/scripts"
 
 fetch

@@ -6,12 +6,10 @@
     "margin-left": 0,
     "margin-right": 0,
     "spacing": 0,
-
     "modules-left": [
         "cpu",
         "memory",
-        "temperature",
-        "custom/weather"
+        "temperature"
     ],
     "modules-center": [
         "hyprland/workspaces"
@@ -33,13 +31,68 @@
         "all-outputs": true,
         "sort-by-number": true
     },
-    "custom/weather": {
-        "format": "󰖐 {}",
-        "exec": "curl -s 'wttr.in/?format=3'",
-        "exec-on-event": true,
-        "interval": 3600,
-        "on-click": "curl -s 'wttr.in' | less",
-        "tooltip-format": "{}"
+    "cpu": {
+        "format": "󰻠 CPU {usage}%",
+        "tooltip": true,
+        "interval": 1
+    },
+    "memory": {
+        "format": "󰍛 RAM {percentage}%",
+        "tooltip": true,
+        "interval": 1
+    },
+    "temperature": {
+        "thermal-zone": 2,
+        "hwmon-path": "/sys/class/hwmon/hwmon6/temp1_input",
+        "critical-threshold": 90,
+        "format-critical": "󱃂 {temperatureC}°C",
+        "format": "󰔏 {temperatureC}°C"
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟 Muted",
+        "format-icons": {
+            "default": [
+                "󰕿",
+                "󰖀",
+                "󰕾"
+            ]
+        },
+        "on-click": "pavucontrol",
+        "tooltip": true
+    },
+    "battery": {
+        "interval": 1,
+        "states": {
+            "good": 95,
+            "warning": 65,
+            "critical": 30
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󱟢 {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": [
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰂂",
+            "󰁹"
+        ]
+    },
+    "clock": {
+        "format": "󰥔 {:%H:%M | %A %d %B}",
+        "format-alt": "󰃭 {:%Y-%m-%d}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "custom/notifications": {
         "tooltip": false,
@@ -60,67 +113,5 @@
         "on-click": "swaync-client -t -sw",
         "on-click-right": "swaync-client -d -sw",
         "escape": true
-    },
-    "tray": {
-        "icon-size": 16,
-        "spacing": 8
-    },
-    "clock": {
-        "format": "󰥔 {:%H:%M | %A %d-%m-%Y}",
-        "format-alt": "󰃭 {:%Y-%m-%d}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-    },
-    "cpu": {
-        "format": "󰻠 CPU {usage}%",
-        "tooltip": true,
-        "interval": 1
-    },
-    "memory": {
-        "format": "󰍛 RAM {percentage}%",
-        "tooltip": true,
-        "interval": 1
-    },
-    "temperature": {
-        "thermal-zone": 2,
-        "hwmon-path": "/sys/class/hwmon/hwmon6/temp1_input",
-        "critical-threshold": 80,
-        "format-critical": "󱃂 {temperatureC}°C",
-        "format": "󰔏 {temperatureC}°C"
-    },
-    "battery": {
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon} {capacity}%",
-        "format-charging": "󰂄 {capacity}%",
-        "format-plugged": "󱟢 {capacity}%",
-        "format-alt": "{time} {icon}",
-        "format-icons": [
-            "󰁺",
-            "󰁻",
-            "󰁼",
-            "󰁽",
-            "󰁾",
-            "󰁿",
-            "󰂀",
-            "󰂁",
-            "󰂂",
-            "󰁹"
-        ]
-    },
-    "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-muted": "󰝟 Muted",
-        "format-icons": {
-            "default": [
-                "󰕿",
-                "󰖀",
-                "󰕾"
-            ]
-        },
-        "on-click": "pavucontrol",
-        "tooltip": true
     }
 }

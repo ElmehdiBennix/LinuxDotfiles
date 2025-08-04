@@ -27,8 +27,8 @@ window#waybar {
     /* Reduced margin */
     color: @color7;
     /* Ensure light text */
-    background-color: rgba(0, 0, 0, 0.6);
-    /* Semi-transparent dark background */
+    background-color: @color0;
+    /* Ensure dark background */
 
     border-radius: 15px;
     /* Slimmer roundness */
@@ -46,8 +46,8 @@ window#waybar {
     /* Reduced margin, no horizontal margin */
     color: @color7;
     /* Ensure light text */
-    background-color: rgba(0, 0, 0, 0.6);
-    /* Semi-transparent dark background */
+    background-color: @color0;
+    /* Ensure dark background */
     /* Apply only top and bottom borders to all modules in the group */
 
 }
@@ -57,14 +57,14 @@ window#waybar {
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     margin-left: 4px;
-    padding-left: 8px;
+    padding-left: 6px;
 }
 
 #custom-notifications {
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
     margin-right: 4px;
-    padding-right: 8px;
+    padding-right: 6px;
 }
 
 
@@ -78,25 +78,24 @@ window#waybar {
 }
 
 #workspaces button:hover {
-    background-color: rgba(100, 100, 100, 0.6);
-    /* Semi-transparent hover */
+    background-color: alpha(@color2, 0.6);
+    border-radius: 10px;
+    transition: all 0.3s ease;
 }
 
 #workspaces button.focused {
-    background-color: rgba(100, 100, 100, 0.8);
-    /* More opaque for focused */
-    border-bottom: 2px solid @color7
-        /* Light border for focused */
+    background-color: @color2;
+    border-radius: 10px;
+    box-shadow: 0 0 3px alpha(@color7, 0.5);
 }
 
 #workspaces button.urgent {
-    background-color: rgba(255, 0, 0, 0.6);
-    /* Semi-transparent red for urgent */
+    background-color: @color3;
+    /* Red for urgent */
 }
 
 #battery.charging {
-    background-color: rgba(0, 255, 0, 0.4);
-    /* Semi-transparent green for charging */
+    color: green;
 }
 
 @keyframes blink {
@@ -108,9 +107,13 @@ window#waybar {
     }
 }
 
+
+#battery.warning:not(.charging) {
+    color: orange;
+}
+
 #battery.critical:not(.charging) {
-    background-color: @color3;
-    /* Red for critical */
+    color: darkred;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -120,8 +123,9 @@ window#waybar {
 
 #network.disconnected,
 #temperature.critical {
-    background-color: @color3;
+    background-color: darkred;
     /* Red for disconnected/critical */
+    color: white;
 }
 
 #pulseaudio.muted {

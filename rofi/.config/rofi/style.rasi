@@ -1,44 +1,134 @@
 @import "~/.cache/wal/colors-rofi.rasi"
 
-window {
+#window {
     background-color: @background;
-    border-radius: 15px;
-    padding: 8px;
+    border: 0;
+    padding: 2.5ch;
 }
 
-inputbar {
-    background-color: @background;
-    text-color: @background;
-    border-radius: 15px;
-    padding: 3px 10px;
-    margin: 10px 0px;
+#mainbox {
+    border: 0;
+    padding: 0;
 }
 
-listview {
-    background-color: @background;
-    columns: 1;
-    lines: 8;
-    spacing: 5px;
-    scrollbar: false;
+#message {
+    border: 2px 0px 0px;
+    border-color: @border-color;
+    padding: 1px;
 }
 
-element {
-    background-color: @background;
-    text-color: @background;
-    border-radius: 15px;
-    padding: 3px 10px;
+#textbox {
+    text-color: @foreground;
 }
 
-element selected {
-    background-color: @background;
-    text-color: @background;
+#inputbar {
+    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
 }
 
-element-icon {
-    size: 2em;
-    margin: 0 10px 0 0;
+#textbox-prompt-colon {
+    expand: false;
+    str: ":";
+    margin: 0px 0.3em 0em 0em;
+    text-color: @normal-foreground;
 }
 
-element-text {
-    vertical-align: 0.5;
+#listview {
+    fixed-height: 0;
+    border: 2px 0px 0px;
+    border-color: @border-color;
+    spacing: 2px;
+    scrollbar: true;
+    padding: 2px 0px 0px;
+}
+
+#element {
+    border: 0;
+    padding: 1px;
+}
+
+#element.normal.normal {
+    background-color: @normal-background;
+    text-color: @normal-foreground;
+}
+
+#element.normal.urgent {
+    background-color: @urgent-background;
+    text-color: @urgent-foreground;
+}
+
+#element.normal.active {
+    background-color: @active-background;
+    text-color: @active-foreground;
+}
+
+#element.selected.normal {
+    background-color: @selected-normal-background;
+    text-color: @selected-normal-foreground;
+}
+
+#element.selected.urgent {
+    background-color: @selected-urgent-background;
+    text-color: @selected-urgent-foreground;
+}
+
+#element.selected.active {
+    background-color: @selected-active-background;
+    text-color: @selected-active-foreground;
+}
+
+#element.alternate.normal {
+    background-color: @alternate-normal-background;
+    text-color: @alternate-normal-foreground;
+}
+
+#element.alternate.urgent {
+    background-color: @alternate-urgent-background;
+    text-color: @alternate-urgent-foreground;
+}
+
+#element.alternate.active {
+    background-color: @alternate-active-background;
+    text-color: @alternate-active-foreground;
+}
+
+#scrollbar {
+    width: 4px;
+    border: 0;
+    handle-width: 8px;
+    padding: 0;
+}
+
+#sidebar {
+    border: 2px 0px 0px;
+    border-color: @border-color;
+}
+
+#button {
+    text-color: @normal-foreground;
+}
+
+#button.selected {
+    background-color: @selected-normal-background;
+    text-color: @selected-normal-foreground;
+}
+
+#inputbar {
+    spacing: 0;
+    text-color: @normal-foreground;
+    padding: 1px;
+}
+
+#case-indicator {
+    spacing: 0;
+    text-color: @normal-foreground;
+}
+
+#entry {
+    spacing: 0;
+    text-color: @normal-foreground;
+}
+
+#prompt {
+    spacing: 0;
+    text-color: @normal-foreground;
 }

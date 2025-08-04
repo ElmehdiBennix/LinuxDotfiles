@@ -5,9 +5,14 @@ ssh
 ufw
 sunshine
 # cockpit
+upnp
 auto-cpufreq
 envycontrol
+nvidia-container-toolkit
 libva-utils | vainfo to check hardware acceleration drivers for intel
+rclone
+brightnessctl
+msi-ec-git
 
 # dev / terminal
 fastfetch
@@ -32,6 +37,7 @@ docker-compose
 lazydocker
 nodejs
 pnpm
+python2
 python3
 python-pip
 python-pipx
@@ -39,23 +45,27 @@ go
 gcc
 make
 lazygit
+jq
 distrobox
 
 # desktop env
-waypaper
+waypaper // will be removed
 swww
 hyprland
 hyprlock
 hypridle
-hyprswitch || alt + shift
+hyprswitch
+hyprshot
 waybar
 swaync
 rofi-wayland
 nwg-displays
 nwg-look
-materia-gtk-theme
 qt5-base
 polkit-gnome
+
+qt5-wayland
+qt6-wayland
 
 # desktop-portal
 pipewire The media server
@@ -67,15 +77,18 @@ xdg-desktop-portal-hyprland specific implementation that allows the portal to wo
 nemo
 vscode
 zen-browser
+chromium
 kitty
 obs
 vlc
 mpv
 
-# background apps
-KeePassXc
+# tray apps
+pavucontrol
 nm-applet
-blueman || applet
+blueman
+
+KeePassXc
 kdeconnect
 Mcontrolcenter
 
@@ -89,20 +102,11 @@ flatpak
 
 hyprsunset || to able to control blue light
 hyprcursor ||
-
-brightnessctl
-nerdfonts
-grim
-slurp
-
 hyprlux || flux like tool
 
-starship
-pavucontrol
-
-some clipboard manager
 wl-clipboard
-cliphist
 
+jetbrains nerd font
 
-wpgtk
+hyprpm add https://github.com/KZDKM/Hyprspace
+hyprpm enable Hyprspace

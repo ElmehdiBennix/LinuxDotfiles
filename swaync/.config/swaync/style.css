@@ -8,9 +8,8 @@
 
 .control-center {
     background: alpha(@color0, 0.95);
-    border: 2px solid @color8;
     border-radius: 15px;
-    box-shadow: 0 4px 8px alpha(@color0, 0.2);
+    box-shadow: 0 4px 12px alpha(@color0, 0.3);
     margin: 8px;
     padding: 12px;
 }
@@ -28,11 +27,11 @@
 
 .notification {
     background: alpha(@color0, 0.95);
-    border: 2px solid @color8;
     border-radius: 15px;
     margin: 4px;
     padding: 8px;
     transition: all 0.3s ease;
+    box-shadow: 0 2px 8px alpha(@color0, 0.2);
 }
 
 .notification:hover {
