@@ -9,85 +9,97 @@ upnp
 auto-cpufreq
 envycontrol
 nvidia-container-toolkit
-libva-utils | vainfo to check hardware acceleration drivers for intel
 rclone
 brightnessctl
 msi-ec-git
+libva-utils | vainfo to check hardware acceleration drivers for intel
+nmap
 
 # dev / terminal
 fastfetch
+btop
+
 zsh
 zellij
-git
-gh
-neovim
+
 exa
 zoxide
 bat
 ripgrep
+neovim
 fzf
-btop
-stow
-python-pywal
-gemini
-nmap
-docker
-docker-buildx
-docker-compose
-lazydocker
-nodejs
-pnpm
-python2
-python3
-python-pip
-python-pipx
+jq
+
 go
 gcc
 make
+
+stow
+
 lazygit
-jq
+git
+gh
+
+lazydocker
+docker
+docker-buildx
+docker-compose
+
+nodejs
+pnpm
+gemini
+
+python3
+python-pip
+python-pipx
+python-pywal
+
 distrobox
 
 # desktop env
 waypaper // will be removed
 swww
+
 hyprland
 hyprlock
 hypridle
 hyprswitch
+hyprpicker
 hyprshot
+polkit-gnome
+
 waybar
 swaync
 rofi-wayland
+
 nwg-displays
 nwg-look
-qt5-base
-polkit-gnome
 
-qt5-wayland
-qt6-wayland
+wl-clipboard
+cliphist
+ttf-jetbrains-mono-nerd
 
 # desktop-portal
-pipewire The media server
-wireplumber The modern session manager for PipeWire
-xdg-desktop-portal The generic portal framework
-xdg-desktop-portal-hyprland specific implementation that allows the portal to work with Hyprland
+pipewire     The media server
+wireplumber      The modern session manager for PipeWire
+xdg-desktop-portal
+xdg-desktop-portal-hyprland     specific implementation that allows the portal to work with Hyprland
 
 # desktop apps
-nemo
+nemo || smthing else
 vscode
 zen-browser
 chromium
-kitty
+kitty || ghostty
 obs
 vlc
 mpv
+micro
 
 # tray apps
 pavucontrol
 nm-applet
 blueman
-
 KeePassXc
 kdeconnect
 Mcontrolcenter
@@ -104,9 +116,16 @@ hyprsunset || to able to control blue light
 hyprcursor ||
 hyprlux || flux like tool
 
-wl-clipboard
+starship
 
-jetbrains nerd font
+qt5-base
+qt5-wayland
+qt6-wayland
 
 hyprpm add https://github.com/KZDKM/Hyprspace
 hyprpm enable Hyprspace
+\
+p7zip || and a frontend
+
+
+speedtest-cli
