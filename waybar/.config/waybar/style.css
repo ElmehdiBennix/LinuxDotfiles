@@ -1,134 +1,105 @@
-@import "/home/rambeau/.cache/wal/colors-waybar.css";
+/* @import "../../.cache/wal/colors-waybar.css";
 
 * {
     border: none;
     border-radius: 0;
     font-family: "JetBrains Sans Nerd Font Propo", "Roboto", monospace;
     font-size: 13px;
-    /* Reduced font size */
     min-height: 0;
-}
-
-window#waybar {
-    background: transparent;
-    color: @color7;
-    /* Ensure light text on dark background */
-}
-
-/* --- Pill style for Left and Center modules --- */
-#workspaces,
-#cpu,
-#memory,
-#temperature,
-#custom-weather {
-    padding: 3px 10px;
-    /* Reduced vertical padding */
-    margin: 4px;
-    /* Reduced margin */
-    color: @color7;
-    /* Ensure light text */
-    background-color: @color0;
-    /* Ensure dark background */
-
-    border-radius: 15px;
-    /* Slimmer roundness */
-}
-
-/* --- Grouped style for Right modules --- */
-#tray,
-#pulseaudio,
-#battery,
-#clock,
-#custom-notifications {
-    padding: 3px 5px;
-    /* Reduced vertical padding */
-    margin: 4px 0;
-    /* Reduced margin, no horizontal margin */
-    color: @color7;
-    /* Ensure light text */
-    background-color: @color0;
-    /* Ensure dark background */
-    /* Apply only top and bottom borders to all modules in the group */
-
-}
-
-/* Round the corners and add side borders for the first and last module */
-#tray {
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-    margin-left: 4px;
-    padding-left: 6px;
-}
-
-#custom-notifications {
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    margin-right: 4px;
-    padding-right: 6px;
-}
-
-
-/* --- General Module States & Hovers --- */
-
-#workspaces button {
-    padding: 0 5px;
-    color: @color7;
-    /* Ensure light text */
-    background-color: transparent;
-}
-
-#workspaces button:hover {
-    background-color: alpha(@color2, 0.6);
-    border-radius: 10px;
     transition: all 0.3s ease;
 }
 
-#workspaces button.focused {
-    background-color: @color2;
-    border-radius: 10px;
-    box-shadow: 0 0 3px alpha(@color7, 0.5);
+window#waybar {
+    background: @background;
+    color: @foreground;
+    border-bottom: 2px solid @color1;
 }
 
-#workspaces button.urgent {
-    background-color: @color3;
-    /* Red for urgent */
+#workspaces button {
+    padding: 0 8px;
+    margin: 4px 3px;
+    background: @color1;
+    color: @foreground;
+    border: 1px solid @color2;
+    border-radius: 2px;
+}
+
+#workspaces button:hover {
+    background: @color2;
+    border-color: @color7;
+}
+
+#workspaces button.active {
+    background: @color3;
+    border-color: @color6;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#pulseaudio,
+#custom-pacman,
+#tray,
+#custom-mic,
+#custom-notifications {
+    padding: 0 12px;
+    margin: 4px 3px;
+    background: @color1;
+    color: @foreground;
+    border: 1px solid @color2;
+    border-radius: 2px;
 }
 
 #battery.charging {
-    color: green;
+    background: @color2;
+    border-color: @color6;
+}
+
+#battery.warning:not(.charging) {
+    background: @color4;
+    border-color: @color5;
+    animation: blink 1s linear infinite;
+}
+
+#battery.critical:not(.charging) {
+    background: @color5;
+    border-color: @color4;
+    animation: blink 0.5s linear infinite;
 }
 
 @keyframes blink {
     to {
-        background-color: @color7;
-        /* Light background for blink */
-        color: @color0;
-        /* Dark text for blink */
+        background: @background;
+        color: @color5;
     }
 }
 
-
-#battery.warning:not(.charging) {
-    color: orange;
-}
-
-#battery.critical:not(.charging) {
-    color: darkred;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#network.disconnected,
 #temperature.critical {
-    background-color: darkred;
-    /* Red for disconnected/critical */
-    color: white;
+    background: @color5;
+    border-color: @color4;
 }
 
-#pulseaudio.muted {
-    background-color: @color4;
-    /* Purple/magenta for muted */
+#tray {
+    background: @background;
 }
+
+#tray>.passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray>.needs-attention {
+    -gtk-icon-effect: highlight;
+    background: @color5;
+}
+
+tooltip {
+    background: @background;
+    border: 1px solid @color2;
+    border-radius: 2px;
+}
+
+tooltip label {
+    color: @foreground;
+} */

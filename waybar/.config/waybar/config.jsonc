@@ -7,9 +7,10 @@
     "margin-right": 0,
     "spacing": 0,
     "modules-left": [
+        "temperature",
         "cpu",
         "memory",
-        "temperature"
+        "custom/pacman"
     ],
     "modules-center": [
         "hyprland/workspaces"
@@ -17,19 +18,33 @@
     "modules-right": [
         "tray",
         "pulseaudio",
+        "custom/mic",
         "battery",
         "clock",
         "custom/notifications"
     ],
+    "custom/mic":{
+        "format" :" mic {}"
+    },
     "hyprland/workspaces": {
-        "format": "{icon}",
-        "format-icons": {
-            "active": "",
-            "default": ""
-        },
-        "on-click": "activate",
-        "all-outputs": true,
-        "sort-by-number": true
+        "format": "{icon}: {windows}",
+        "format-window-separator": "",
+        "workspace-taskbar": {
+            "enable": true,
+            "update-active-window": true,
+            "format": "{icon}",
+            "icon-size": 18,
+            "on-click-window": "${SCRIPTS}/focus-window.sh {address} {button}"
+        }
+    },
+    "custom/pacman": {
+        "format": "󰅢 {}",
+        "interval": 3600,
+        "exec": "checkupdates | wc -l",
+        "exec-if": "exit 0",
+        "on-click": "kitty sh -c 'yay -Syu; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar",
+        "signal": 8,
+        "tooltip-format": "Pending Updates"
     },
     "cpu": {
         "format": "󰻠 CPU {usage}%",
@@ -93,6 +108,13 @@
         "format": "󰥔 {:%H:%M | %A %d %B}",
         "format-alt": "󰃭 {:%Y-%m-%d}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "network": {
+        "format": "⇣ {bandwidthDownBytes} ~ {bandwidthUpBytes} ⇡",
+        "tooltip-format": "Connected",
+        "tooltip-format-disconnected": "Disconnected",
+        "interval": 1,
+        "nospacing": 1
     },
     "custom/notifications": {
         "tooltip": false,

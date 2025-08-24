@@ -95,6 +95,13 @@ obs
 vlc
 mpv
 micro
+qbittorrent
+streamio
+steam
+hydra
+postman
+hexchat
+
 
 # tray apps
 pavucontrol
@@ -124,8 +131,16 @@ qt6-wayland
 
 hyprpm add https://github.com/KZDKM/Hyprspace
 hyprpm enable Hyprspace
-\
-p7zip || and a frontend
+
+p7zip || and a frontend peazip
+lollypop
+yt-dlp
+
+speedtest-cliz
 
 
-speedtest-cli
+
+
+sherlock-launcher-bin
+matigen
+hyprpannel
