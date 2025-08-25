@@ -1,0 +1,44 @@
+dialog.background {
+    background: @theme_bg_color;
+}
+
+window.background .frame {
+    border-color: @theme_bg_color;
+}
+
+window.background box widget {
+    background: @theme_bg_color;
+}
+
+window.background notebook.frame stack {
+    background: @theme_bg_color;
+}
+
+messagedialog.background {
+    background: @theme_bg_color;
+}
+
+window.background box.vertical notebook:not(.frame) button.text-button label {
+    color: @theme_text_color;
+}
+
+window.background box.vertical notebook:not(.frame) label {
+    color: #000;
+}
+
+window.background box.vertical notebook:not(.frame) stack widget box.horizontal button.flat widget box.horizontal label {
+    color: @theme_text_color;
+}
+
+window.background button.text-button label {
+    color: @theme_text_color;
+}
+
+window.background #GtkDialog.background notebook.frame {
+    background: @theme_bg_color;
+}
+
+dialog.background box.dialog-vbox box.horizontal notebook.frame stack {
+    background: @theme_bg_color;
+}
+
