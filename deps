@@ -144,3 +144,9 @@ speedtest-cliz
 sherlock-launcher-bin
 matigen
 hyprpannel
+
+
+yay -S breeze breeze5 breeze-icons breeze-gtk qt6ct-kde qt5ct-kde
+
+
+hyprland-virtual-desktops
