@@ -3,7 +3,7 @@
 #########################################################################
 
 # Source Pywal colors
-source "${XDG_CACHE_HOME:-$HOME/.cache}/wal/colors.sh"
+# source "${XDG_CACHE_HOME:-$HOME/.cache}/wal/colors.sh"
 
 #zinit plugin mannager
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -244,8 +244,6 @@ unloadenv() {
 
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
-eval "$(direnv hook zsh)"
-eval "$(register-python-argcomplete pipx)"
 
 export GEMINI_API_KEY="AIzaSyDpVgFAZLRza3miBf-baz16ZkaJzOAyhIc"
 export PATH="$PATH:$HOME/.local/bin:$HOME/.local/scripts"

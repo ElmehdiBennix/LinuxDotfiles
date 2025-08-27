@@ -1,1 +1,92 @@
-/usr/share/themes/Breeze/gtk-4.0/gtk.css
+/*
+* GTK 3 Colors
+* Generated with Matugen
+*/
+
+@define-color theme_fg_color_breeze #f0dedd;
+@define-color theme_bg_color_breeze #271d1d;
+@define-color theme_text_color_breeze #f0dedd;
+@define-color theme_base_color_breeze #1a1111;
+@define-color theme_view_hover_decoration_color_breeze #ffb3b0;
+@define-color theme_hovering_selected_bg_color_breeze #ffb3b0;
+@define-color theme_selected_bg_color_breeze #ffb3b0;
+@define-color theme_selected_fg_color_breeze #571d1e;
+@define-color theme_view_active_decoration_color_breeze #ffb3b0;
+@define-color theme_button_background_normal_breeze #322827;
+@define-color theme_button_decoration_hover_breeze #ffb3b0;
+@define-color theme_button_decoration_focus_breeze #ffb3b0;
+@define-color theme_button_foreground_normal_breeze #f0dedd;
+@define-color theme_button_foreground_active_breeze #571d1e;
+@define-color warning_color_breeze #ffb4ab;
+@define-color success_color_breeze #ffdeab;
+@define-color error_color_breeze #ffb4ab;
+@define-color theme_unfocused_fg_color_breeze #f0dedd;
+@define-color theme_unfocused_text_color_breeze #f0dedd;
+@define-color theme_unfocused_bg_color_breeze #271d1d;
+@define-color theme_unfocused_base_color_breeze #1a1111;
+@define-color theme_unfocused_selected_bg_color_alt_breeze #ffb3b0;
+@define-color theme_unfocused_selected_bg_color_breeze #ffb3b0;
+@define-color theme_unfocused_selected_fg_color_breeze #571d1e;
+@define-color theme_button_background_backdrop_breeze #322827;
+@define-color theme_button_decoration_hover_backdrop_breeze #ffb3b0;
+@define-color theme_button_decoration_focus_backdrop_breeze #ffb3b0;
+@define-color theme_button_foreground_backdrop_breeze #f0dedd;
+@define-color theme_button_foreground_active_backdrop_breeze #571d1e;
+@define-color warning_color_backdrop_breeze #e3c28c;
+@define-color success_color_backdrop_breeze #ffdeab;
+@define-color error_color_backdrop_breeze #ffb4ab;
+@define-color insensitive_fg_color_breeze #524342;
+@define-color insensitive_base_fg_color_breeze #f0dedd;
+@define-color insensitive_bg_color_breeze #271d1d;
+@define-color insensitive_base_color_breeze #1a1111;
+@define-color insensitive_selected_bg_color_breeze #ffb3b0;
+@define-color insensitive_selected_fg_color_breeze #571d1e;
+@define-color theme_button_background_insensitive_breeze #322827;
+@define-color theme_button_decoration_hover_insensitive_breeze #ffb3b0;
+@define-color theme_button_decoration_focus_insensitive_breeze #ffb3b0;
+@define-color theme_button_foreground_insensitive_breeze #f0dedd;
+@define-color theme_button_foreground_active_insensitive_breeze #571d1e;
+@define-color warning_color_insensitive_breeze #ffb4ab;
+@define-color success_color_insensitive_breeze #ffdeab;
+@define-color error_color_insensitive_breeze #ffb4ab;
+@define-color insensitive_unfocused_fg_color_breeze #524342;
+@define-color theme_unfocused_view_text_color_breeze #f0dedd;
+@define-color insensitive_unfocused_bg_color_breeze #271d1d;
+@define-color theme_unfocused_view_bg_color_breeze #1a1111;
+@define-color insensitive_unfocused_selected_bg_color_breeze #ffb3b0;
+@define-color insensitive_unfocused_selected_fg_color_breeze #571d1e;
+@define-color theme_button_background_backdrop_insensitive_breeze #322827;
+@define-color theme_button_decoration_hover_backdrop_insensitive_breeze #ffb3b0;
+@define-color theme_button_decoration_focus_backdrop_insensitive_breeze #ffb3b0;
+@define-color theme_button_foreground_backdrop_insensitive_breeze #f0dedd;
+@define-color theme_button_foreground_active_backdrop_insensitive_breeze #571d1e;
+@define-color warning_color_insensitive_backdrop_breeze #e3c28c;
+@define-color success_color_insensitive_backdrop_breeze #ffdeab;
+@define-color error_color_insensitive_backdrop_breeze #ffb4ab;
+@define-color link_color_breeze #e6bdbb;
+@define-color link_visited_color_breeze #ffdad8;
+@define-color content_view_bg_breeze #1a1111;
+@define-color theme_titlebar_background_light_breeze #271d1d;
+
+/*
+* GTK 4 Colors
+* Generated with Matugen
+*/
+
+@define-color accent_color #ffb3b0;
+@define-color accent_fg_color #3b080b;
+@define-color accent_bg_color #ffb3b0;
+@define-color window_bg_color #1a1111;
+@define-color window_fg_color #f0dedd;
+@define-color headerbar_bg_color #1a1111;
+@define-color headerbar_fg_color #f0dedd;
+@define-color popover_bg_color #1a1111;
+@define-color popover_fg_color #f0dedd;
+@define-color view_bg_color #1a1111;
+@define-color view_fg_color #f0dedd;
+@define-color card_bg_color #1a1111;
+@define-color card_fg_color #f0dedd;
+@define-color sidebar_bg_color @window_bg_color;
+@define-color sidebar_fg_color @window_fg_color;
+@define-color sidebar_border_color @window_bg_color;
+@define-color sidebar_backdrop_color @window_bg_color;

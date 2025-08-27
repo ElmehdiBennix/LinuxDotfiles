@@ -6,8 +6,7 @@ command = "swww"
 arguments = [ "img", "-t", "outer", "--transition-duration", "1.5", "--transition-step", "255", "--transition-fps", "244", "-f", "Nearest",]
 set = true
 
-
-
+####################################################################
 
 [templates.hyprland]
 input_path = './templates/hyprland-colors.conf'
@@ -20,7 +19,7 @@ output_path = '~/.config/waybar/colors.css'
 post_hook = 'pkill -SIGUSR2 waybar'
 
 [templates.rofi]
-input_path = './templates/colors.rasi'
+input_path = './templates/rofi-colors.rasi'
 output_path = '~/.config/rofi/colors.rasi'
 
 [templates.kitty]
@@ -28,27 +27,21 @@ input_path = './templates/kitty-colors.conf'
 output_path = '~/.config/kitty/colors.conf'
 post_hook = 'pkill -SIGUSR1 kitty'
 
+####################################################################
 
+# --- GTK3 & GTK4 Theming --- # Breeze needed
 
-
-
-# --- GTK3 & GTK4 Theming ---
 [templates.gtk3]
-input_path = "./templates/gtk-colors.css"
-output_path = "~/.config/gtk-3.0/colors.css"
-post_hook = "gsettings set org.gnome.desktop.interface gtk-theme 'Breeze'"
+input_path = './templates/gtk-colors.css'
+output_path = '~/.config/gtk-3.0/gtk.css'
+post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme Breeze-Dark'
 
 [templates.gtk4]
-input_path = "~/.config/matugen/templates/gtk-colors.css"
-output_path = "~/.config/gtk-4.0/colors.css"
-post_hook = "gsettings set org.gnome.desktop.interface gtk-theme 'Breeze'"
-
+input_path = './templates/gtk-colors.css'
+output_path = '~/.config/gtk-4.0/gtk.css'
 
 # --- Qt5 & Qt6 Theming ---
+
 [templates.qt]
-input_path = "./templates/qtct-colors.conf"
-output_path = "~/.local/share/color-schemes/Matugen.colors"
-
-
-# NOTE: After the first run, you must open qt6ct and select "Matugen"
-# from the color scheme dropdown menu.
+input_path = './templates/Matugen.colors'
+output_path = '~/.local/share/color-schemes/Matugen.colors'

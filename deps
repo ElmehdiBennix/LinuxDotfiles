@@ -1,6 +1,9 @@
 
 # admin / servers
 ly
+# systemctl enable ly.service
+# systemctl disable getty@tty2.service
+
 ssh
 ufw
 sunshine
@@ -61,6 +64,7 @@ waypaper // will be removed
 swww
 
 hyprland
+hyprland-virtual-desktops:plugin
 hyprlock
 hypridle
 hyprswitch
@@ -82,6 +86,8 @@ ttf-jetbrains-mono-nerd
 # desktop-portal
 pipewire     The media server
 wireplumber      The modern session manager for PipeWire
+
+
 xdg-desktop-portal
 xdg-desktop-portal-hyprland     specific implementation that allows the portal to work with Hyprland
 
@@ -123,30 +129,24 @@ hyprsunset || to able to control blue light
 hyprcursor ||
 hyprlux || flux like tool
 
-starship
-
-qt5-base
-qt5-wayland
-qt6-wayland
-
-hyprpm add https://github.com/KZDKM/Hyprspace
-hyprpm enable Hyprspace
 
 p7zip || and a frontend peazip
 lollypop
 yt-dlp
 
-speedtest-cliz
+speedtest-cli
 
 
 
-
-sherlock-launcher-bin
 matigen
-hyprpannel
 
+breeze-gtk
+breeze
+breeze5
+
+qt5ct-kde
+qt6ct-kde
+
+WhiteSur Icon Theme
 
 yay -S breeze breeze5 breeze-icons breeze-gtk qt6ct-kde qt5ct-kde
-
-
-hyprland-virtual-desktops

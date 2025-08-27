@@ -1,4 +1,4 @@
-@import "~/.cache/wal/colors-rofi.rasi"
+@import "colors.rasi"
 
 #window {
     background-color: @background;
