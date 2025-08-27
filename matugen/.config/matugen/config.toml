@@ -1,58 +1,54 @@
+[config]
+reload_apps = true
+
+[config.wallpaper]
+command = "swww"
+arguments = [ "img", "-t", "outer", "--transition-duration", "1.5", "--transition-step", "255", "--transition-fps", "244", "-f", "Nearest",]
+set = true
 
 
+
+
+[templates.hyprland]
+input_path = './templates/hyprland-colors.conf'
+output_path = '~/.config/hypr/colors.conf'
+post_hook = 'hyprctl reload'
 
 [templates.waybar]
 input_path = './templates/colors.css'
 output_path = '~/.config/waybar/colors.css'
 post_hook = 'pkill -SIGUSR2 waybar'
 
-[templates.hyprland]
-input_path = './templates/colors.css'
-output_path = '~/.config/hypr/colors.conf'
-post_hook = 'hyprctl reload'
-
-
-
-
 [templates.rofi]
-input_path = './templates/colors.css'
+input_path = './templates/colors.rasi'
 output_path = '~/.config/rofi/colors.rasi'
 
-
-
-
 [templates.kitty]
-input_path = './templates/colors.css'
+input_path = './templates/kitty-colors.conf'
 output_path = '~/.config/kitty/colors.conf'
 post_hook = 'pkill -SIGUSR1 kitty'
 
-[templates.vesktop]
-input_path = './templates/colors.css'
-output_path = '~/.config/vesktop/themes/midnight-discord.css'
 
 
 
 
-[config]
-reload_apps = true
-
-[config.wallpaper]
-command = "swww"
-arguments = [ "img", "-t", "outer", "--transition-duration", "1.5", "--transition-step", "255", "--transition-fps", "60", "-f", "Nearest",]
-set = true
-
+# --- GTK3 & GTK4 Theming ---
 [templates.gtk3]
-input_path = '~/.config/matugen/templates/breeze-gtk.css'
-output_path = '~/.config/gtk-3.0/colors.css'
-post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme Breeze'
+input_path = "./templates/gtk-colors.css"
+output_path = "~/.config/gtk-3.0/colors.css"
+post_hook = "gsettings set org.gnome.desktop.interface gtk-theme 'Breeze'"
 
 [templates.gtk4]
-input_path = '~/.config/matugen/templates/breeze-gtk.css'
-output_path = '~/.config/gtk-4.0/colors.css'
+input_path = "~/.config/matugen/templates/gtk-colors.css"
+output_path = "~/.config/gtk-4.0/colors.css"
+post_hook = "gsettings set org.gnome.desktop.interface gtk-theme 'Breeze'"
 
 
+# --- Qt5 & Qt6 Theming ---
+[templates.qt]
+input_path = "./templates/qtct-colors.conf"
+output_path = "~/.local/share/color-schemes/Matugen.colors"
 
-[templates.qt5ct]
-input_path = 'path/to/template'
-output_path = '~/.config/qt5ct/colors/matugen.conf'
-post_hook = '~/.config/matugen/reload-qt.sh &'
+
+# NOTE: After the first run, you must open qt6ct and select "Matugen"
+# from the color scheme dropdown menu.
