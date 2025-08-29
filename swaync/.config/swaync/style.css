@@ -1,267 +1,333 @@
-@import url("/home/rambeau/.cache/wal/colors-waybar.css");
+@import url("colors.css");
 
+/* ===== VARIABLES ===== */
 * {
-    font-family: "JetBrains Sans Nerd Font Propo", "Roboto", monospace;
-    font-size: 13px;
-    transition: all 0.3s ease;
+    --bg: @background;
+    --fg: @foreground;
+    --accent: @color6;
+    --accent2: @color1;
+    --swaync-bg: rgba(0, 0, 0, 0.5);
+    --border-radius: 10px;
+    --widget-padding: 8px;
+    --notification-padding: 16px;
+    --button-border: 2px solid var(--fg);
+    --accent-border: 2px solid var(--accent);
+    --trough-bg: rgba(255, 255, 255, 0.1);
 }
 
-.control-center {
-    background: alpha(@color0, 0.95);
-    border-radius: 15px;
-    box-shadow: 0 4px 12px alpha(@color0, 0.3);
-    margin: 8px;
-    padding: 12px;
+/* ===== GLOBAL RESETS ===== */
+* {
+    background: transparent;
+    scrollbar-width: none;
+    box-shadow: none;
+    color: var(--fg);
 }
 
-.notification-row {
-    outline: none;
-    padding: 0 4px;
+*::-webkit-scrollbar {
+    display: none;
 }
 
-.notification-row:focus,
-.notification-row:hover {
-    background: alpha(@color2, 0.2);
-    border-radius: 15px;
+.blank-window {
+    background: none;
 }
 
-.notification {
-    background: alpha(@color0, 0.95);
-    border-radius: 15px;
-    margin: 4px;
-    padding: 8px;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px alpha(@color0, 0.2);
+/* ===== MIXINS (Common Patterns) ===== */
+/* Button base styles */
+.widget-title>button,
+.widget-buttons>flowbox>flowboxchild>button,
+.widget-mpris button,
+.notification-action,
+.notification-2fa-action,
+.close-button,
+button.toggle,
+button {
+    background: transparent;
+    color: var(--fg);
+    border: none;
+    border-radius: var(--border-radius);
 }
 
-.notification:hover {
-    background: alpha(@color0, 0.98);
-    margin-top: 2px;
-    border-color: @color2;
+.widget-mpris button {
+    color: var(--fg);
 }
 
-/* Title Widget */
-.widget-title {
-    color: @color7;
-    font-size: 16px;
-    font-weight: bold;
-    margin: 8px 12px;
+/* Button hover states */
+.widget-title>button:hover,
+.widget-buttons>flowbox>flowboxchild>button:hover,
+.widget-mpris button:hover,
+.notification-action:hover,
+.notification-2fa-action:hover,
+.close-button:hover,
+button.toggle:hover,
+button.toggle.active,
+button:hover,
+.widget-menubar menuitem:hover {
+    background: var(--accent);
+    color: var(--bg);
 }
 
-.widget-title>button {
-    background: alpha(@color0, 0.95);
-    color: @color7;
-    border: 2px solid @color8;
-    border-radius: 15px;
-    padding: 4px 12px;
-    margin: 4px;
-    font-size: 12px;
-    transition: all 0.2s ease;
+/* Hover text color inheritance */
+.widget-title>button:hover *,
+.widget-buttons>flowbox>flowboxchild>button:hover *,
+.widget-mpris button:hover *,
+.notification-action:hover *,
+.notification-2fa-action:hover *,
+.close-button:hover *,
+button.toggle:hover *,
+button.toggle.active *,
+button:hover * {
+    color: var(--bg);
 }
 
-.widget-title>button:hover {
-    background: @color2;
-    color: @color7;
-}
-
-/* DND Widget */
-.widget-dnd {
-    background: alpha(@color0, 0.95);
-    border: 2px solid @color8;
-    border-radius: 15px;
-    margin: 8px;
-    padding: 8px 12px;
-    color: @color7;
-    font-size: 14px;
-}
-
-.widget-dnd>switch {
-    background: @color0;
-    border: 2px solid @color8;
-    border-radius: 24px;
-    min-height: 24px;
-    min-width: 48px;
-}
-
-.widget-dnd>switch:checked {
-    background: @color2;
-}
-
-.widget-dnd>switch slider {
-    background: @color7;
-    border-radius: 50%;
-    min-height: 18px;
-    min-width: 18px;
-    margin: 1px;
-}
-
-/* MPRIS Widget */
-.widget-mpris-player {
-    background: alpha(@color0, 0.95);
-    border: 2px solid @color8;
-    border-radius: 15px;
-    margin: 8px;
-    padding: 12px;
-}
-
-.widget-mpris-album-art {
-    border-radius: 15px;
-    margin-right: 8px;
-}
-
-.widget-mpris-player button {
-    background: alpha(@color0, 0.95);
-    color: @color7;
-    border: 2px solid @color8;
-    border-radius: 15px;
-    padding: 8px;
-    margin: 4px;
-}
-
-.widget-mpris-player button:hover {
-    background: @color2;
-    color: @color7;
-}
-
-/* Volume and Backlight Widgets */
-.widget-volume,
-.widget-backlight {
-    background: alpha(@color0, 0.95);
-    border: 2px solid @color8;
-    border-radius: 15px;
-    margin: 8px;
-    padding: 8px 12px;
+/* Scale/slider common styles */
+.widget-volume scale,
+.widget-backlight scale,
+.widget-slider scale,
+.per-app-volume scale {
+    border-radius: var(--border-radius);
 }
 
 .widget-volume scale trough,
-.widget-backlight scale trough {
-    background: alpha(@color2, 0.2);
-    border-radius: 15px;
-    min-height: 6px;
+.widget-backlight scale trough,
+.widget-slider scale trough,
+.per-app-volume scale trough {
+    background: var(--trough-bg);
+    border-radius: var(--border-radius);
 }
 
-.widget-volume scale trough highlight,
-.widget-backlight scale trough highlight {
-    background: @color2;
-    border-radius: 15px;
+.widget-volume scale highlight,
+.widget-backlight scale highlight,
+.widget-slider scale highlight,
+.per-app-volume scale highlight,
+.widget-volume scale slider,
+.widget-backlight scale slider,
+.widget-slider scale slider,
+.per-app-volume scale slider {
+    background: var(--accent);
+    border-radius: var(--border-radius);
 }
 
-/* Buttons Grid */
-.widget-buttons-grid {
-    background: alpha(@color0, 0.95);
-    border: 2px solid @color8;
-    border-radius: 15px;
-    margin: 8px;
-    padding: 8px;
+/* ===== LAYOUT CONTAINERS ===== */
+.control-center {
+    background: var(--swaync-bg);
+    padding: var(--widget-padding);
+    border: 0px solid var(--accent2);
+    border-radius: var(--border-radius);
 }
 
-.widget-buttons-grid button {
-    background: alpha(@color0, 0.95);
-    color: @color7;
-    border: 2px solid @color8;
-    border-radius: 15px;
-    font-size: 16px;
-    padding: 8px;
-    margin: 4px;
+.notification {
+    background: linear-gradient(45deg,
+            color-mix(in srgb, var(--accent) 30%, black),
+            color-mix(in srgb, var(--accent2) 30%, black));
+    padding: 2px;
+    margin: 4px -2px;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--accent);
 }
 
-.widget-buttons-grid button:hover {
-    background: @color2;
-    color: @color7;
+.notification>* {
+    background: rgba(0, 0, 0, 0.7);
+    padding: calc(var(--notification-padding) - 2px);
+    border-radius: calc(var(--border-radius) - 2px);
 }
 
-/* Per-app Volume */
-.per-app-volume {
-    background: alpha(@color0, 0.95);
-    border: 2px solid @color8;
-    border-radius: 15px;
-    margin: 4px 8px;
-    padding: 8px;
-}
-
-.per-app-volume:hover {
-    background: alpha(@color2, 0.2);
-}
-
-/* Notification Content */
+.notification-row,
 .notification-content {
-    padding: 8px;
+    border-radius: var(--border-radius);
 }
 
-.notification-content .summary {
-    color: @color7;
-    font-size: 14px;
-    font-weight: bold;
+.notification:hover {
+    background: var(--swaync-bg);
 }
 
-.notification-content .time {
-    color: alpha(@color7, 0.7);
-    font-size: 12px;
-    margin: 0 8px;
+/* ===== WIDGET CONTAINERS ===== */
+.widget-dnd,
+.widget-title,
+.widget-mpris,
+.widget-label,
+.widget-menubar,
+.widget-buttons,
+.widget-slider,
+.widget-volume,
+.widget-backlight,
+.widget-inhibitors {
+    background: var(--swaync-bg);
+    padding: var(--widget-padding);
+    margin-bottom: var(--widget-padding);
+    border-radius: var(--border-radius);
 }
 
-.notification-content .body {
-    color: @color7;
-    font-size: 13px;
+.widget-title {
+    background: transparent;
 }
 
-/* Close Button */
-.close-button {
-    background: alpha(@color0, 0.95);
-    color: @color7;
-    border: 2px solid @color8;
-    border-radius: 50%;
-    min-width: 24px;
-    min-height: 24px;
-    margin: 4px;
+.widget-mpris {
+    background: transparent;
 }
 
-.close-button:hover {
-    background: @color1;
-    color: @color7;
-    border-color: @color1;
+/* Child elements transparency */
+.widget-title>*,
+.widget-mpris>*,
+.widget-dnd>*,
+.widget-label>*,
+.widget-menubar>*,
+.widget-buttons>*,
+.widget-slider>*,
+.widget-volume>*,
+.widget-backlight>*,
+.widget-inhibitors>*,
+.notification>*,
+.control-center>*>* {
+    background: transparent;
 }
 
-/* Calendar */
-calendar {
-    background: alpha(@color0, 0.95);
-    border: 2px solid @color8;
-    border-radius: 15px;
-    margin: 4px;
-    padding: 4px;
+/* ===== SPECIFIC WIDGET STYLES ===== */
+.widget-dnd label {
+    font-size: 1.4em;
+    color: var(--fg);
 }
 
-calendar:selected {
-    background: @color2;
-    color: @color7;
+.widget-mpris {
+    padding-top: 26px;
+    margin: 0px;
+    color: var(--fg);
 }
 
-calendar.header {
-    color: @color7;
-    font-weight: bold;
+.widget-mpris-title {
+    color: var(--fg);
 }
 
-calendar.button {
-    color: @color7;
-}
-
-calendar.highlight {
-    color: @color6;
-    font-weight: bold;
-}
-
-/* Menubar */
-.widget-menubar {
-    background: alpha(@color0, 0.95);
-}
-
-.widget-menubar button {
-    color: @color7;
+.widget-title>button {
     padding: 4px 8px;
-    margin: 4px;
-    border-radius: 15px;
+    border: var(--button-border);
 }
 
-.widget-menubar button:hover {
-    background: alpha(@color2, 0.2);
+.widget-title>button:hover {
+    border: var(--accent-border);
+}
+
+.close-button {
+    transform: translate(6px, 0px);
+}
+
+.notification .close-button,
+.widget-title .close-button {
+    transform: translate(6px, 0px);
+}
+
+/* ===== SWITCHES ===== */
+.widget-dnd>switch {
+    background: var(--trough-bg);
+    border-radius: var(--border-radius);
+}
+
+.widget-dnd>switch:checked {
+    background: var(--accent2);
+}
+
+.widget-dnd>switch slider {
+    background: var(--fg);
+    border-radius: var(--border-radius);
+}
+
+/* ===== MENUS ===== */
+.widget-menubar menu {
+    background: var(--swaync-bg);
+    border-radius: var(--border-radius);
+}
+
+.widget-menubar menuitem {
+    background: transparent;
+    color: var(--fg);
+    border-radius: var(--border-radius);
+}
+
+/* ===== TOGGLE BUTTONS ===== */
+button.toggle {
+    border: var(--button-border);
+}
+
+button.toggle:hover,
+button.toggle.active {
+    border: var(--accent-border);
+}
+
+.notification-action,
+.notification-2fa-action {
+    border: var(--button-border);
+}
+
+.notification-action:hover,
+.notification-2fa-action:hover {
+    border: var(--accent-border);
+}
+
+/* ===== PROGRESS BARS ===== */
+progressbar {
+    background: transparent;
+    border-radius: var(--border-radius);
+    min-height: 12px;
+}
+
+progressbar trough {
+    background: var(--trough-bg);
+    border-radius: var(--border-radius);
+    min-height: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+progressbar progress {
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: var(--border-radius);
+    min-height: 12px;
+    box-shadow: 0 0 8px rgba(var(--accent), 0.3);
+    border: 1px solid var(--accent);
+}
+
+/* Enhanced notification progress bars */
+.notification progressbar {
+    min-height: 14px;
+    margin: 4px 0;
+}
+
+.notification progressbar trough {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    min-height: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.notification progressbar progress {
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 8px;
+    min-height: 14px;
+    box-shadow: 0 0 12px rgba(var(--accent), 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--accent);
+    animation: progress-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes progress-glow {
+    0% {
+        box-shadow: 0 0 12px rgba(var(--accent), 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    100% {
+        box-shadow: 0 0 16px rgba(var(--accent), 0.6),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* ===== TEXT ELEMENTS ===== */
+label {
+    color: var(--fg);
+    background: transparent;
+}
+
+/* ===== ENTRY FIELDS ===== */
+entry {
+    background: var(--trough-bg);
+    color: var(--fg);
+    border-radius: var(--border-radius);
 }

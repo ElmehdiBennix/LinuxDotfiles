@@ -245,6 +245,10 @@ unloadenv() {
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
 
+if [[ -f "$HOME/.cache/matugen/tty_colors.sh" ]]; then
+    source "$HOME/.cache/matugen/tty_colors.sh"
+fi
+
 export GEMINI_API_KEY="AIzaSyDpVgFAZLRza3miBf-baz16ZkaJzOAyhIc"
 export PATH="$PATH:$HOME/.local/bin:$HOME/.local/scripts"
 

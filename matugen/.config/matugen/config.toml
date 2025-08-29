@@ -13,6 +13,10 @@ input_path = './templates/hyprland-colors.conf'
 output_path = '~/.config/hypr/colors.conf'
 post_hook = 'hyprctl reload'
 
+[templates.swaync]
+input_path = './templates/colors.css'
+output_path = '~/.config/swaync/colors.css'
+
 [templates.waybar]
 input_path = './templates/colors.css'
 output_path = '~/.config/waybar/colors.css'
@@ -21,6 +25,12 @@ post_hook = 'pkill -SIGUSR2 waybar'
 [templates.rofi]
 input_path = './templates/rofi-colors.rasi'
 output_path = '~/.config/rofi/colors.rasi'
+
+####################################################################
+
+[templates.tty]
+input_path = "./templates/tty-colors.sh.tpl"
+output_path = "~/.cache/matugen/tty_colors.sh"
 
 [templates.kitty]
 input_path = './templates/kitty-colors.conf'

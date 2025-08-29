@@ -13,7 +13,10 @@ auto-cpufreq
 envycontrol
 nvidia-container-toolkit
 rclone
+
 brightnessctl
+ddcutil
+
 msi-ec-git
 libva-utils | vainfo to check hardware acceleration drivers for intel
 nmap
@@ -74,14 +77,14 @@ polkit-gnome
 
 waybar
 swaync
+
 rofi-wayland
+vicinae-bin
 
 nwg-displays
-nwg-look
 
 wl-clipboard
 cliphist
-ttf-jetbrains-mono-nerd
 
 # desktop-portal
 pipewire     The media server
@@ -95,7 +98,7 @@ xdg-desktop-portal-hyprland     specific implementation that allows the portal t
 nemo || smthing else
 vscode
 zen-browser
-chromium
+brave
 kitty || ghostty
 obs
 vlc
@@ -134,8 +137,9 @@ p7zip || and a frontend peazip
 lollypop
 yt-dlp
 
-speedtest-cli
+wev
 
+speedtest-cli
 
 
 matigen
@@ -143,10 +147,11 @@ matigen
 breeze-gtk
 breeze
 breeze5
+tela-icon-theme
+
+ttf-jetbrains-mono-nerd
+ttf-material-symbols-variable-git
 
 qt5ct-kde
 qt6ct-kde
-
-WhiteSur Icon Theme
-
-yay -S breeze breeze5 breeze-icons breeze-gtk qt6ct-kde qt5ct-kde
+nwg-look
