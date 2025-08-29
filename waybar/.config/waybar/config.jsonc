@@ -1,6 +1,6 @@
 {
 //////////////////////////////////////////////////////////////////////////
-//
+// General config
 //////////////////////////////////////////////////////////////////////////
     "layer": "top",
     "position": "top",
@@ -21,18 +21,25 @@
     ],
     "modules-right": [
         "tray",
-
         "network",
         "bluetooth",
         "group/audio",
+
+        // "group/microphone",
         "pulseaudio#microphone",
+
+        // "group/battery",
         "battery",
+
         "clock",
         "custom/power"
     ],
 //////////////////////////////////////////////////////////////////////////
-//
+// Groups
 //////////////////////////////////////////////////////////////////////////
+
+
+
     "group/group-extras": {
         "orientation": "inherit",
         "drawer": {
@@ -45,6 +52,32 @@
             "cpu"
         ]
     },
+
+
+    // "group/network": {
+    //     "orientation": "inherit",
+    //     "drawer": {
+    //         "transition-duration": 400,
+    //         "children-class": "audio",
+    //         "transition-left-to-right": false
+    //     },
+    //     "modules": [
+    //         "network",
+    //         ""
+    //     ]
+    // },
+    // "group/bluetooth": {
+    //     "orientation": "inherit",
+    //     "drawer": {
+    //         "transition-duration": 400,
+    //         "children-class": "audio",
+    //         "transition-left-to-right": false
+    //     },
+    //     "modules": [
+    //         "bluetooth",
+    //         ""
+    //     ]
+    // },
     "group/audio": {
         "orientation": "inherit",
         "drawer": {
@@ -57,8 +90,32 @@
             "pulseaudio/slider"
         ]
     },
+    "group/microphone": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 400,
+            "children-class": "microphone",
+            "transition-left-to-right": false
+        },
+        "modules": [
+            "pulseaudio#microphone",
+            "pulseaudio/slider"
+        ]
+    },
+    // "group/battery": {
+    //     "orientation": "inherit",
+    //     "drawer": {
+    //         "transition-duration": 400,
+    //         "children-class": "battery",
+    //         "transition-left-to-right": false
+    //     },
+    //     "modules": [
+    //         "battery",
+    //         "power-profiles-daemon"
+    //     ]
+    // },
 //////////////////////////////////////////////////////////////////////////
-//
+// Left modules
 //////////////////////////////////////////////////////////////////////////
     "custom/arch": {
         "format": "",
@@ -66,57 +123,7 @@
         "on-click": "kitty",
         "on-click-right": ""
     },
-//////////////////////////////////////////////////////////////////////////
-//
-//////////////////////////////////////////////////////////////////////////
-"custom/updates": {
-    "format": "󰅢",
-    "interval": 3600,
-    "exec": "checkupdates | wc -l",
-    "exec-if": "exit 0",
-    "on-click": "kitty sh -c 'paru -Syu --noconfirm; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar",
-    "signal": 8,
-    "tooltip-format": "{} updates"
-},
-"hyprland/workspaces": {
-    "format": "{icon}: {windows}",
-    "format-window-separator": "",
-    "workspace-taskbar": {
-        "enable": true,
-        "update-active-window": true,
-        "format": "{icon}",
-        "icon-size": 18,
-        "on-click-window": "${SCRIPTS}/focus-window.sh {address} {button}"
-    }
-},
-"custom/notification": {
-    "tooltip": false,
-    "format": "{icon}",
-    "format-icons": {
-        "notification": "󰂚",
-        "none": "󰂛",
-        "dnd-notification": "󰂜",
-        "dnd-none": "󰂞",
-        "inhibited-notification": "󰂜",
-        "inhibited-none": "󰂞"
-    },
-    "return-type": "json",
-    "exec-if": "which swaync-client",
-    "exec": "swaync-client -swb",
-    "on-click": "swaync-client -t -sw",
-    "on-click-middle": "",
-    "on-click-right": "swaync-client -d -sw",
-    "escape": true
-},
-//////////////////////////////////////////////////////////////////////////
-//
-//////////////////////////////////////////////////////////////////////////
-    "tray": {
-        "icon-size": 14,
-        "spacing": 8,
-        "reverse-direction": true
-    },
-
+/////////////////////////////////////
     "custom/menu": {
         "format": "",
         "tooltip": false
@@ -137,10 +144,59 @@
         "tooltip": true,
         "tooltip-format": "CPU Frequency: {avg_frequency} GHz"
     },
-
-
-
-
+//////////////////////////////////////////////////////////////////////////
+// Middle modules
+//////////////////////////////////////////////////////////////////////////
+    "custom/updates": {
+        "format": "󰅢",
+        "interval": 3600,
+        "exec": "checkupdates | wc -l",
+        "exec-if": "exit 0",
+        "on-click": "kitty sh -c 'paru -Syu --noconfirm; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar",
+        "signal": 8,
+        "tooltip-format": "{} updates"
+    },
+/////////////////////////////////////
+    "hyprland/workspaces": {
+        "format": "{icon}: {windows}",
+        "format-window-separator": "",
+        "workspace-taskbar": {
+            "enable": true,
+            "update-active-window": true,
+            "format": "{icon}",
+            "icon-size": 18,
+            "on-click-window": "${SCRIPTS}/focus-window.sh {address} {button}"
+        }
+    },
+/////////////////////////////////////
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "󰂚",
+            "none": "󰂛",
+            "dnd-notification": "󰂜",
+            "dnd-none": "󰂞",
+            "inhibited-notification": "󰂜",
+            "inhibited-none": "󰂞"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-middle": "",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+//////////////////////////////////////////////////////////////////////////
+// Right modules
+//////////////////////////////////////////////////////////////////////////
+    "tray": {
+        "icon-size": 14,
+        "spacing": 8,
+        "reverse-direction": true
+    },
+/////////////////////////////////////
     "network": {
         "format-icons": {
             "wifi": [
@@ -164,6 +220,7 @@
         "tooltip": true,
         "max-length": 20
     },
+/////////////////////////////////////
     "bluetooth": {
         "interval": 5,
         "format-on": "󰂯",
@@ -178,6 +235,7 @@
         "on-click-right": "rfkill toggle bluetooth"
     },
 
+/////////////////////////////////////
 
     "pulseaudio/slider": {
         "min": 0,
@@ -200,77 +258,63 @@
                 ""
             ]
         },
-        "on-click-right": "pavucontrol",
-        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-        "on-scroll-up": "",
-        "on-scroll-down": "",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
         "tooltip": true,
-        "tooltip-format": "Volume: {volume}%\n{desc}",
+        // "tooltip-format": "Volume: {volume}%\n{desc}",
+        "tooltip-format": "{desc}",
         "ignored-sinks": [
             "Easy Effects Sink"
-        ]
+        ],
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol"
     },
+/////////////////////////////////////
+
     "pulseaudio#microphone": {
         "format": "{format_source}",
         "format-source": "󰍬",
         "format-source-muted": "󰍭",
         "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
-        "tooltip": false
-    },
+        "tooltip": true,
+        "tooltip-format": "Volume: {volume}%\n{desc}"
 
-
-    "backlight/slider": {
-        "min": 5,
-        "max": 100,
-        "orientation": "horizontal",
-        "device": "intel_backlight"
     },
-    "backlight": {
-        "device": "intel_backlight",
+/////////////////////////////////////
+    "battery": {
+        "interval": 5,
+        "states": {
+            "warning": 40,
+            "critical": 25,
+            "plugordie": 15
+        },
         "format": "{icon}",
         "format-icons": [
-            "󰃚",
-            "󰃛",
-            "󰃜",
-            "󰃝",
-            "󰃞",
-            "󰃟",
-            "󰃠"
+            "",
+            "",
+            "",
+            "",
+            ""
         ],
-        "on-scroll-up": "",
-        "on-scroll-down": "",
-        "tooltip": false
+        "format-charging": "",
+        "format-plugged": "",
+        "format-plugordie": "󰯈",
+        "tooltip": true,
+        "tooltip-format": "Charge: {capacity}%"
     },
+    "power-profiles-daemon": {
+        "format": "{profile}",
+        "tooltip-format": "Driver: {driver}",
+        "tooltip": true
+    },
+/////////////////////////////////////
     "clock": {
         "interval": 1,
         "format": "{:%H:%M:%S %p}",
         "format-alt": "{:%a, %b %d}",
-        "tooltip-format": "<tt><small>{calendar}</small></tt>"
+        "tooltip-format": "<tt><big>{calendar}</big></tt>"
     },
-    "battery": {
-        "interval": 5,
-        "states": {
-            "warning": 20,
-            "critical": 10,
-            "plugordie": 5
-        },
-        "format": "{icon}",
-        "format-icons": [
-            "󰁺",
-            "󰁻",
-            "󰁼",
-            "󰁽",
-            "󰁾",
-            "󰁿",
-            "󰂀",
-            "󰂁"
-        ],
-        "format-charging": "󰂄",
-        "format-plugged": "󰂄",
-        "format-plugordie": "󰂃",
-        "tooltip": true,
-        "tooltip-format": "Charge: {capacity}%"
-    },
+/////////////////////////////////////
     "custom/power": {
         "format": "",
         "on-click": "wlogout --protocol layer-shell -b 2",

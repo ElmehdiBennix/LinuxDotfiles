@@ -1,4 +1,5 @@
 {
+    // iddle inhiber
     "cssPriority": "user",
     "ignore-gtk-theme": true,
     "positionX": "right",

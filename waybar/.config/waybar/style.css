@@ -35,11 +35,11 @@ window#waybar {
 /* Custom Widgets          */
 /* ======================= */
 #custom-arch {
-    color: @foreground;
+    color: @on_background;
     background: rgba(0, 0, 0, 0.1);
     padding: 0 14px;
     margin: 0 4px;
-    /* border: solid 2px @foreground; */
+    /* border: solid 2px @on_background; */
     border-radius: 10px;
     min-height: 30px;
 }
@@ -62,8 +62,8 @@ window#waybar {
 }
 
 #workspaces button.active {
-    color: @foreground;
-    /* border: solid 2px @foreground; */
+    color: @on_background;
+    border: solid 2px @on_background;
     background: rgba(0, 0, 0, 0.1);
 }
 
@@ -84,16 +84,16 @@ window#waybar {
 #clock {
     padding: 0 12px;
     margin: 0 4px;
-    /* border: solid 2px @foreground; */
+    /* border: solid 2px @on_background; */
     border-radius: 10px;
-    color: @foreground;
+    color: @on_background;
     background: rgba(0, 0, 0, 0.1);
     font-weight: 500;
     min-height: 30px;
 }
 
 #mpris {
-    color: @foreground;
+    color: @on_background;
     padding: 0 12px;
     margin: 0 4px;
     border-radius: 10px;
@@ -117,7 +117,7 @@ window#waybar {
 }
 
 #custom-monitors {
-    color: @foreground;
+    color: @on_background;
     background: rgba(0, 0, 0, 0.1);
     padding: 0 12px;
     margin: 0 4px;
@@ -141,7 +141,7 @@ window#waybar {
     background: rgba(0, 0, 0, 0.1);
     padding: 0 12px;
     margin: 0 4px;
-    /* border: solid 2px @foreground; */
+    /* border: solid 2px @on_background; */
     border-radius: 10px;
     min-height: 30px;
 }
@@ -164,11 +164,11 @@ window#waybar {
 /* ======================= */
 
 #custom-menu {
-    color: @foreground;
+    color: @on_background;
     background: rgba(0, 0, 0, 0.1);
     padding: 0 12px;
     margin: 0 4px;
-    /* border: solid 2px @foreground; */
+    /* border: solid 2px @on_background; */
     border-radius: 10px;
     min-height: 30px;
 }
@@ -178,7 +178,7 @@ tooltip class {
 }
 
 #custom-updates {
-    color: @foreground;
+    color: @on_background;
     background: rgba(0, 0, 0, 0.1);
     padding: 0 12px;
     margin: 0 4px;
@@ -206,11 +206,11 @@ tooltip class {
 }
 
 #power-profiles-daemon {
-    color: @foreground;
+    color: @on_background;
     background: rgba(0, 0, 0, 0.1);
     padding: 0 12px;
     margin: 0 4px;
-    /* border: solid 2px @foreground; */
+    /* border: solid 2px @on_background; */
     border-radius: 10px;
     min-height: 30px;
 }
@@ -237,21 +237,21 @@ tooltip class {
 /* Network & Bluetooth     */
 /* ======================= */
 #network {
-    color: @foreground;
+    color: @on_background;
     background: rgba(0, 0, 0, 0.1);
     padding: 0 12px;
     margin: 0 4px;
-    /* border: solid 2px @foreground; */
+    /* border: solid 2px @on_background; */
     border-radius: 10px;
     min-height: 30px;
 }
 
 #bluetooth {
-    color: @foreground;
+    color: @on_background;
     background: rgba(0, 0, 0, 0.1);
     padding: 0 12px;
     margin: 0 4px;
-    /* border: solid 2px @foreground; */
+    /* border: solid 2px @on_background; */
     border-radius: 10px;
     min-height: 30px;
 }
@@ -273,11 +273,11 @@ tooltip class {
 /* ======================= */
 
 #pulseaudio {
-    color: @foreground;
+    color: @on_background;
     background: rgba(0, 0, 0, 0.1);
     padding: 0 12px;
     margin: 0 4px;
-    /* border: solid 2px @foreground; */
+    /* border: solid 2px @on_background; */
     border-radius: 10px;
     min-height: 30px;
 }
@@ -289,8 +289,8 @@ tooltip class {
 }
 
 #pulseaudio.microphone {
-    color: @foreground;
-    /* border: solid 2px @foreground; */
+    color: @on_background;
+    /* border: solid 2px @on_background; */
     background: rgba(0, 0, 0, 0.1);
 }
 
@@ -326,60 +326,18 @@ tooltip class {
     min-width: 8px;
     min-height: 8px;
     border-radius: 4px;
-    background: @color6;
-}
-
-/* ======================= */
-/* Hardware Controls       */
-/* ======================= */
-#backlight {
-    color: @foreground;
-    background: rgba(0, 0, 0, 0.1);
-    padding: 0 12px;
-    margin: 0 4px;
-    /* border: solid 2px @foreground; */
-    border-radius: 10px;
-    min-height: 30px;
-}
-
-#backlight-slider {
-    background: rgba(0, 0, 0, 0.1);
-    padding: 0 12px;
-    margin: 0 4px;
-    border-radius: 10px;
-    min-height: 30px;
-}
-
-#backlight-slider slider {
-    min-height: 0px;
-    min-width: 0px;
-    background: transparent;
-    box-shadow: none;
-}
-
-#backlight-slider trough {
-    min-height: 8px;
-    min-width: 100px;
-    border-radius: 4px;
-    background: rgba(0, 0, 0, 0.1);
-}
-
-#backlight-slider highlight {
-    min-width: 8px;
-    min-height: 8px;
-    border-radius: 4px;
-    background: @color2;
+    background: @inverse_primary;
 }
 
 /* ======================= */
 /* Battery                 */
 /* ======================= */
 #battery {
-    color: @foreground;
+    color: @on_background;
     background: rgba(0, 0, 0, 0.1);
     padding: 0 12px;
     margin: 0 4px;
-    /* border: solid 2px @foreground; */
+    /* border: solid 2px @on_background; */
     border-radius: 10px;
     min-height: 30px;
 }
@@ -405,7 +363,7 @@ tooltip class {
 /* Notifications           */
 /* ======================= */
 #custom-notification {
-    color: @foreground;
+    color: @on_background;
     background: rgba(0, 0, 0, 0.1);
     padding: 0 12px;
     margin: 0 4px;
@@ -428,11 +386,11 @@ tooltip class {
 /* Power Menu              */
 /* ======================= */
 #custom-power {
-    color: @foreground;
+    color: @on_background;
     background: rgba(0, 0, 0, 0.1);
     margin: 0 4px;
     padding: 0 12px;
-    /* border: solid 2px @foreground; */
+    /* border: solid 2px @on_background; */
     border-radius: 10px;
     min-height: 30px;
 }
