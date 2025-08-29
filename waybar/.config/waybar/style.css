@@ -45,6 +45,8 @@ window#waybar {
 #temperature,
 #memory,
 #disk,
+#battery,
+#workspaces,
 #systemd-failed-units {
     background-color: rgba(0, 0, 0, 0.1);
     color: @on_background;
@@ -54,32 +56,14 @@ window#waybar {
     min-height: 30px;
 }
 
-#battery {
-    background-color: rgba(0, 0, 0, 0.1);
-    color: @on_background;
-    border-radius: 10px;
-    /* padding: 0 12px; */
-    /* margin: 0 4px; */
-    min-height: 30px;
-}
-
 /* ============================================================================= */
 /* --- Module-Specific Overrides & States --- */
 /* ============================================================================= */
 
-/* --- Workspaces --- */
-#workspaces button {
-    color: @color1;
-    padding: 0 8px;
-    margin: 0 4px;
-    border-radius: 10px;
-    min-height: 30px;
-}
-
 #workspaces button.active {
     color: @on_background;
-    border: solid 2px @on_background;
-    background: rgba(0, 0, 0, 0.1);
+    border-radius: 0;
+    border-bottom: 2px solid @on_background;
 }
 
 #workspaces button.urgent {

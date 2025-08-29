@@ -26,7 +26,7 @@
         "network",
         "bluetooth",
         "group/audio",
-        "group/battery",
+        "group/battery-driver",
         "clock",
         "custom/power"
     ],
@@ -69,11 +69,11 @@
             "pulseaudio/slider"
         ]
     },
-    "group/battery": {
+    "group/battery-driver": {
         "orientation": "inherit",
         "drawer": {
             "transition-duration": 400,
-            "children-class": "battery",
+            "children-class": "battery-driver",
             "transition-left-to-right": false
         },
         "modules": [
@@ -250,8 +250,8 @@
         },
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-click-right": "pavucontrol",
-        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +10%",
-        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -10%",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
         "tooltip": false,
         "ignored-sinks": [
             "Easy Effects Sink"
