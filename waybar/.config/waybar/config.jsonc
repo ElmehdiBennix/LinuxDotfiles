@@ -15,117 +15,82 @@
         "group/group-extras"
     ],
     "modules-center": [
+        "privacy",
         "custom/updates",
         "hyprland/workspaces",
         "custom/notification"
+
     ],
     "modules-right": [
         "tray",
         "network",
         "bluetooth",
         "group/audio",
-
-        // "group/microphone",
-        "pulseaudio#microphone",
-
-        // "group/battery",
-        "battery",
-
+        "group/battery",
         "clock",
         "custom/power"
     ],
 //////////////////////////////////////////////////////////////////////////
 // Groups
 //////////////////////////////////////////////////////////////////////////
-
-
-
     "group/group-extras": {
         "orientation": "inherit",
         "drawer": {
+            "click-to-reveal": true,
             "transition-duration": 400,
             "children-class": "extras",
             "transition-left-to-right": true
         },
         "modules": [
-            "custom/menu",
-            "cpu"
+            "temperature",
+            "cpu",
+            "memory",
+            "custom/gpu-mode",
+            "disk",
+            "systemd-failed-units"
         ]
     },
-
-
-    // "group/network": {
-    //     "orientation": "inherit",
-    //     "drawer": {
-    //         "transition-duration": 400,
-    //         "children-class": "audio",
-    //         "transition-left-to-right": false
-    //     },
-    //     "modules": [
-    //         "network",
-    //         ""
-    //     ]
-    // },
-    // "group/bluetooth": {
-    //     "orientation": "inherit",
-    //     "drawer": {
-    //         "transition-duration": 400,
-    //         "children-class": "audio",
-    //         "transition-left-to-right": false
-    //     },
-    //     "modules": [
-    //         "bluetooth",
-    //         ""
-    //     ]
-    // },
     "group/audio": {
+        "orientation": "inherit",
+        "modules": [
+            "group/output",
+            "custom/microphone"
+        ]
+    },
+    "group/output": {
         "orientation": "inherit",
         "drawer": {
             "transition-duration": 400,
-            "children-class": "audio",
-            "transition-left-to-right": false
+            "children-class": "output",
+            "transition-left-to-right": true
         },
         "modules": [
             "pulseaudio",
             "pulseaudio/slider"
         ]
     },
-    "group/microphone": {
+    "group/battery": {
         "orientation": "inherit",
         "drawer": {
             "transition-duration": 400,
-            "children-class": "microphone",
+            "children-class": "battery",
             "transition-left-to-right": false
         },
         "modules": [
-            "pulseaudio#microphone",
-            "pulseaudio/slider"
+            "battery",
+            "custom/power-profile"
         ]
     },
-    // "group/battery": {
-    //     "orientation": "inherit",
-    //     "drawer": {
-    //         "transition-duration": 400,
-    //         "children-class": "battery",
-    //         "transition-left-to-right": false
-    //     },
-    //     "modules": [
-    //         "battery",
-    //         "power-profiles-daemon"
-    //     ]
-    // },
 //////////////////////////////////////////////////////////////////////////
 // Left modules
 //////////////////////////////////////////////////////////////////////////
-    "custom/arch": {
-        "format": "",
-        "tooltip": false,
-        "on-click": "kitty",
-        "on-click-right": ""
-    },
-/////////////////////////////////////
-    "custom/menu": {
-        "format": "",
+    "temperature": {
+        "thermal-zone": 0,
+        "format": "{temperatureC}°C ❄",
+        "warning-threshold": 65,
+        "format-warning": "{temperatureC}°C ",
+        "critical-threshold": 80,
+        "format-critical": "{temperatureC}°C 󰈸",
         "tooltip": false
     },
     "cpu": {
@@ -144,12 +109,38 @@
         "tooltip": true,
         "tooltip-format": "CPU Frequency: {avg_frequency} GHz"
     },
+    "memory": {
+        "format": "{}% ",
+        // Thresholds for the .warning and .critical CSS classes
+        "warning-threshold": 70,
+        "critical-threshold": 90
+    },
+    "custom/gpu-mode": {
+        "return-type": "json",
+        "exec": "~/.config/waybar/scripts/gpu-info.sh",
+        "interval": 5,
+        "format": "{}",
+        "tooltip": true
+    },
+    "disk": {
+        "path": "/",
+        "format": "{free}B ",
+        "warning-threshold": 20,
+        "critical-threshold": 10
+    },
+    "systemd-failed-units": {
+        "hide-on-ok": true, // Do not hide if there is zero failed units.
+        "format": "✗ {nr_failed}",
+        "format-ok": "✓",
+        "system": true, // Monitor failed systemwide units.
+        "user": false // Ignore failed user units.
+    },
 //////////////////////////////////////////////////////////////////////////
 // Middle modules
 //////////////////////////////////////////////////////////////////////////
     "custom/updates": {
         "format": "󰅢",
-        "interval": 3600,
+        "interval": 8000,
         "exec": "checkupdates | wc -l",
         "exec-if": "exit 0",
         "on-click": "kitty sh -c 'paru -Syu --noconfirm; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar",
@@ -236,7 +227,6 @@
     },
 
 /////////////////////////////////////
-
     "pulseaudio/slider": {
         "min": 0,
         "max": 100,
@@ -258,27 +248,25 @@
                 ""
             ]
         },
-        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
-        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
-        "tooltip": true,
-        // "tooltip-format": "Volume: {volume}%\n{desc}",
-        "tooltip-format": "{desc}",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +10%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -10%",
+        "tooltip": false,
         "ignored-sinks": [
             "Easy Effects Sink"
-        ],
-        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-        "on-click-right": "pavucontrol"
+        ]
     },
-/////////////////////////////////////
-
-    "pulseaudio#microphone": {
-        "format": "{format_source}",
-        "format-source": "󰍬",
-        "format-source-muted": "󰍭",
-        "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+    "custom/microphone": {
+        "return-type": "json",
+        "exec": "/home/rambeau/.config/waybar/scripts/mic-volume.sh",
+        "interval": 1,
+        "format": "{}",
         "tooltip": true,
-        "tooltip-format": "Volume: {volume}%\n{desc}"
-
+        "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+        "on-click-right": "pavucontrol",
+        "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +5%",
+        "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -5%"
     },
 /////////////////////////////////////
     "battery": {
@@ -302,9 +290,11 @@
         "tooltip": true,
         "tooltip-format": "Charge: {capacity}%"
     },
-    "power-profiles-daemon": {
-        "format": "{profile}",
-        "tooltip-format": "Driver: {driver}",
+    "custom/power-profile": {
+        "format": "{}",
+        "exec": "~/.config/waybar/scripts/power-profile-check.sh",
+        "interval": 5,
+        "return-type": "json",
         "tooltip": true
     },
 /////////////////////////////////////

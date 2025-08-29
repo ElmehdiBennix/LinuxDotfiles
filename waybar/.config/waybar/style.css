@@ -1,62 +1,77 @@
 @import "colors.css";
 
-/* ======================= */
-/* Global Styles           */
-/* ======================= */
+/* ============================================================================= */
+/* --- Global & Base Styles --- */
+/* ============================================================================= */
+
+/* Universal settings for all elements */
 * {
     border: none;
-    font-family: "JetBrainsMono Nerd Font Propo","medium", "monospace";
+    font-family: "JetBrainsMono Nerd Font Propo", "medium", "monospace";
     font-size: 13px;
     box-shadow: none;
     min-width: 28px;
 }
 
+/* Main window styling */
 window#waybar {
     background: transparent;
 }
 
-/* ======================= */
-/* Interactive States      */
-/* ======================= */
-#custom-arch:hover,
-#custom-updates:hover,
-#power-profiles-daemon:hover,
-#network:hover,
-#bluetooth:hover,
-#pulseaudio:hover,
-#custom-power:hover,
-#custom-notification:hover,
-#pulseaudio.microphone:hover,
-#pulseaudio.sink-muted:hover {
-    opacity: 0.8;
-}
-
-/* ======================= */
-/* Custom Widgets          */
-/* ======================= */
-#custom-arch {
+/*
+ * ============================================================================
+ * --- UNIFIED BASE MODULE STYLE ---
+ * ============================================================================
+ * This is the unified style for ALL modules to ensure they have the
+ * exact same size, padding, and margin. Specific overrides below will
+ * change colors and other properties for different states.
+*/
+#clock,
+#mpris,
+#cpu,
+#tray,
+#custom-arch,
+#custom-updates,
+#custom-power-profile,
+#network,
+#bluetooth,
+#pulseaudio,
+#pulseaudio-slider,
+#custom-microphone,
+#custom-gpu-mode,
+#custom-power,
+#custom-menu,
+#custom-notification,
+#temperature,
+#memory,
+#disk,
+#systemd-failed-units {
+    background-color: rgba(0, 0, 0, 0.1);
     color: @on_background;
-    background: rgba(0, 0, 0, 0.1);
-    padding: 0 14px;
+    padding: 0 12px;
     margin: 0 4px;
-    /* border: solid 2px @on_background; */
     border-radius: 10px;
     min-height: 30px;
 }
 
-/* ======================= */
-/* Workspace Management    */
-/* ======================= */
-#workspaces {
-    margin: 0;
-    padding: 0;
+#battery {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: @on_background;
+    border-radius: 10px;
+    /* padding: 0 12px; */
+    /* margin: 0 4px; */
+    min-height: 30px;
 }
 
+/* ============================================================================= */
+/* --- Module-Specific Overrides & States --- */
+/* ============================================================================= */
+
+/* --- Workspaces --- */
 #workspaces button {
     color: @color1;
     padding: 0 8px;
     margin: 0 4px;
-    /* border: solid 2px transparent; */
     border-radius: 10px;
     min-height: 30px;
 }
@@ -68,7 +83,7 @@ window#waybar {
 }
 
 #workspaces button.urgent {
-    background: #cc241d;
+    background-color: #cc241d;
     animation: blink 1s linear infinite;
 }
 
@@ -78,235 +93,134 @@ window#waybar {
     }
 }
 
-/* ======================= */
-/* System Components       */
-/* ======================= */
-#clock {
-    padding: 0 12px;
-    margin: 0 4px;
-    /* border: solid 2px @on_background; */
-    border-radius: 10px;
-    color: @on_background;
-    background: rgba(0, 0, 0, 0.1);
-    font-weight: 500;
-    min-height: 30px;
-}
-
-#mpris {
-    color: @on_background;
-    padding: 0 12px;
-    margin: 0 4px;
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.1);
-    min-height: 30px;
-}
-
-#mpris.playing {
-    color: #8ec07c;
-    background: rgba(0, 0, 0, 0.1);
-}
-
-#mpris.paused {
-    color: #d79921;
-    background: rgba(0, 0, 0, 0.1);
-}
-
-#mpris.stopped {
-    color: #cc241d;
-    background: rgba(0, 0, 0, 0.1);
-}
-
-#custom-monitors {
-    color: @on_background;
-    background: rgba(0, 0, 0, 0.1);
-    padding: 0 12px;
-    margin: 0 4px;
-    border-radius: 10px;
-    min-height: 30px;
-}
-
+/* --- CPU (override base color) --- */
 #cpu {
     color: @color14;
-    background: rgba(0, 0, 0, 0.1);
-    padding: 0 12px;
-    margin: 0 4px;
-    border-radius: 10px;
-    min-height: 30px;
 }
 
-/* ======================= */
-/* System Indicators       */
-/* ======================= */
-#tray {
-    background: rgba(0, 0, 0, 0.1);
-    padding: 0 12px;
-    margin: 0 4px;
-    /* border: solid 2px @on_background; */
-    border-radius: 10px;
-    min-height: 30px;
-}
-
-#privacy {
-    background: rgba(255, 255, 0, 0.1);
-    padding: 0 12px;
-    margin: 0 4px;
-    /* border: solid 2px #d79921; */
-    border-radius: 10px;
-    min-height: 30px;
-}
-
-#privacy-item {
-    color: #d79921;
-}
-
-/* ======================= */
-/* Menu                    */
-/* ======================= */
-
-#custom-menu {
-    color: @on_background;
-    background: rgba(0, 0, 0, 0.1);
-    padding: 0 12px;
-    margin: 0 4px;
-    /* border: solid 2px @on_background; */
-    border-radius: 10px;
-    min-height: 30px;
-}
-
-tooltip class {
-    color: @textcolor;
-}
-
-#custom-updates {
-    color: @on_background;
-    background: rgba(0, 0, 0, 0.1);
-    padding: 0 12px;
-    margin: 0 4px;
-    /* border: solid 2px @textcolor; */
-    border-radius: 10px;
-    min-height: 30px;
-}
-
-/* Green class - no updates or low count */
-#custom-updates.green {
-    color: #8ec07c;
-    background: rgba(0, 255, 0, 0.1);
-}
-
-/* Yellow class - moderate updates */
-#custom-updates.yellow {
-    color: #d79921;
-    background: rgba(255, 255, 0, 0.1);
-}
-
-/* Red class - many updates */
-#custom-updates.red {
+/* --- Power Profiles --- */
+#custom-power-profile.performance,
+#custom-power-profile.error {
     color: #cc241d;
-    background: rgba(255, 0, 0, 0.1);
+    background-color: rgba(255, 0, 0, 0.1);
 }
 
-#power-profiles-daemon {
-    color: @on_background;
-    background: rgba(0, 0, 0, 0.1);
-    padding: 0 12px;
-    margin: 0 4px;
-    /* border: solid 2px @on_background; */
-    border-radius: 10px;
-    min-height: 30px;
-}
-
-#power-profiles-daemon.performance {
-    color: #cc241d;
-    /* border: solid 2px #cc241d; */
-    background: rgba(255, 0, 0, 0.1);
-}
-
-#power-profiles-daemon.balanced {
+#custom-power-profile.balanced {
     color: #d79921;
-    /* border: solid 2px #d79921; */
-    background: rgba(255, 255, 0, 0.1);
+    background-color: rgba(255, 255, 0, 0.1);
 }
 
-#power-profiles-daemon.power-saver {
+#custom-power-profile.power-saver {
     color: #8ec07c;
-    /* border: solid 2px #8ec07c; */
-    background: rgba(0, 255, 0, 0.1);
+    background-color: rgba(0, 255, 0, 0.1);
 }
 
-/* ======================= */
-/* Network & Bluetooth     */
-/* ======================= */
-#network {
-    color: @on_background;
-    background: rgba(0, 0, 0, 0.1);
-    padding: 0 12px;
-    margin: 0 4px;
-    /* border: solid 2px @on_background; */
-    border-radius: 10px;
-    min-height: 30px;
-}
-
-#bluetooth {
-    color: @on_background;
-    background: rgba(0, 0, 0, 0.1);
-    padding: 0 12px;
-    margin: 0 4px;
-    /* border: solid 2px @on_background; */
-    border-radius: 10px;
-    min-height: 30px;
-}
-
+/* --- Network & Bluetooth --- */
 #network.disabled {
     color: #cc241d;
-    /* border: solid 2px #cc241d; */
-    background: rgba(255, 0, 0, 0.1);
+    background-color: rgba(255, 0, 0, 0.1);
 }
 
 #bluetooth.disabled {
     color: #458588;
-    /* border: solid 2px #458588; */
-    background: rgba(0, 0, 255, 0.1);
+    background-color: rgba(0, 0, 255, 0.1);
 }
 
-/* ======================= */
-/* Audio Controls          */
-/* ======================= */
-
-#pulseaudio {
-    color: @on_background;
-    background: rgba(0, 0, 0, 0.1);
-    padding: 0 12px;
-    margin: 0 4px;
-    /* border: solid 2px @on_background; */
-    border-radius: 10px;
-    min-height: 30px;
-}
-
+/* --- Audio --- */
 #pulseaudio.sink-muted {
     color: #d79921;
-    /* border: solid 2px #d79921; */
-    background: rgba(255, 255, 0, 0.1);
+    background-color: rgba(255, 255, 0, 0.1);
 }
 
-#pulseaudio.microphone {
-    color: @on_background;
-    /* border: solid 2px @on_background; */
-    background: rgba(0, 0, 0, 0.1);
-}
-
-#pulseaudio.microphone.source-muted {
+#custom-microphone.source-muted {
     color: #cc241d;
-    /* border: solid 2px #cc241d; */
-    background: rgba(255, 0, 0, 0.1);
+    background-color: rgba(255, 0, 0, 0.1);
 }
 
-#pulseaudio-slider {
-    background: rgba(0, 0, 0, 0.1);
-    padding: 0 12px;
-    margin: 0 4px;
-    border-radius: 10px;
-    min-height: 30px;
+/* --- Battery --- */
+#battery.plugged,
+#battery.charging {
+    color: #8ec07c;
 }
+
+#battery.warning {
+    color: #d79921;
+}
+
+#battery.critical,
+#battery.plugordie {
+    color: #cc241d;
+}
+
+/* --- Notifications --- */
+#custom-notification.notification {
+    color: #d79921;
+}
+
+#custom-notification.dnd-notification,
+#custom-notification.inhibited-notification {
+    color: #cc241d;
+}
+
+/* ============================================================================= */
+/* --- Drawer Group ("Extras") & System Health --- */
+/* ============================================================================= */
+
+/* --- GPU Mode (The visible part of the group) --- */
+#custom-gpu-mode.nvidia {
+    color: #76B900;
+    background-color: rgba(118, 185, 0, 0.15);
+}
+
+#custom-gpu-mode.integrated {
+    color: #0071C5;
+    background-color: rgba(0, 113, 197, 0.15);
+}
+
+#custom-gpu-mode.hybrid {
+    color: #FABD2F;
+    background-color: rgba(250, 189, 47, 0.15);
+}
+
+#custom-gpu-mode.error {
+    color: #FB4934;
+    background-color: rgba(251, 73, 52, 0.15);
+}
+
+/* --- System Monitors (Modules inside the drawer) --- */
+/* Individual colors for the drawer modules (size is handled by the unified style) */
+#temperature {
+    color: #81A1C1;
+}
+
+#memory {
+    color: #A3BE8C;
+}
+
+#disk {
+    color: #B48EAD;
+}
+
+/* Shared warning/critical states for drawer modules */
+#temperature.warning,
+#memory.warning,
+#disk.warning {
+    color: #EBCB8B;
+    /* Warning Yellow */
+    background-color: rgba(235, 203, 139, 0.15);
+}
+
+#temperature.critical,
+#memory.critical,
+#disk.critical {
+    color: #BF616A;
+    /* Critical Red */
+    background-color: rgba(191, 97, 106, 0.2);
+    font-weight: bold;
+}
+/* ============================================================================= */
+/* --- slider --- */
+/* ============================================================================= */
 
 #pulseaudio-slider slider {
     min-height: 0px;
@@ -316,95 +230,29 @@ tooltip class {
 }
 
 #pulseaudio-slider trough {
-    min-height: 8px;
+    min-height: 4px;
     min-width: 100px;
     border-radius: 4px;
     background-color: rgba(255, 255, 255, 0.1);
 }
 
 #pulseaudio-slider highlight {
-    min-width: 8px;
-    min-height: 8px;
+    min-width: 4px;
+    min-height: 4px;
     border-radius: 4px;
-    background: @inverse_primary;
+    background: @on_background;
 }
 
-/* ======================= */
-/* Battery                 */
-/* ======================= */
-#battery {
-    color: @on_background;
-    background: rgba(0, 0, 0, 0.1);
-    padding: 0 12px;
-    margin: 0 4px;
-    /* border: solid 2px @on_background; */
-    border-radius: 10px;
-    min-height: 30px;
-}
+/* ============================================================================= */
+/* --- Tooltip --- */
+/* ============================================================================= */
 
-#battery.plugged,
-#battery.charging {
-    color: #8ec07c;
-    /* border: solid 2px #8ec07c; */
-}
-
-#battery.warning {
-    color: #d79921;
-    /* border: solid 2px #d79921; */
-}
-
-#battery.critical,
-#battery.plugordie {
-    color: #cc241d;
-    /* border: solid 2px #cc241d; */
-}
-
-/* ======================= */
-/* Notifications           */
-/* ======================= */
-#custom-notification {
-    color: @on_background;
-    background: rgba(0, 0, 0, 0.1);
-    padding: 0 12px;
-    margin: 0 4px;
-    border-radius: 10px;
-    min-height: 30px;
-}
-
-#custom-notification.notification {
-    color: #d79921;
-    background: rgba(0, 0, 0, 0.1);
-}
-
-#custom-notification.dnd-notification,
-#custom-notification.inhibited-notification {
-    color: #cc241d;
-    background: rgba(0, 0, 0, 0.1);
-}
-
-/* ======================= */
-/* Power Menu              */
-/* ======================= */
-#custom-power {
-    color: @on_background;
-    background: rgba(0, 0, 0, 0.1);
-    margin: 0 4px;
-    padding: 0 12px;
-    /* border: solid 2px @on_background; */
-    border-radius: 10px;
-    min-height: 30px;
-}
-
-/* ======================== */
-/* Tooltip                  */
-/* ======================== */
 tooltip {
-    color: rgba(255, 255, 255, 0.8);
     background: rgba(0, 0, 0, 0.2);
     border-radius: 10px;
 }
 
-tooltip * {
+tooltip label {
     color: rgba(255, 255, 255, 0.8);
     text-shadow: none;
     background: transparent;
