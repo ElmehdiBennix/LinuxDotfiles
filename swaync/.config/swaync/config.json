@@ -1,0 +1,47 @@
+{
+  "positionX": "center",
+  "positionY": "top",
+  "layer": "overlay",
+  "control-center-width": 500,
+  "control-center-height": 700,
+  "widgets": [
+      "mpris",
+      "buttons-grid#control-buttons",
+      "inhibitors",
+      "backlight",
+      "notifications",
+      "title"
+  ],
+  "widget-config": {
+    "title": {
+      "text": "",
+      "clear-all-button": true,
+      "button-text": "Clear All"
+    },
+    "dnd": {
+      "text": "Do Not Disturb"
+    },
+    "inhibitors": {
+      "text": "Idle Inhibitors"
+    },
+    "buttons-grid#control-buttons": {
+      "actions": [
+        {
+          "label": "🤫",
+          "command": "swaync-client -t -sw"
+        },
+        {
+          "label": "💡",
+          "command": "swaync-client -t -I"
+        },
+        {
+          "label": "📸",
+          "command": "grimshot save area"
+        }
+      ]
+    },
+    "backlight": {
+      "label": "☀️"
+    }
+  }
+}
