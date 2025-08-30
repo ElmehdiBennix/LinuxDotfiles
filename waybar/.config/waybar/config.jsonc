@@ -116,10 +116,11 @@
         "critical-threshold": 90
     },
     "custom/gpu-mode": {
-        "return-type": "json",
-        "exec": "~/.config/waybar/scripts/gpu-info.sh",
-        "interval": 5,
         "format": "{}",
+        "exec": "~/.config/waybar/scripts/gpu-mode.sh",
+        "on-click" : "",
+        "interval": 5,
+        "return-type": "json",
         "tooltip": true
     },
     "disk": {
@@ -132,6 +133,7 @@
         "hide-on-ok": true, // Do not hide if there is zero failed units.
         "format": "✗ {nr_failed}",
         "format-ok": "✓",
+        "on-click": "",
         "system": true, // Monitor failed systemwide units.
         "user": false // Ignore failed user units.
     },
@@ -164,18 +166,19 @@
         "tooltip": false,
         "format": "{icon}",
         "format-icons": {
-            "notification": "󰂚",
-            "none": "󰂛",
-            "dnd-notification": "󰂜",
-            "dnd-none": "󰂞",
-            "inhibited-notification": "󰂜",
-            "inhibited-none": "󰂞"
+            "notification": "󰂞",
+            "none": "󰂚",
+            "dnd-notification": "󰂛",
+            "dnd-none": "󰂛",
+            "inhibited-notification": "󰂞",
+            "inhibited-none": "󰂚",
+            "dnd-inhibited-notification": "󰂛",
+            "dnd-inhibited-none": "󰂛"
         },
         "return-type": "json",
         "exec-if": "which swaync-client",
         "exec": "swaync-client -swb",
         "on-click": "swaync-client -t -sw",
-        "on-click-middle": "",
         "on-click-right": "swaync-client -d -sw",
         "escape": true
     },
@@ -307,7 +310,7 @@
 /////////////////////////////////////
     "custom/power": {
         "format": "",
-        "on-click": "wlogout --protocol layer-shell -b 2",
+        "on-click": "wlogout",
         "tooltip": false
     }
 }

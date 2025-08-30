@@ -1,47 +1,93 @@
 {
-  "positionX": "center",
-  "positionY": "top",
-  "layer": "overlay",
-  "control-center-width": 500,
-  "control-center-height": 700,
-  "widgets": [
-      "mpris",
-      "buttons-grid#control-buttons",
-      "inhibitors",
-      "backlight",
-      "notifications",
-      "title"
-  ],
-  "widget-config": {
-    "title": {
-      "text": "",
-      "clear-all-button": true,
-      "button-text": "Clear All"
-    },
-    "dnd": {
-      "text": "Do Not Disturb"
-    },
-    "inhibitors": {
-      "text": "Idle Inhibitors"
-    },
-    "buttons-grid#control-buttons": {
-      "actions": [
-        {
-          "label": "🤫",
-          "command": "swaync-client -t -sw"
+    "$schema": "/etc/xdg/swaync/configSchema.json",
+    "positionX": "center",
+    "positionY": "top",
+
+    "layer": "overlay",
+    "layer-shell": true,
+    "control-center-layer": "overlay",
+
+    "control-center-positionX": "center",
+    "control-center-positionY": "top",
+    "control-center-height": 540,
+    "control-center-width": 600,
+    "control-center-margin-top": 12,
+    "fit-to-screen": false,
+    "keyboard-shortcuts": true,
+    "cssPriority": "application",
+    "notification-2fa-action": true,
+    "notification-inline-replies": false,
+    "notification-body-image-height": 100,
+    "notification-body-image-width": 200,
+    "timeout": 10,
+    "timeout-low": 5,
+    "timeout-critical": 0,
+    "notification-window-width": 500,
+    "notification-window-height": -1,
+    "notification-grouping": true,
+    "image-visibility": "when-available",
+    "transition-time": 200,
+    "hide-on-clear": true,
+    "hide-on-action": true,
+    "script-fail-notify": true,
+    "relative-timestamps": true,
+    "widgets": [
+        "dnd",
+        "mpris",
+        "inhibitors",
+        "buttons-grid",
+        "notifications",
+        "title"
+    ],
+    "widget-config": {
+        "title": {
+            "text": "",
+            "clear-all-button": true,
+            "button-text": "Clear All"
         },
-        {
-          "label": "💡",
-          "command": "swaync-client -t -I"
+        "dnd": {
+            "text": "Do Not Disturb"
         },
-        {
-          "label": "📸",
-          "command": "grimshot save area"
+        "inhibitors": {
+            "text": "Inhibitors",
+            "clear-all-button": true,
+            "button-text": "Clear All"
+        },
+        "mpris": {
+            "autohide": true,
+            "show-album-art": "never",
+            "loop-carousel": true
+        },
+        "buttons-grid": {
+            "actions": [
+                {
+                    "label": "󰸏 Idle Inhib",
+                    "type": "toggle",
+                    "command": "swaync-client --inhibitor-add hypridle",
+                    "update-command": "swaync-client --inhibitor-list | grep -q hypridle && echo true || echo false",
+                    "active": false
+                },
+                {
+                    "label": "󰡬 Screenshot",
+                    "command": "hyprshot"
+                },
+                {
+                    "label": "󰏘 Color Pick",
+                    "command": "hyprpicker -a -f hex"
+                },
+                {
+                    "label": " Hypr Sunset",
+                    "command": "hyprctl exec sunset"
+                },
+                {
+                    "label": "󰋏 Settings",
+                    "command": "swaync-client -t -sw"
+                },
+                {
+                    "label": " Toggle wall",
+                    "command": "/path/to/toggle_animations.sh"
+                }
+            ]
         }
-      ]
-    },
-    "backlight": {
-      "label": "☀️"
     }
-  }
 }

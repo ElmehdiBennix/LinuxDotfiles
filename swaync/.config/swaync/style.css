@@ -1,64 +1,183 @@
 @import "colors.css";
 
+/* === Global Styles === */
 * {
-    font-family: "JetBrainsMono Nerd Font";
-    font-size: 14px;
+    border: none;
+    font-family: "JetBrainsMono Nerd Font Propo", monospace;
+    font-size: 13px;
+    box-shadow: none;
 }
 
-.notification-center {
-    background-color: @theme_bg_color;
-    border-radius: 10px;
-    
-}
-
-.notification {
-    border-radius: 10px;
-    background-color: @theme_bg_color;
-    padding: 10px;
-    margin: 5px;
-}
-
-.notification-content {
-    padding: 10px;
-}
-
-.close-button {
-    background-color: @red;
-    color: @theme_fg_color;
-    border-radius: 50%;
-    margin: 5px;
-}
-
+/* The main notification center window */
 .control-center {
-    background-color: @theme_bg_color;
-    border-radius: 10px;
-    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: @on_background;
+    border: 1px solid rgba(0, 0, 0, 1);
+    border-radius: 12px;
 }
 
-.control-center-button {
-    background-color: @theme_selected_bg_color;
+.widget {
+    margin: 8px;
+}
+
+/* --- Widgets --- */
+
+/* Do Not Disturb (DND) widget */
+.widget-dnd {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.widget-dnd>switch {
+    font-size: 0;
+    /* Hide the text of the switch */
+    background: @theme_unfocused_bg_color;
+    border: 1px solid @theme_unfocused_bg_color;
+    border-radius: 12px;
+}
+
+.widget-dnd>switch:checked {
+    background: @theme_selected_bg_color;
+    border: 1px solid @theme_selected_bg_color;
+}
+
+/* Buttons grid widget (e.g., for power menu) */
+.widget-buttons-grid {
+    padding: 8px;
+    border-radius: 12px;
+    background-color: @theme_unfocused_bg_color;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button {
+    background-color: transparent;
+    border: none;
     color: @theme_fg_color;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 5px;
 }
 
-.control-center-button:hover {
-    background-color: @blue;
-}
-
-.slider {
+.widget-buttons-grid>flowbox>flowboxchild>button:hover {
     background-color: @theme_selected_bg_color;
-    border-radius: 10px;
-    margin: 5px;
+    color: @theme_bg_color;
 }
 
-.slider trough {
-    background-color: @theme_bg_color;
-    border-radius: 10px;
+/* MPRIS (Media Player) widget */
+.widget-mpris {
+    background-color: @theme_unfocused_bg_color;
+    padding: 12px;
+    border-radius: 12px;
 }
 
-.slider highlight {
-    background-color: @blue;
-    border-radius: 10px;
+/*
+ * Album Art Styling
+ * The following controls the background image behind the media controls.
+ */
+.widget-mpris .album-art {
+    background-size: cover;
+    background-position: center;
+    min-height: 180px;
+    /* Adjust as needed */
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+/*
+ * The 'backdrop-filter' property on the overlay adds a blur effect.
+ *
+ * To make it less blurry, decrease the 'blur' value (e.g., 'blur(2px)').
+ * To make it more blurry, increase the 'blur' value (e.g., 'blur(20px)').
+ * To remove the blur completely, comment out or remove the 'backdrop-filter' line.
+ */
+.widget-mpris .album-art-overlay {
+    background-color: rgba(0, 0, 0, 0.3);
+    /* Dark overlay for better text readability */
+    border-radius: 8px;
+}
+
+
+.widget-mpris .title-artist-box {
+    padding: 8px;
+}
+
+.widget-mpris .title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: @theme_fg_color;
+}
+
+.widget-mpris .artist {
+    font-size: 1rem;
+    color: @theme_unfocused_fg_color;
+}
+
+
+.widget-mpris .control-buttons button {
+    color: @theme_fg_color;
+}
+
+.widget-mpris .control-buttons button:hover {
+    background-color: @theme_selected_bg_color;
+    color: @theme_bg_color;
+}
+
+
+/* --- Notifications --- */
+
+/* The container for all notifications */
+.notification-list {
+    padding: 0;
+}
+
+/* A single notification row */
+.notification-row {
+    margin: 8px 8px 0 8px;
+    border-radius: 12px;
+    background-color: @theme_unfocused_bg_color;
+    border: 1px solid transparent;
+}
+
+.notification-row:hover {
+    background-color: @theme_unfocused_bg_color;
+    border: 1px solid @theme_selected_bg_color;
+}
+
+/* The main content of a notification */
+.notification-content {
+    padding: 8px;
+}
+
+.notification-content .summary {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: @theme_fg_color;
+}
+
+.notification-content .body {
+    color: @theme_unfocused_fg_color;
+}
+
+/* Notification actions (buttons) */
+.notification-content .actions {
+    margin-top: 8px;
+}
+
+.notification-content .actions button {
+    background-color: @theme_selected_bg_color;
+    color: @theme_bg_color;
+    border: none;
+    border-radius: 8px;
+    padding: 4px 8px;
+    margin-right: 4px;
+}
+
+.notification-content .actions button:hover {
+    background-color: @theme_fg_color;
+}
+
+/* Close button for notifications */
+.notification-close-button {
+    color: @theme_unfocused_fg_color;
+}
+
+.notification-close-button:hover {
+    background-color: @theme_selected_bg_color;
+    color: @theme_bg_color;
 }
