@@ -48,7 +48,7 @@ window#waybar {
 #battery,
 #workspaces,
 #systemd-failed-units {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.4);
     color: @on_background;
     padding: 0 12px;
     margin: 0 4px;

@@ -2,182 +2,174 @@
 
 /* === Global Styles === */
 * {
-    border: none;
     font-family: "JetBrainsMono Nerd Font Propo", monospace;
     font-size: 13px;
     box-shadow: none;
 }
 
+/*////////////////////////////////////////////*/
 /* The main notification center window */
+/*////////////////////////////////////////////*/
 .control-center {
-    background-color: rgba(0, 0, 0, 0.1);
-    color: @on_background;
-    border: 1px solid rgba(0, 0, 0, 1);
+    background-color: rgba(0, 0, 0, 0.4);
     border-radius: 12px;
 }
 
-.widget {
-    margin: 8px;
-}
-
-/* --- Widgets --- */
-
-/* Do Not Disturb (DND) widget */
-.widget-dnd {
-    margin: 0;
-    font-size: 1.2rem;
-}
-
-.widget-dnd>switch {
-    font-size: 0;
-    /* Hide the text of the switch */
-    background: @theme_unfocused_bg_color;
-    border: 1px solid @theme_unfocused_bg_color;
-    border-radius: 12px;
-}
-
-.widget-dnd>switch:checked {
-    background: @theme_selected_bg_color;
-    border: 1px solid @theme_selected_bg_color;
-}
-
+/*////////////////////////////////////////////*/
 /* Buttons grid widget (e.g., for power menu) */
+/*////////////////////////////////////////////*/
+
 .widget-buttons-grid {
-    padding: 8px;
+    background: @theme_unfocused_bg_color;
     border-radius: 12px;
-    background-color: @theme_unfocused_bg_color;
+    /* padding: 20px; */
 }
 
 .widget-buttons-grid>flowbox>flowboxchild>button {
-    background-color: transparent;
-    border: none;
-    color: @theme_fg_color;
-}
-
-.widget-buttons-grid>flowbox>flowboxchild>button:hover {
-    background-color: @theme_selected_bg_color;
-    color: @theme_bg_color;
-}
-
-/* MPRIS (Media Player) widget */
-.widget-mpris {
-    background-color: @theme_unfocused_bg_color;
-    padding: 12px;
+    background: black;
+    color: white;
     border-radius: 12px;
 }
 
-/*
- * Album Art Styling
- * The following controls the background image behind the media controls.
- */
-.widget-mpris .album-art {
-    background-size: cover;
-    background-position: center;
-    min-height: 180px;
-    /* Adjust as needed */
-    border-radius: 8px;
-    margin-bottom: 8px;
+.widget-buttons-grid>flowbox>flowboxchild>button:hover {
+    background-color: white;
+    color: black;
 }
 
-/*
- * The 'backdrop-filter' property on the overlay adds a blur effect.
- *
- * To make it less blurry, decrease the 'blur' value (e.g., 'blur(2px)').
- * To make it more blurry, increase the 'blur' value (e.g., 'blur(20px)').
- * To remove the blur completely, comment out or remove the 'backdrop-filter' line.
- */
-.widget-mpris .album-art-overlay {
-    background-color: rgba(0, 0, 0, 0.3);
-    /* Dark overlay for better text readability */
-    border-radius: 8px;
+/*////////////////////////////////////////////*/
+/* Mpris widget */
+/*////////////////////////////////////////////*/
+
+.widget-mpris {
+    border-radius: 12px;
+    border: 2px solid rgba(0, 0, 0, 1);
 }
 
-
-.widget-mpris .title-artist-box {
-    padding: 8px;
+.widget-mpris-player {
+    border-radius: 0px;
+    margin: 0px;
 }
 
-.widget-mpris .title {
-    font-size: 1.2rem;
+.mpris-overlay {
+    padding: 0px;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.mpris-background {
+    filter: blur(1px);
+}
+
+.widget-mpris-title {
+    color: #eeeeee;
     font-weight: bold;
-    color: @theme_fg_color;
+    font-size: 1.25rem;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
+    padding-left: 20px;
+    padding-top: 15px;
 }
 
-.widget-mpris .artist {
+.widget-mpris-subtitle {
+    color: #eeeeee;
     font-size: 1rem;
-    color: @theme_unfocused_fg_color;
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
+    padding-left: 15px;
 }
 
-
-.widget-mpris .control-buttons button {
-    color: @theme_fg_color;
+.widget-mpris>box {
+    margin: 0px 0px -20px 0px;
+    background-color: black;
 }
 
-.widget-mpris .control-buttons button:hover {
-    background-color: @theme_selected_bg_color;
-    color: @theme_bg_color;
+.widget-mpris>box>carousel>widget>box>box:nth-child(2) {
+    margin: 20px 0px 25px 5px
 }
 
+.widget-mpris>box>carousel>widget>box>box:nth-child(2)>button {
+    border-radius: 12px;
+}
 
+.widget-mpris>box>carousel>widget>box>box:nth-child(2)>button:hover {
+    background: alpha(currentColor, 0.1);
+}
+
+/*//////////////////////*/
 /* --- Notifications --- */
+/*//////////////////////*/
 
-/* The container for all notifications */
+:root {
+    --noti-border-color: none;
+    --noti-bg: 0,0,0;
+    --noti-bg-alpha: 0.4;
+    --noti-bg-darker: red;
+    --noti-bg-hover: blue;
+    --noti-bg-focus: none;
+    --noti-close-bg: yellow;
+    --noti-close-bg-hover: springgreen;
+    --text-color: white;
+    --text-color-disabled: purple;
+    --bg-selected: cyan;
+    --notification-icon-size: 64px;
+    --notification-app-icon-size: calc(var(--notification-icon-size) / 3);
+    --notification-group-icon-size: 32px;
+    --border: 0px solid var(--noti-border-color);
+    --border-radius: 12px;
+    --notification-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3),
+        0 1px 3px 1px rgba(0, 0, 0, 0.7), 0 2px 6px 2px rgba(0, 0, 0, 0.3);
+    --font-size-body: 15px;
+    --font-size-summary: 16px;
+}
+
 .notification-list {
     padding: 0;
 }
 
-/* A single notification row */
-.notification-row {
-    margin: 8px 8px 0 8px;
-    border-radius: 12px;
-    background-color: @theme_unfocused_bg_color;
-    border: 1px solid transparent;
+.notification-group {
+    background: red;
+    /* margin: 8px 8px 0 8px; */
+    /* border-radius: 12px; */
+    /* background-color: @theme_unfocused_bg_color; */
+    /* border: 1px solid transparent; */
 }
 
-.notification-row:hover {
-    background-color: @theme_unfocused_bg_color;
-    border: 1px solid @theme_selected_bg_color;
+.notification-group:hover {
+    background: green;
+    /* background-color: @theme_unfocused_bg_color; */
+    /* border: 1px solid @theme_selected_bg_color; */
+}
+
+.text-button {
+    background: blue;
+    /* color: green; */
+}
+
+.notification-alt-actions,
+.notification-default-action {
+    background: yellow;
 }
 
 /* The main content of a notification */
 .notification-content {
+    background: blue;
     padding: 8px;
 }
 
 .notification-content .summary {
     font-size: 1.1rem;
     font-weight: bold;
-    color: @theme_fg_color;
+    color: white;
+    background: pink;
 }
 
 .notification-content .body {
-    color: @theme_unfocused_fg_color;
+    font-size: 1.1rem;
+    color: white;
+    background: darkorchid;
 }
+/*///////////////////////////////*/
+/*              */
+/*///////////////////////////////*/
 
-/* Notification actions (buttons) */
-.notification-content .actions {
-    margin-top: 8px;
-}
-
-.notification-content .actions button {
-    background-color: @theme_selected_bg_color;
-    color: @theme_bg_color;
-    border: none;
-    border-radius: 8px;
-    padding: 4px 8px;
-    margin-right: 4px;
-}
-
-.notification-content .actions button:hover {
-    background-color: @theme_fg_color;
-}
-
-/* Close button for notifications */
-.notification-close-button {
-    color: @theme_unfocused_fg_color;
-}
-
-.notification-close-button:hover {
-    background-color: @theme_selected_bg_color;
-    color: @theme_bg_color;
+.text-button {
+    background: red;
+    /* color: green; */
 }
