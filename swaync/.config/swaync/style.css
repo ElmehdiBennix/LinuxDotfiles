@@ -5,14 +5,48 @@
     font-family: "JetBrainsMono Nerd Font Propo", monospace;
     font-size: 13px;
     box-shadow: none;
+    border-radius: 12px;
+}
+
+:root {
+    --background-color: rgba(0, 0, 0, 0.4);
+    --noti-bg: 0, 0, 0;
+    --noti-bg-alpha: 0.4;
+
+    --background-alt-color: rgba(0, 0, 0, 0.6);
+    --background-alt-hover-color: rgba(255, 255, 255, 0.1);
+
+    --text-color: white;
+
+    --noti-border-color: none;
+    --noti-bg-darker: none;
+    --noti-bg-hover: var(--background-alt-hover-color);
+    --noti-bg-focus: none;
+    --noti-close-bg: none;
+    --noti-close-bg-hover: none;
+    --bg-selected: none;
+    --notification-icon-size: 64px;
+    --notification-app-icon-size: calc(var(--notification-icon-size) / 3);
+    --notification-group-icon-size: 32px;
+    --notification-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3),
+        0 1px 3px 1px rgba(0, 0, 0, 0.7), 0 2px 6px 2px rgba(0, 0, 0, 0.3);
 }
 
 /*////////////////////////////////////////////*/
 /* The main notification center window */
 /*////////////////////////////////////////////*/
+
 .control-center {
-    background-color: rgba(0, 0, 0, 0.4);
-    border-radius: 12px;
+    background-color: var(--background-color);
+}
+
+.control-center slider {
+    background: transparent;
+    border: 0px;
+}
+
+.control-center-list {
+    background: var(--background-alt-color);
 }
 
 /*////////////////////////////////////////////*/
@@ -20,20 +54,18 @@
 /*////////////////////////////////////////////*/
 
 .widget-buttons-grid {
-    background: @theme_unfocused_bg_color;
-    border-radius: 12px;
-    /* padding: 20px; */
+    background: var(--background-alt-color);
 }
 
 .widget-buttons-grid>flowbox>flowboxchild>button {
-    background: black;
-    color: white;
-    border-radius: 12px;
+    background: var(--background-color);
+    color: var(--text-color);
+
 }
 
 .widget-buttons-grid>flowbox>flowboxchild>button:hover {
-    background-color: white;
-    color: black;
+    /* background: var(--background-alt-hover-color); */
+    color: var(--text-color);
 }
 
 /*////////////////////////////////////////////*/
@@ -41,8 +73,11 @@
 /*////////////////////////////////////////////*/
 
 .widget-mpris {
-    border-radius: 12px;
-    border: 2px solid rgba(0, 0, 0, 1);
+    border: 4px solid black;
+}
+
+.widget-mpris *:hover {
+    background: transparent;
 }
 
 .widget-mpris-player {
@@ -50,45 +85,48 @@
     margin: 0px;
 }
 
-.mpris-overlay {
-    padding: 0px;
-    background: rgba(0, 0, 0, 0.5);
+.mpris-overlay,
+.mpris-overlay:hover {
+    padding: 20px;
+    background: var(--background-alt-color);
+    border-radius: 0px;
 }
 
 .mpris-background {
-    filter: blur(1px);
+    filter: blur(0px);
+    border-radius: 0px;
 }
 
 .widget-mpris-title {
-    color: #eeeeee;
+    color: var(--text-color);
     font-weight: bold;
     font-size: 1.25rem;
-    text-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
-    padding-left: 20px;
+    margin: -20px 0px 0px 0px;
+    text-shadow: 0px 0px 5px var(--background-alt-color);
     padding-top: 15px;
 }
 
 .widget-mpris-subtitle {
-    color: #eeeeee;
+    color: var(--text-color);
     font-size: 1rem;
-    text-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
-    padding-left: 15px;
+    margin: 0px 0px 40px 0px;
+    text-shadow: 0px 0px 3px var(--background-alt-color);
+    border-radius: 0px;
 }
 
-.widget-mpris>box {
-    margin: 0px 0px -20px 0px;
+.widget-mpris>box,
+.widget-mpris>box:hover {
     background-color: black;
+    border-radius: 0px;
+    margin: 0px 0px -20px 0px;
 }
 
 .widget-mpris>box>carousel>widget>box>box:nth-child(2) {
-    margin: 20px 0px 25px 5px
-}
-
-.widget-mpris>box>carousel>widget>box>box:nth-child(2)>button {
-    border-radius: 12px;
+    margin: 0px 0px 0px 5px
 }
 
 .widget-mpris>box>carousel>widget>box>box:nth-child(2)>button:hover {
+    border-radius: 12px;
     background: alpha(currentColor, 0.1);
 }
 
@@ -96,80 +134,28 @@
 /* --- Notifications --- */
 /*//////////////////////*/
 
-:root {
-    --noti-border-color: none;
-    --noti-bg: 0,0,0;
-    --noti-bg-alpha: 0.4;
-    --noti-bg-darker: red;
-    --noti-bg-hover: blue;
-    --noti-bg-focus: none;
-    --noti-close-bg: yellow;
-    --noti-close-bg-hover: springgreen;
-    --text-color: white;
-    --text-color-disabled: purple;
-    --bg-selected: cyan;
-    --notification-icon-size: 64px;
-    --notification-app-icon-size: calc(var(--notification-icon-size) / 3);
-    --notification-group-icon-size: 32px;
-    --border: 0px solid var(--noti-border-color);
-    --border-radius: 12px;
-    --notification-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3),
-        0 1px 3px 1px rgba(0, 0, 0, 0.7), 0 2px 6px 2px rgba(0, 0, 0, 0.3);
-    --font-size-body: 15px;
-    --font-size-summary: 16px;
-}
-
-.notification-list {
-    padding: 0;
-}
-
-.notification-group {
-    background: red;
-    /* margin: 8px 8px 0 8px; */
-    /* border-radius: 12px; */
-    /* background-color: @theme_unfocused_bg_color; */
-    /* border: 1px solid transparent; */
-}
-
-.notification-group:hover {
-    background: green;
-    /* background-color: @theme_unfocused_bg_color; */
-    /* border: 1px solid @theme_selected_bg_color; */
-}
-
-.text-button {
-    background: blue;
-    /* color: green; */
-}
-
-.notification-alt-actions,
-.notification-default-action {
-    background: yellow;
-}
-
-/* The main content of a notification */
-.notification-content {
-    background: blue;
-    padding: 8px;
-}
-
-.notification-content .summary {
-    font-size: 1.1rem;
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .summary {
+    font-size: 15px;
     font-weight: bold;
-    color: white;
-    background: pink;
+    margin: 0px 0px 5px 10px;
 }
 
-.notification-content .body {
-    font-size: 1.1rem;
-    color: white;
-    background: darkorchid;
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .time {
+    font-size: 13px;
+    font-weight: normal;
+    margin: 0px 30px 5px 10px;
 }
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .body {
+    font-size: 13px;
+    font-weight : normal;
+    margin: 0px 0px 0px 10px;
+}
+
 /*///////////////////////////////*/
-/*              */
+/* icon buttons                  */
 /*///////////////////////////////*/
 
 .text-button {
-    background: red;
-    /* color: green; */
+    background: var(--background-alt-color);
 }

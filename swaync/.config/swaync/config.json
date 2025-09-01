@@ -9,7 +9,7 @@
 
     "control-center-positionX": "center",
     "control-center-positionY": "top",
-    "control-center-height": 800,
+    "control-center-height": 600,
     "control-center-width": 600,
     "control-center-margin-top": 12,
     "fit-to-screen": false,
