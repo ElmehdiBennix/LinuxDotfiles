@@ -35,7 +35,7 @@ ripgrep
 neovim
 fzf
 jq
-bc 
+bc
 
 go
 gcc
@@ -80,7 +80,6 @@ waybar
 swaync
 
 rofi-wayland
-vicinae-bin
 
 nwg-displays
 
@@ -96,7 +95,7 @@ xdg-desktop-portal
 xdg-desktop-portal-hyprland     specific implementation that allows the portal to work with Hyprland
 
 # desktop apps
-nemo || smthing else
+nautilus
 vscode
 zen-browser
 brave
@@ -111,7 +110,6 @@ steam
 hydra
 postman
 hexchat
-
 
 # tray apps
 pavucontrol
@@ -156,3 +154,20 @@ ttf-material-symbols-variable-git
 qt5ct-kde
 qt6ct-kde
 nwg-look
+
+
+
+vicinae-bin
+sudo pacman -Syu --needed                     \
+    nodejs                      \
+    qt6-base            \
+    qt6-svg                     \
+    protobuf            \
+    cmark-gfm           \
+    layer-shell-qt      \
+    libqalculate        \
+    minizip                     \
+[C    qtkeychain-qt6
+
+
+udiskie

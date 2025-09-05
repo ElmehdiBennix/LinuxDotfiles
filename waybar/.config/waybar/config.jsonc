@@ -23,8 +23,8 @@
     ],
     "modules-right": [
         "tray",
-        "network",
-        "bluetooth",
+        // "network",
+        // "bluetooth",
         "group/audio",
         "group/battery-driver",
         "clock",
@@ -188,7 +188,7 @@
     "tray": {
         "icon-size": 14,
         "spacing": 8,
-        "reverse-direction": true
+        "reverse-direction": false
     },
 /////////////////////////////////////
     "network": {
@@ -251,8 +251,8 @@
                 ""
             ]
         },
-        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-        "on-click-right": "pavucontrol",
+        "on-click": "pavucontrol",
+        "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
         "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
         "tooltip": false,
@@ -266,8 +266,8 @@
         "interval": 1,
         "format": "{}",
         "tooltip": true,
-        "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
-        "on-click-right": "pavucontrol",
+        "on-click": "pavucontrol",
+        "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
         "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +5%",
         "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -5%"
     },

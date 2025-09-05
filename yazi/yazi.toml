@@ -1,15 +1,8 @@
-[mgr]
-show_hidden = true
-show_symlink = true
-sort_sensitive = false
-sort_reverse = false
-show_icons = true
-
-linemode = "size"
+# Yazi configuration file
 
 [opener]
 play = [
-    { run = 'clapper "$@"', orphan = true, for = "unix" },
+    { run = 'celluloid "$@"', orphan = true, for = "unix" },
 ]
 edit = [
     { run = 'nvim "$@"', desc = "nvim", block = true, for = "unix" },
@@ -18,7 +11,7 @@ open = [
     { run = 'xdg-open "$1"', desc = "Open", for = "unix" },
 ]
 reveal = [
-    { run = 'thunar "$(dirname "$1")"', desc = "Reveal", for = "unix" },
+    { run = 'xdg-open "$(dirname "$1")"', desc = "Reveal", for = "unix" },
     { run = '''exiftool "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
 ]
 pdf = [
@@ -46,10 +39,10 @@ rules = [
     # Markdown
     { mime = "text/markdown", use = ["markdown", "edit", "reveal"] },
     # Image
-    { mime = "image/*", use = ["open", "qview"] },
+    { mime = "image/*", use = ["open", "reveal"] },
     # Media
-    { mime = "video/*", use = ["play", "Clapper"] },
-    { mime = "audio/*", use = ["play", "Clapper"] },
+    { mime = "video/*", use = ["play", "reveal"] },
+    { mime = "audio/*", use = ["play", "reveal"] },
     # Archive
     { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = ["extract", "view_archive", "reveal"] },
     # PDF
@@ -65,3 +58,6 @@ rules = [
     # Fallback
     { name = "*", use = ["open", "reveal"] },
 ]
+
+[mgr]
+show_hidden = true

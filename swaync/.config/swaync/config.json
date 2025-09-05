@@ -3,8 +3,8 @@
     "positionX": "center",
     "positionY": "top",
 
-    "layer": "overlay",
     "layer-shell": true,
+    "layer": "overlay",
     "control-center-layer": "overlay",
 
     "control-center-positionX": "center",
@@ -40,17 +40,11 @@
     "relative-timestamps": true,
 
     "widgets": [
-        "buttons-grid",
         "mpris",
         "notifications",
-        "title"
+        "buttons-grid"
     ],
     "widget-config": {
-        "title": {
-            "text": "",
-            "clear-all-button": true,
-            "button-text": "Clear All"
-        },
         "mpris": {
             "autohide": true,
             "show-album-art": "never",
@@ -84,6 +78,14 @@
                 {
                     "label": " Toggle wall",
                     "command": "/path/to/toggle_animations.sh"
+                },
+                {
+                    "label": " clear all",
+                    "command": "/path/to/toggle_animations.sh"
+                },
+                {
+                    "label": " clear all",
+                    "command": "swaync-client -C"
                 }
             ]
         }
