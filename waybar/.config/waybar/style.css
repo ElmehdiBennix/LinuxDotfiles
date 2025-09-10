@@ -15,7 +15,8 @@
 
 /* Main window styling */
 window#waybar {
-    background: transparent;
+    background: rgba(0, 0, 0, 0.4);
+    /* border-radius: 10px; */
 }
 
 /*
@@ -48,10 +49,10 @@ window#waybar {
 #battery,
 #workspaces,
 #systemd-failed-units {
-    background-color: rgba(0, 0, 0, 0.4);
+    /* background-color: rgba(0, 0, 0, 0.4); */
     color: @on_background;
-    padding: 0 12px;
-    margin: 0 4px;
+    padding: 0 7px;
+    margin: 0 0px;
     border-radius: 10px;
     min-height: 30px;
 }

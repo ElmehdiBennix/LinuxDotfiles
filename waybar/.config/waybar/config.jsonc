@@ -5,7 +5,7 @@
     "layer": "top",
     "position": "top",
     "spacing": 0,
-    "margin": "8px 8px 0 8px",
+    // "margin": "8px 8px 0px 8px",
     "reload_style_on_change": true,
 //////////////////////////////////////////////////////////////////////////
 //  Modules order
@@ -19,12 +19,9 @@
         "custom/updates",
         "hyprland/workspaces",
         "custom/notification"
-
     ],
     "modules-right": [
         "tray",
-        // "network",
-        // "bluetooth",
         "group/audio",
         "group/battery-driver",
         "clock",
@@ -187,7 +184,7 @@
 //////////////////////////////////////////////////////////////////////////
     "tray": {
         "icon-size": 14,
-        "spacing": 8,
+        "spacing": 14,
         "reverse-direction": false
     },
 /////////////////////////////////////

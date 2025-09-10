@@ -71,7 +71,6 @@ hyprland
 hyprland-virtual-desktops:plugin
 hyprlock
 hypridle
-hyprswitch
 hyprpicker
 hyprshot
 polkit-gnome
@@ -117,7 +116,7 @@ nm-applet
 blueman
 KeePassXc
 kdeconnect
-Mcontrolcenter
+mcontrolcenter
 
 # package management
 pamac
@@ -171,3 +170,7 @@ sudo pacman -Syu --needed                     \
 
 
 udiskie
+libreoffice-fresh
+libva-nvidia-driver
+
+qview
