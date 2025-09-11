@@ -1,0 +1,16 @@
+# Theme
+romkatv/powerlevel10k
+
+# Completions
+zsh-users/zsh-completions
+Aloxaf/fzf-tab
+
+# Syntax & Suggestions
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-autosuggestions
+
+# Oh My Zsh Plugins
+ohmyzsh/ohmyzsh kind:omz plugin:git
+ohmyzsh/ohmyzsh kind:omz plugin:cp
+ohmyzsh/ohmyzsh kind:omz plugin:common-aliases
+ohmyzsh/ohmyzsh kind:omz plugin:colored-man-pages

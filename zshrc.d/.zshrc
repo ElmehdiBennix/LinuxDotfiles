@@ -1,25 +1,24 @@
 #########################################################################
-# ZINIT
+# ANTIDOTE & THEME
 #########################################################################
 
-#zinit plugin mannager
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-
-[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
-[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-source "${ZINIT_HOME}/zinit.zsh"
-
-#########################################################################
-# THEME
-#########################################################################
-
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+# Automatically install Antidote if it's not already present
+if [ ! -d "$HOME/.antidote" ]; then
+  git clone --depth=1 https://github.com/mattmc3/antidote.git "$HOME/.antidote"
+fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+# Initialization code that may require console input must go above this block.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Source Antidote's generated static plugin file for max performance
+# If the static file doesn't exist yet, source Antidote directly to make its commands available
+if [[ -f ~/.zsh_plugins.zsh ]]; then
+  source ~/.zsh_plugins.zsh
+else
+  source ~/.antidote/antidote.zsh
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -31,14 +30,10 @@ fi
 
 autoload -Uz compinit
 compinit
-zinit cdreplay -q
 
 #########################################################################
 # TAB COMPLETIONS
 #########################################################################
-
-zinit ice depth=1; zinit light zsh-users/zsh-completions
-zinit ice depth=1; zinit light Aloxaf/fzf-tab
 
 # Completion settings:
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -96,26 +91,6 @@ zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm,cmd
 # including a preview of the command being executed for the selected PID.
 zstyle ':fzf-tab:complete:kill:argument-rest' extra-opts --preview='$extract ps --pid=$in[(w)1] -o cmd --no-headers -w -w' --preview-window=down:3:wrap
 
-
-#########################################################################
-# ZSH PLUGGINGS
-#########################################################################
-
-zinit ice depth=1; zinit light zsh-users/zsh-syntax-highlighting
-zinit ice depth=1; zinit light zsh-users/zsh-autosuggestions
-
-#########################################################################
-# ZSH snippets
-#########################################################################
-
-zinit snippet OMZP::git
-zinit snippet OMZP::cp
-zinit snippet OMZP::common-aliases
-zinit snippet OMZP::colored-man-pages
-# zinit snippet OMZP::dotenv
-# zinit snippet OMZP::docker
-# zinit snippet OMZP::copyfile
-# zinit snippet OMZP::copypath
 
 #########################################################################
 # history settings
