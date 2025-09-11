@@ -24,7 +24,7 @@ nmap
 # dev / terminal
 fastfetch
 btop
-
+curlie
 zsh
 zellij
 
@@ -71,8 +71,11 @@ hyprland
 hyprland-virtual-desktops:plugin
 hyprlock
 hypridle
-hyprpicker
+hyprsunset
+hyprlux
 hyprshot
+hyprpicker
+
 polkit-gnome
 
 waybar
@@ -100,15 +103,21 @@ zen-browser
 brave
 kitty || ghostty
 obs
+
+stremio
+qview
 vlc
 mpv
-micro
+
 qbittorrent
-streamio
 steam
 hydra
-postman
-hexchat
+libreoffice-fresh
+
+Tailscale
+pinta
+LocalSend
+Kdenlive
 
 # tray apps
 pavucontrol
@@ -117,6 +126,7 @@ blueman
 KeePassXc
 kdeconnect
 mcontrolcenter
+udiskie
 
 # package management
 pamac
@@ -124,18 +134,11 @@ paru
 nixpkgs
 flatpak
 
-========================================================================================
-
-hyprsunset || to able to control blue light
-hyprcursor ||
-hyprlux || flux like tool
 
 
 p7zip || and a frontend peazip
 lollypop
 yt-dlp
-
-wev
 
 speedtest-cli
 
@@ -145,16 +148,14 @@ matigen
 breeze-gtk
 breeze
 breeze5
-tela-icon-theme
 
+tela-icon-theme
 ttf-jetbrains-mono-nerd
-ttf-material-symbols-variable-git
+cusor pack
 
 qt5ct-kde
 qt6ct-kde
 nwg-look
-
-
 
 vicinae-bin
 sudo pacman -Syu --needed                     \
@@ -167,10 +168,3 @@ sudo pacman -Syu --needed                     \
     libqalculate        \
     minizip                     \
 [C    qtkeychain-qt6
-
-
-udiskie
-libreoffice-fresh
-libva-nvidia-driver
-
-qview

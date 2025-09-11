@@ -149,7 +149,6 @@ setopt hist_find_no_dups
 # aliases
 #########################################################################
 
-alias fetch="fastfetch --config examples/13.jsonc"
 alias CODE="/bin/code"
 alias code="code --reuse-window"
 alias tree="eza --icons=always --colour=always --tree"
@@ -252,4 +251,4 @@ fi
 export GEMINI_API_KEY="AIzaSyDpVgFAZLRza3miBf-baz16ZkaJzOAyhIc"
 export PATH="$PATH:$HOME/.local/bin:$HOME/.local/scripts"
 
-fetch
+fastfetch

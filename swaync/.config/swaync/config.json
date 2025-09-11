@@ -68,23 +68,23 @@
                     "command": "hyprpicker -a -f hex"
                 },
                 {
-                    "label": " Hypr Sunset",
+                    "label": "flux",
                     "command": "hyprctl exec sunset"
                 },
                 {
-                    "label": "󰋏 Settings",
+                    "label": "wallpaper",
                     "command": "swaync-client -t -sw"
                 },
                 {
-                    "label": " Toggle wall",
+                    "label": " airplane ",
                     "command": "/path/to/toggle_animations.sh"
                 },
                 {
-                    "label": " clear all",
+                    "label": " reload",
                     "command": "/path/to/toggle_animations.sh"
                 },
                 {
-                    "label": " clear all",
+                    "label": "clear all",
                     "command": "swaync-client -C"
                 }
             ]
