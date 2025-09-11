@@ -244,11 +244,32 @@ unloadenv() {
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
 
-if [[ -f "$HOME/.cache/matugen/tty_colors.sh" ]]; then
-    source "$HOME/.cache/matugen/tty_colors.sh"
-fi
-
 export GEMINI_API_KEY="AIzaSyDpVgFAZLRza3miBf-baz16ZkaJzOAyhIc"
 export PATH="$PATH:$HOME/.local/bin:$HOME/.local/scripts"
+
+# Load TTY colors
+if [[ -f "$HOME/.cache/matugen/tty_colors" ]]; then
+  source "$HOME/.cache/matugen/tty_colors"
+
+  # Apply ANSI escape sequences for 16-color TTY
+  print -Pn "\e]4;0;${COLOR_0}\a"
+  print -Pn "\e]4;1;${COLOR_1}\a"
+  print -Pn "\e]4;2;${COLOR_2}\a"
+  print -Pn "\e]4;3;${COLOR_3}\a"
+  print -Pn "\e]4;4;${COLOR_4}\a"
+  print -Pn "\e]4;5;${COLOR_5}\a"
+  print -Pn "\e]4;6;${COLOR_6}\a"
+  print -Pn "\e]4;7;${COLOR_7}\a"
+
+  print -Pn "\e]4;8;${COLOR_8}\a"
+  print -Pn "\e]4;9;${COLOR_9}\a"
+  print -Pn "\e]4;10;${COLOR_10}\a"
+  print -Pn "\e]4;11;${COLOR_11}\a"
+  print -Pn "\e]4;12;${COLOR_12}\a"
+  print -Pn "\e]4;13;${COLOR_13}\a"
+  print -Pn "\e]4;14;${COLOR_14}\a"
+  print -Pn "\e]4;15;${COLOR_15}\a"
+fi
+
 
 fastfetch

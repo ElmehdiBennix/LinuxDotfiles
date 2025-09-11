@@ -10,41 +10,40 @@ set = true
 
 [templates.hyprland]
 input_path = './templates/hyprland-colors.conf'
-output_path = '~/.config/hypr/colors.conf'
+output_path = '~/.config/hypr/0_session/colors.conf'
 post_hook = 'hyprctl reload'
-
-[templates.swaync]
-input_path = './templates/colors.css'
-output_path = '~/.config/swaync/colors.css'
 
 [templates.waybar]
 input_path = './templates/colors.css'
 output_path = '~/.config/waybar/colors.css'
-post_hook = 'pkill -SIGUSR2 waybar'
+post_hook = 'pkill waybar && waybar >/dev/null 2>&1 &'
+
+[templates.swaync]
+input_path = './templates/colors.css'
+output_path = '~/.config/swaync/colors.css'
+post_hook = 'swaync-client --reload-css'
+
+[templates.wlogout]
+input_path = './templates/colors.css'
+output_path = '~/.config/wlogout/colors.css'
 
 [templates.rofi]
 input_path = './templates/rofi-colors.rasi'
 output_path = '~/.config/rofi/colors.rasi'
 
-####################################################################
-
 [templates.tty]
-input_path = "./templates/tty-colors.sh.tpl"
-output_path = "~/.cache/matugen/tty_colors.sh"
-
-[templates.kitty]
-input_path = './templates/kitty-colors.conf'
-output_path = '~/.config/kitty/colors.conf'
-post_hook = 'pkill -SIGUSR1 kitty'
+input_path = "./templates/tty-colors.tpl"
+output_path = "~/.cache/matugen/tty_colors"
+post_hook = 'source ~/.zshrc'
 
 ####################################################################
 
-# --- GTK3 & GTK4 Theming --- # Breeze needed
+# --- GTK3 & GTK4 Theming --- # needs breeze breeze5 breeze-icons breeze-gtk qt6ct-kde qt5ct-kde
 
 [templates.gtk3]
 input_path = './templates/gtk-colors.css'
 output_path = '~/.config/gtk-3.0/gtk.css'
-post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme Breeze-Dark'
+post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme Breeze'
 
 [templates.gtk4]
 input_path = './templates/gtk-colors.css'
@@ -53,5 +52,5 @@ output_path = '~/.config/gtk-4.0/gtk.css'
 # --- Qt5 & Qt6 Theming ---
 
 [templates.qt]
-input_path = './templates/Matugen.colors'
+input_path = './templates/qt.colors'
 output_path = '~/.local/share/color-schemes/Matugen.colors'

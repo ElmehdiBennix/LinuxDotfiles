@@ -65,7 +65,7 @@
                 },
                 {
                     "label": "󰏘 Color Pick",
-                    "command": "hyprpicker -a -f hex"
+                    "command": "hyprpicker --autocopy --format=hex"
                 },
                 {
                     "label": "flux",
