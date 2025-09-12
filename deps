@@ -170,3 +170,6 @@ sudo pacman -Syu --needed                     \
     libqalculate        \
     minizip                     \
 [C    qtkeychain-qt6
+
+
+franz
