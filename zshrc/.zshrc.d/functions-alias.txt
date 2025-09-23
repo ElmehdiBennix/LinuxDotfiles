@@ -1,0 +1,163 @@
+#########################################################################
+# aliases
+#########################################################################
+
+alias CODE="/bin/code"
+alias code="code --reuse-window"
+alias tree="eza --icons=always --colour=always --tree"
+alias LS="/bin/ls"
+alias ls="eza --icons=always --colour=always"
+alias la="ls -la"
+alias CD="/bin/cd"
+alias cd="z"
+alias CAT="/bin/cat"
+alias cat="bat --color=always --plain"
+alias grep="rg"
+alias size="dust -d 1"
+alias zshrc="vim ~/.zshrc"
+alias f="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+alias d="find . -type d 2>/dev/null | fzf --height 40% --preview='eza --icons=always --long --tree --level 2 {}'"
+# alias cpfile="copyfile"
+# alias cppath="copypath"
+
+#########################################################################
+# functions
+#########################################################################
+
+zelat() {
+ local session
+ session=$(zellij ls -r | fzf --ansi --height 10% --reverse --style=full | awk {'print $1'})
+ zellij attach $session
+}
+
+# clone personel repos
+ghf() {
+    repo=$(gh repo list | awk '{print $1}' | fzf --height 40% --reverse --preview "gh repo view {}" --preview-window=up:50%:wrap )
+    if [[ -n "$repo" ]]; then
+        gh repo clone $repo
+    fi
+}
+
+# Folder search with fzf and eza tree preview
+c() {
+  local dir
+  dir=$(find $HOME -type d 2>/dev/null | fzf --height 40% --preview="eza --icons=always --long --tree --level 2 {}")
+  [ -n "$dir" ] && z "$dir"  # Change to `cd "$dir"` if not using z
+}
+
+# Function to load environment variables from a .env file
+# Usage: loadenv [filename]
+# Defaults to .env if no filename is provided
+loadenv() {
+  local env_file
+  if [ -n "$1" ]; then
+    env_file="$1"
+  else
+    env_file=".env"
+  fi
+
+  if [ -f "$env_file" ]; then
+    # Use the robust method to export vars, handling comments and spaces
+    source <(grep -v '^#' "$env_file" | sed 's/^/export /')
+    echo "✅ Loaded environment variables from '$env_file'"
+  else
+    echo "❌ Error: '$env_file' not found." >&2
+    return 1
+  fi
+}
+
+# Function to unload environment variables from a .env file
+# Usage: unloadenv [filename]
+# Defaults to .env if no filename is provided
+unloadenv() {
+  local env_file
+  if [ -n "$1" ]; then
+    env_file="$1"
+  else
+    env_file=".env"
+  fi
+
+  if [ -f "$env_file" ]; then
+    # Unset the variables by reading their names from the file
+    # `cut -d'=' -f1` gets everything before the first '='
+    for var in $(grep -v '^#' "$env_file" | cut -d'=' -f1); do
+      unset "$var"
+    done
+    echo "💨 Unloaded environment variables from '$env_file'"
+  else
+    echo "❌ Error: '$env_file' not found." >&2
+    return 1
+  fi
+}
+
+
+
+#################
+#### ALIASES ####
+#################
+
+# CLI Utility
+alias ls='eza --color=always --group-directories-first --icons'
+alias ll='eza -l --color=always --group-directories-first --icons --git --time-style=long-iso'
+alias la='eza -a --color=always --group-directories-first --icons'
+alias l='eza -lah --color=always --group-directories-first --icons --git --time-style=long-iso'
+alias lt='eza -aT --color=always --group-directories-first --icons'
+alias l.='eza -a | grep -E "^\."' # Show only dotfiles
+alias h='history'
+
+# Navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+
+# Git
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gcl='git clone'
+alias gl='git log --oneline'
+alias gd='git diff'
+alias gpush='git push'
+alias gpull='git pull'
+
+# System
+alias install='paru -S'
+alias update='paru -Syu'
+alias search='paru -Ss'
+alias lsearch='paru -Qs'
+alias remove='paru -Rns'
+alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+alias backup='sudo timeshift --create --comments "archbtw-backup-$(date +%Y%m%d)"'
+alias shutdown='systemctl poweroff'
+alias du='dust'
+
+##########################
+#### CUSTOM FUNCTIONS ####
+##########################
+
+# Utility
+mkcd() {
+    mkdir -p "$1" && cd "$1"
+}
+
+extract() {
+    if [ -f "$1" ]; then
+    case "$1" in
+    *.tar.bz2) tar xjf "$1" ;;
+    *.tar.gz) tar xzf "$1" ;;
+    *.bz2) bunzip2 "$1" ;;
+    *.rar) unrar x "$1" ;;
+    *.gz) gunzip "$1" ;;
+    *.tar) tar xvf "$1" ;;
+    *.tbz2) tar xjf "$1" ;;
+    *.tgz) tar xzf "$1" ;;
+    *.zip) unzip "$1" ;;
+    *.Z) uncompress "$1" ;;
+    *.7z) 7z x "$1" ;;
+    *) echo "'$1' cannot be extracted via extract()" ;;
+    esac
+    else
+    echo "'$1' is not a valid file"
+    fi
+}

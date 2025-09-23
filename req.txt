@@ -172,4 +172,3 @@ sudo pacman -Syu --needed                     \
 [C    qtkeychain-qt6
 
 
-franz
