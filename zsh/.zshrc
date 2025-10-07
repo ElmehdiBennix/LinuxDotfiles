@@ -164,6 +164,15 @@ alias d="find . -type d 2>/dev/null | fzf --height 40% --preview='eza --icons=al
 # alias cpfile="copyfile"
 # alias cppath="copypath"
 
+alias parus="paru -Slq | fzf --multi --preview 'paru -Si {1}' | xargs -ro paru -S"
+alias parur="paru -Qeq | fzf --multi --preview 'paru -Qi {1}' | xargs -ro paru -Rns"
+
+# Navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+
 #########################################################################
 # functions
 #########################################################################
@@ -243,6 +252,8 @@ eval "$(zoxide init zsh)"
 
 export GEMINI_API_KEY="AIzaSyDpVgFAZLRza3miBf-baz16ZkaJzOAyhIc"
 # export GEMINI_API_KEY="AIzaSyBNWItsTpj-xXtpWyiCpOiS9UEX90yQOqg"
+# export GEMINI_API_KEY="AIzaSyDRyBtw1_pxSBk1-AO6KzU8SO3XDBXW_FA"
+
 export PATH="$PATH:$HOME/.local/bin:$HOME/.local/scripts"
 
 # Load TTY colors
