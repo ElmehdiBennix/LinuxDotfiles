@@ -1,0 +1,167 @@
+{
+    // ====================================================================
+    // WORKBENCH & WINDOW (UI Layout and Appearance)
+    // ====================================================================
+    // workbench layout
+    "workbench.iconTheme": "catppuccin-mocha",
+    "workbench.layoutControl.enabled": false, // Disables the layout control, which allows you to toggle between different layouts.
+    "workbench.sideBar.location": "right", // Moves the Sidebar (Explorer) to the right side of the screen
+    "workbench.activityBar.location": "bottom", // Moves the Activity Bar to the bottom of the sidebar
+    "workbench.tips.enabled": false,
+    // window appearance
+    "window.controlsStyle": "custom", // Uses VS Code's custom window control buttons instead of the OS default ones
+    "window.title": "${activeEditorShort}${separator}${rootName}", // Customizes the text displayed in the window title bar
+    "window.density.editorTabHeight": "compact", // Reduces the height of the editor tabs for a more compact look
+    "window.menuBarVisibility": "toggle", // hide top Menu Bar (File, Edit, etc.)—press Alt to show it temporarily
+    "window.commandCenter": false, // hide Command bar at the very top of the window
+    "window.newWindowDimensions": "inherit", // new windows open with the same dimensions as the last one
+    // telemetry
+    "telemetry.telemetryLevel": "off", // Prevents usage data and crash reports from being sent to Microsoft
+    // workspace tabs limit
+    "workbench.editor.enablePreview": true,
+    "workbench.editor.limit.enabled": true,
+    "workbench.editor.limit.value": 10,
+    "workbench.editor.limit.perEditorGroup": true,
+    // ====================================================================
+    // EDITOR VISUALS (Typography and UI Minimalism)
+    // ====================================================================
+    // editor font settings
+    "editor.fontFamily": "JetBrainsMono Nerd Font",
+    "editor.fontSize": 13,
+    // cursor settings
+    "editor.cursorSmoothCaretAnimation": "on", // Makes the cursor move smoothly between characters when typing
+    "editor.cursorStyle": "line", // Sets the cursor to a standard vertical line
+    "editor.cursorBlinking": "solid", // Stops the cursor from blinking (stays solid)
+    "editor.cursorSurroundingLines": 10, // Keeps 8 lines of context visible above and below the cursor when scrolling
+    // editor visuals
+    "editor.wordWrap": "on", // Automatically wraps long lines of code to the next line
+    "editor.minimap.enabled": false, // Hides the "Minimap" (the code bird's-eye view on the side)
+    "editor.stickyScroll.enabled": false, // sticky scroll feature that keeps context lines like function or class names visible at the top
+    "editor.scrollbar.horizontal": "hidden", // Hides the horizontal scrollbar entirely
+    "editor.scrollbar.vertical": "hidden", // Hides the vertical scrollbar entirely
+    "editor.scrollbar.verticalScrollbarSize": 0, // to emnsure vertical scrollbar is hidden
+    // editor highlights and guides
+    "editor.renderWhitespace": "trailing", // Shows whitespace (dots) only for spaces at the end of a line
+    "editor.selectionHighlight": true, // shows other instances of the selected word in the file
+    "editor.occurrencesHighlight": "multiFile", // all occurrences of a word when your cursor is on it
+    "editor.guides.indentation": false, // Hides the vertical lines that show indentation levels
+    "editor.matchBrackets": "near", // shows which bracket matches the one you clicked
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true, // Uses different colors for different types of brackets
+    "editor.renderLineHighlight": "gutter", // hints the entire line number area
+    "editor.renderControlCharacters": false, // Hides special characters (like line breaks) in the editor
+    // ====================================================================
+    // EDITOR BEHAVIOR (Editing Experience)
+    // ====================================================================
+    "editor.linkedEditing": true, // automatically edits the closing tag at the same time
+    "editor.detectIndentation": false, // forces vscode to use my personal settings for indetation tabs vs spaces
+    "editor.copyWithSyntaxHighlighting": false, // Disables copying code with syntax highlighting formatting
+    // Go To Definition / Navigation logic
+    "editor.gotoLocation.multipleDeclarations": "goto", // Jumps to code if only one result exists
+    "editor.gotoLocation.multipleDefinitions": "goto", // Jumps directly to definition
+    "editor.gotoLocation.multipleImplementations": "goto", // Jumps directly to implementation
+    "editor.gotoLocation.multipleReferences": "goto", // Jumps directly to references
+    "editor.gotoLocation.multipleTypeDefinitions": "goto", // Jumps directly to type definition
+    // ====================================================================
+    // IntelliSense & Suggestions
+    // ====================================================================
+    "editor.suggestFontSize": 12, // Sets the font size specifically for the autocomplete suggestion box
+    "editor.suggestLineHeight": 20, // Sets the spacing between lines in the autocomplete suggestion box
+    "editor.quickSuggestionsDelay": 0, // Makes suggestions appear instantly (0ms delay)
+    "editor.hover.delay": 400, // Controls the delay (in ms) before the hover documentation popup appears
+    // tab complition
+    "editor.acceptSuggestionOnEnter": "off", // Prevents accidental completions when hitting Enter
+    "editor.tabCompletion": "on", // Tab completes snippets and suggestions (Much faster)
+    // suggestion order
+    "editor.snippetSuggestions": "top", // Shows code snippets at the top of autocomplete suggestions
+    "editor.suggestSelection": "recentlyUsed", // Learns your autocomplete preferences
+    // Ghost suggestions in text
+    "editor.suggest.preview": false,
+    // ====================================================================
+    // FILES (File Saving)
+    // ====================================================================
+    "files.autoSave": "afterDelay", // Automatically saves your files after a short period of time
+    "files.trimTrailingWhitespace": true, // Removes all empty spaces at the end of every line when saving
+    "files.insertFinalNewline": true, // Adds a blank line at the very end of the file when saving
+    "files.trimFinalNewlines": true, // Removes any extra blank lines found at the end of the file when saving
+    "editor.formatOnSave": true, // Automatically formats your file every time you save
+    "editor.codeActionsOnSave": { // Automatically applies code actions (like fixing imports) when saving
+        "source.organizeImports": "explicit",
+        "source.fixAll": "explicit",
+        "source.addMissingImports": "explicit"
+    },
+    // ====================================================================
+    // SEARCH
+    // ====================================================================
+    "search.smartCase": true, // Makes searches case-sensitive only if uppercase letters are used
+    "search.exclude": { // Files ignored during searches
+        "**/node_modules": true,
+        "**/dist": true,
+        "**/build": true
+    },
+    // ====================================================================
+    // EXPLORER (File Handling)
+    // ====================================================================
+    "workbench.tree.renderIndentGuides": "none", // Hides the vertical indentation lines in the file explorer and other tree views
+    "explorer.compactFolders": false, // Prevents the sidebar from merging empty intermediate folders into one line
+    "explorer.confirmDelete": false, // Skips the "Are you sure?" dialog when deleting a file
+    "explorer.confirmDragAndDrop": false, // Skips the "Are you sure?" dialog when moving files via drag and drop
+    "explorer.confirmPasteNative": false, // Skips the "Are you sure?" dialog when pasting files in the explorer
+    "files.exclude": { // Files and folders matching these patterns will be hidden from the sidebar
+        "**/.git": true,
+        "**/.DS_Store": false,
+        "**/.hg": false,
+        "**/.svn": false,
+        "**/CVS": false,
+        "**/Thumbs.db": false
+    },
+    // ====================================================================
+    // TERMINAL (Integrated Terminal Settings)
+    // ====================================================================
+    "workbench.panel.opensMaximized": "always",
+    "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font", // Sets the font family for the terminal text
+    "terminal.integrated.fontSize": 13, // Sets the font size for the terminal text
+    "terminal.integrated.cursorStyle": "block", // Sets the terminal cursor to a solid block
+    "terminal.integrated.cursorBlinking": true, // Makes the terminal cursor blink
+    "terminal.integrated.scrollback": 10000, // Keeps up to 10,000 lines of command history in the terminal buffer
+    "terminal.integrated.confirmOnKill": "always", // Always asks for confirmation before closing a terminal with running processes
+    "terminal.integrated.rightClickBehavior": "default", // Sets the terminal right-click to the system default behavior
+    "terminal.integrated.tabs.enabled": true,
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.commandsToSkipShell": [
+        // Pane managment
+        "workbench.action.focusPreviousGroup",
+        "workbench.action.focusNextGroup",
+        "workbench.action.focusAboveGroup",
+        "workbench.action.focusBelowGroup",
+        "workbench.action.moveEditorToPreviousGroup",
+        "workbench.action.moveEditorToNextGroup",
+        "workbench.action.moveEditorToAboveGroup",
+        "workbench.action.moveEditorToBelowGroup",
+        // UI toggles
+        "workbench.action.toggleSidebarVisibility",
+        "workbench.action.toggleAuxiliaryBar",
+        "workbench.action.togglePanel",
+        "workbench.action.toggleMaximizeEditorGroup",
+        // Terminal
+        "workbench.action.terminal.new",
+        "workbench.action.createTerminalEditor",
+        "workbench.action.terminal.focusNext",
+        "workbench.action.terminal.focusPrevious"
+    ],
+    // ====================================================================
+    // SOURCE CONTROL (Git and Diffs)
+    // ====================================================================
+    "git.autofetch": "all",
+    "git.enableSmartCommit": true,
+    "git.enableCommitSigning": true,
+    "diffEditor.ignoreTrimWhitespace": true,
+    "scm.diffDecorations": "none"
+    // ====================================================================
+    // EXTENSIONS
+    // ====================================================================
+
+
+    // ====================================================================
+    // END OF SETTINGS
+    // ====================================================================
+}

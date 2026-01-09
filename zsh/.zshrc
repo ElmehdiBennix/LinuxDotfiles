@@ -250,7 +250,7 @@ unloadenv() {
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
 
-# export GEMINI_API_KEY="AIzaSyDpVgFAZLRza3miBf-baz16ZkaJzOAyhIc"
+export GEMINI_API_KEY="AIzaSyDpVgFAZLRza3miBf-baz16ZkaJzOAyhIc"
 # export GEMINI_API_KEY="AIzaSyBNWItsTpj-xXtpWyiCpOiS9UEX90yQOqg"
 # export GEMINI_API_KEY="AIzaSyDRyBtw1_pxSBk1-AO6KzU8SO3XDBXW_FA"
 
