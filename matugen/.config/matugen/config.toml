@@ -23,18 +23,15 @@ input_path = './templates/colors.css'
 output_path = '~/.config/swaync/colors.css'
 post_hook = 'swaync-client --reload-css'
 
-[templates.wlogout]
-input_path = './templates/colors.css'
-output_path = '~/.config/wlogout/colors.css'
-
-[templates.rofi]
-input_path = './templates/rofi-colors.rasi'
-output_path = '~/.config/rofi/colors.rasi'
-
 [templates.tty]
 input_path = "./templates/tty-colors.tpl"
 output_path = "~/.cache/matugen/tty_colors"
 post_hook = 'source ~/.zshrc'
+
+[templates.vicinae]
+input_path = "./templates/vicinae-colors.toml"
+output_path = "~/.local/share/vicinae/themes/matugen.toml"
+post_hook = 'vicinae theme set matugen'
 
 ####################################################################
 

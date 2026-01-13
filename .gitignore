@@ -1,0 +1,4 @@
+
+**/.zsh/.env*
+gha-creds-*.json
+.*env*

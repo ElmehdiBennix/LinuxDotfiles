@@ -1,47 +1,41 @@
 
+ddcutil
+
+envycontrol
+nvidia-container-toolkit
+msi-ec-git
+mcontrolcenter
+
 # admin / servers
 ly
-# systemctl enable ly.service
-# systemctl disable getty@tty2.service
-
 ssh
 ufw
 sunshine
-# cockpit
 upnp
 auto-cpufreq
-envycontrol
-nvidia-container-toolkit
 rclone
-
 brightnessctl
-ddcutil
-
-msi-ec-git
 libva-utils | vainfo to check hardware acceleration drivers for intel
 nmap
 
-# dev / terminal
+zsh
 fastfetch
 btop
-curlie
-zsh
 zellij
-
-exa
+stow
+eza
 zoxide
 bat
 ripgrep
 neovim
 fzf
 jq
-bc
-
+curlie
+bc # for now i can change it to python cal
 go
 gcc
 make
-
-stow
+speedtest++
 
 lazygit
 git
@@ -59,67 +53,65 @@ gemini
 python3
 python-pip
 python-pipx
-python-pywal
 
 distrobox
 
 # desktop env
-waypaper // will be removed
-swww
-
 hyprland
 hyprland-virtual-desktops:plugin
 hyprlock
 hypridle
-hyprsunset
-hyprlux
 hyprshot
 hyprpicker
 
 polkit-gnome
+xdg-desktop-portal
+xdg-desktop-portal-hyprland     specific implementation that allows the portal to work with Hyprland
+
+awww
+matugen
+
+cursor pack
+tela-icon-theme
+ttf-jetbrains-mono-nerd
+
+breeze
+breeze-gtk
+breeze5
+
+nwg-look
+qt5ct-kde
+qt6ct-kde
 
 waybar
 swaync
 
-rofi-wayland
-
 nwg-displays
 
-wl-clipboard
-cliphist
-
-# desktop-portal
-pipewire     The media server
-wireplumber      The modern session manager for PipeWire
 
 
-xdg-desktop-portal
-xdg-desktop-portal-hyprland     specific implementation that allows the portal to work with Hyprland
 
 # desktop apps
 nautilus
 vscode
 zen-browser
-brave
+chrome
 kitty || ghostty
 obs
 
 legcord-bin
 
-stremio
 qview
-vlc
 mpv
+vlc
+stremio
 
 qbittorrent
 steam
 hydra
 libreoffice-fresh
 
-Tailscale
-pinta
-LocalSend
-Kdenlive
+
 
 # tray apps
 pavucontrol
@@ -127,48 +119,48 @@ nm-applet
 blueman
 KeePassXc
 kdeconnect
-mcontrolcenter
 udiskie
 
+
+
+
+
+
+vicinae-bin
+sudo pacman -Syu --needed  \
+    nodejs                 \
+    qt6-base               \
+    qt6-svg                \
+    protobuf               \
+    cmark-gfm              \
+    layer-shell-qt         \
+    libqalculate           \
+    minizip                \
+    qtkeychain-qt6
+
 # package management
-pamac
 paru
 nixpkgs
 flatpak
+flatseal
 
 
+
+
+hyprsunset
+hyprlux
 
 p7zip || and a frontend peazip
 lollypop
-yt-dlp
 
-speedtest-cli
+Tailscale
+pinta
+LocalSend
+Kdenlive
 
+wl-clipboard
+cliphist
 
-matigen
-
-breeze-gtk
-breeze
-breeze5
-
-tela-icon-theme
-ttf-jetbrains-mono-nerd
-cusor pack
-
-qt5ct-kde
-qt6ct-kde
-nwg-look
-
-vicinae-bin
-sudo pacman -Syu --needed                     \
-    nodejs                      \
-    qt6-base            \
-    qt6-svg                     \
-    protobuf            \
-    cmark-gfm           \
-    layer-shell-qt      \
-    libqalculate        \
-    minizip                     \
-[C    qtkeychain-qt6
-
-
+# desktop-portal
+pipewire     The media server
+wireplumber      The modern session manager for PipeWire
