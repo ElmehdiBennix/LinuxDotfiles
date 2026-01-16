@@ -127,16 +127,7 @@ udiskie
 
 
 vicinae-bin
-sudo pacman -Syu --needed  \
-    nodejs                 \
-    qt6-base               \
-    qt6-svg                \
-    protobuf               \
-    cmark-gfm              \
-    layer-shell-qt         \
-    libqalculate           \
-    minizip                \
-    qtkeychain-qt6
+
 
 # package management
 paru
