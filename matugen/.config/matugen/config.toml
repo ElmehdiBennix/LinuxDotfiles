@@ -14,12 +14,12 @@ output_path = '~/.config/hypr/0_session/colors.conf'
 post_hook = 'hyprctl reload'
 
 [templates.waybar]
-input_path = './templates/colors.css'
+input_path = './templates/css-colors.css'
 output_path = '~/.config/waybar/colors.css'
 post_hook = 'pkill waybar && waybar >/dev/null 2>&1 &'
 
 [templates.swaync]
-input_path = './templates/colors.css'
+input_path = './templates/css-colors.css'
 output_path = '~/.config/swaync/colors.css'
 post_hook = 'swaync-client --reload-css'
 
