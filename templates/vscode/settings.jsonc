@@ -3,7 +3,6 @@
     // WORKBENCH & WINDOW (UI Layout and Appearance)
     // ====================================================================
     // workbench layout
-    "workbench.iconTheme": "catppuccin-mocha",
     "workbench.layoutControl.enabled": false, // Disables the layout control, which allows you to toggle between different layouts.
     "workbench.sideBar.location": "right", // Moves the Sidebar (Explorer) to the right side of the screen
     "workbench.activityBar.location": "bottom", // Moves the Activity Bar to the bottom of the sidebar
