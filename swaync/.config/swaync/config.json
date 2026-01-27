@@ -53,7 +53,7 @@
         "buttons-grid": {
             "actions": [
                 {
-                    "label": "󰸏 Idle Inhib",
+                    "label": " Idle Inhib",
                     "type": "toggle",
                     "command": "swaync-client --inhibitor-add hypridle",
                     "update-command": "swaync-client --inhibitor-list | grep -q hypridle && echo true || echo false",
@@ -80,11 +80,11 @@
                     "command": "/path/to/toggle_animations.sh"
                 },
                 {
-                    "label": " reload",
+                    "label": "",
                     "command": "/path/to/toggle_animations.sh"
                 },
                 {
-                    "label": "clear all",
+                    "label": " clear all",
                     "command": "swaync-client -C"
                 }
             ]

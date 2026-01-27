@@ -9,7 +9,9 @@
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
 export XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
 export XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
-export ZDOTDIR=${ZDOTDIR:-$XDG_CONFIG_HOME/zsh}
+
+# Force ZDOTDIR to our custom location
+export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
 # Ensure path arrays do not contain duplicates.
 typeset -gU path fpath
@@ -18,7 +20,10 @@ typeset -gU path fpath
 path=(
   $HOME/{,s}bin(N)
   $HOME/.local/{,s}bin(N)
-  /opt/{homebrew,local}/{,s}bin(N)
   /usr/local/{,s}bin(N)
+  /usr/bin
+  /bin
+  /usr/sbin
+  /sbin
   $path
 )

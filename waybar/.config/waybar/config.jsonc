@@ -1,49 +1,70 @@
 {
 //////////////////////////////////////////////////////////////////////////
-// General config
+// GENERAL CONFIG
 //////////////////////////////////////////////////////////////////////////
     "layer": "top",
     "position": "top",
     "spacing": 0,
-    // "margin": "8px 8px 0px 8px",
+    "margin": "5px 10px 0px 10px",
     "reload_style_on_change": true,
-//////////////////////////////////////////////////////////////////////////
-//  Modules order
-//////////////////////////////////////////////////////////////////////////
+// ########################################################################
+// MODULES ORDER
+// ########################################################################
     "modules-left": [
-        "group/group-extras"
+        "group/system"
     ],
     "modules-center": [
-        "privacy",
-        "custom/updates",
+        "custom/logo",
         "hyprland/workspaces",
+        "group/music-window",
         "custom/notification"
+
     ],
     "modules-right": [
-        "tray",
+        "clock", // this should have a tasker or pomodoro
         "group/audio",
-        "group/battery-driver",
-        "clock",
-        "custom/power"
+        "group/battery-driver" // this needs improvements
     ],
-//////////////////////////////////////////////////////////////////////////
-// Groups
-//////////////////////////////////////////////////////////////////////////
-    "group/group-extras": {
+// ########################################################################
+// GROUPS
+// ########################################################################
+    "group/system": {
         "orientation": "inherit",
         "drawer": {
-            "click-to-reveal": true,
+            "click-to-reveal": false,
             "transition-duration": 400,
             "children-class": "extras",
             "transition-left-to-right": true
         },
         "modules": [
+            "group/performace",
+            "custom/updates",
+            "custom/gpu-mode",
+            "systemd-failed-units",
+            "tray"
+        ]
+    },
+
+       "group/performace":{
+        "orientation": "inherit",
+        "modules": [
             "temperature",
             "cpu",
-            "memory",
-            "custom/gpu-mode",
-            "disk",
-            "systemd-failed-units"
+            "memory"
+        ]
+    },
+    "group/music-window": {
+        "orientation": "horizontal",
+        "drawer": {
+            "click-to-reveal": true,
+            "transition-duration": 500,
+            "children-class": "music-child",
+            "transition-left-to-right": true
+        },
+        "modules": [
+            "hyprland/window", // The "Handle" (always visible)
+            // "cava",            // Hidden until clicked
+            "mpris"            // Hidden until clicked
         ]
     },
     "group/audio": {
@@ -70,7 +91,7 @@
         "drawer": {
             "transition-duration": 400,
             "children-class": "battery-driver",
-            "transition-left-to-right": false
+            "transition-left-to-right": true
         },
         "modules": [
             "battery",
@@ -78,8 +99,21 @@
         ]
     },
 //////////////////////////////////////////////////////////////////////////
-// Left modules
+// MODULES
 //////////////////////////////////////////////////////////////////////////
+    "mpris": {
+        "interval": "2",
+        "format": "{player_icon} {title} {length}",
+        "format-paused": "{status_icon} <i>{title} {length}</i>",
+        "player-icons": {
+            "default": "▶"
+        },
+        "status-icons": {
+            "paused": "⏸"
+        }
+	// "ignored-players": ["firefox"]
+    },
+/////////////////////////////////////
     "temperature": {
         "thermal-zone": 0,
         "format": "{temperatureC}°C ❄",
@@ -89,42 +123,14 @@
         "format-critical": "{temperatureC}°C 󰈸",
         "tooltip": false
     },
-    "cpu": {
-        "format": "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}",
-        "format-icons": [
-            "<span color='#8ec07c'> </span>",
-            "<span color='#458588'>▂</span>",
-            "<span color='#f8f8f8'>▃</span>",
-            "<span color='#f8f8f8'>▄</span>",
-            "<span color='#d79921'>▅</span>",
-            "<span color='#d79921'>▆</span>",
-            "<span color='#fe8019'>▇</span>",
-            "<span color='#cc241d'>█</span>"
-        ],
-        "interval": 1,
-        "tooltip": true,
-        "tooltip-format": "CPU Frequency: {avg_frequency} GHz"
-    },
+/////////////////////////////////////
     "memory": {
         "format": "{}% ",
         // Thresholds for the .warning and .critical CSS classes
         "warning-threshold": 70,
         "critical-threshold": 90
     },
-    "custom/gpu-mode": {
-        "format": "{}",
-        "exec": "~/.config/waybar/scripts/gpu-mode.sh",
-        "on-click" : "",
-        "interval": 5,
-        "return-type": "json",
-        "tooltip": true
-    },
-    "disk": {
-        "path": "/",
-        "format": "{free}B ",
-        "warning-threshold": 20,
-        "critical-threshold": 10
-    },
+/////////////////////////////////////
     "systemd-failed-units": {
         "hide-on-ok": true, // Do not hide if there is zero failed units.
         "format": "✗ {nr_failed}",
@@ -133,98 +139,28 @@
         "system": true, // Monitor failed systemwide units.
         "user": false // Ignore failed user units.
     },
-//////////////////////////////////////////////////////////////////////////
-// Middle modules
-//////////////////////////////////////////////////////////////////////////
-    "custom/updates": {
-        "format": "󰅢",
-        "interval": 8000,
-        "exec": "checkupdates | wc -l",
-        "exec-if": "exit 0",
-        "on-click": "kitty sh -c 'paru -Syu --noconfirm; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar",
-        "signal": 8,
-        "tooltip-format": "{} updates"
-    },
 /////////////////////////////////////
-    "hyprland/workspaces": {
-        "format": "{icon}: {windows}",
+    "hyprland/window": {
+        "format": "{class} | {title}",
+        "max-length" : 30,
+        "format-window-separator": ""
+    },
+        "hyprland/workspaces": {
+        "format": "{icon}{windows}",
         "format-window-separator": "",
         "workspace-taskbar": {
             "enable": true,
             "update-active-window": true,
-            "format": "{icon}",
-            "icon-size": 18
+            "icon-size": 20
             // "on-click-window": "${SCRIPTS}/focus-window.sh {address} {button}"
         }
     },
 /////////////////////////////////////
-    "custom/notification": {
-        "tooltip": false,
-        "format": "{icon}",
-        "format-icons": {
-            "notification": "󰂞",
-            "none": "󰂚",
-            "dnd-notification": "󰂛",
-            "dnd-none": "󰂛",
-            "inhibited-notification": "󰂞",
-            "inhibited-none": "󰂚",
-            "dnd-inhibited-notification": "󰂛",
-            "dnd-inhibited-none": "󰂛"
-        },
-        "return-type": "json",
-        "exec-if": "which swaync-client",
-        "exec": "swaync-client -swb",
-        "on-click": "swaync-client -t -sw",
-        "on-click-right": "swaync-client -d -sw",
-        "escape": true
-    },
-//////////////////////////////////////////////////////////////////////////
-// Right modules
-//////////////////////////////////////////////////////////////////////////
     "tray": {
         "icon-size": 14,
         "spacing": 14,
-        "reverse-direction": false
+        "reverse-direction": true
     },
-/////////////////////////////////////
-    "network": {
-        "format-icons": {
-            "wifi": [
-                "󰤯",
-                "󰤟",
-                "󰤢",
-                "󰤨"
-            ],
-            "ethernet": "󰈀",
-            "disabled": "󰤮",
-            "disconnected": "󰤧"
-        },
-        "format-wifi": "{icon}",
-        "format-ethernet": "{icon}",
-        "format-disconnected": "{icon}",
-        "format-disabled": "{icon}",
-        "interval": 5,
-        "tooltip-format": "{essid}\t{gwaddr}",
-        "on-click": "~/.config/hypr/scripts/floating_run.sh 800 500 nmtui",
-        "on-click-right": "rfkill toggle wifi",
-        "tooltip": true,
-        "max-length": 20
-    },
-/////////////////////////////////////
-    "bluetooth": {
-        "interval": 5,
-        "format-on": "󰂯",
-        "format-off": "󰂲",
-        "format-disabled": "󰂲",
-        "format-connected": "󰂱",
-        "tooltip": true,
-        "tooltip-format": "{device_enumerate}",
-        "tooltip-format-enumerate-connected": "{device_alias}",
-        "tooltip-format-enumerate-connected-battery": "{device_alias} {device_battery_percentage}%",
-        "on-click": "blueman-manager",
-        "on-click-right": "rfkill toggle bluetooth"
-    },
-
 /////////////////////////////////////
     "pulseaudio/slider": {
         "min": 0,
@@ -256,17 +192,7 @@
             "Easy Effects Sink"
         ]
     },
-    "custom/microphone": {
-        "return-type": "json",
-        "exec": "/home/rambeau/.config/waybar/scripts/mic-volume.sh",
-        "interval": 1,
-        "format": "{}",
-        "tooltip": true,
-        "on-click": "pavucontrol",
-        "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
-        "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +5%",
-        "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -5%"
-    },
+
 /////////////////////////////////////
     "battery": {
         "interval": 5,
@@ -289,6 +215,38 @@
         "tooltip": true,
         "tooltip-format": "Charge: {capacity}%"
     },
+/////////////////////////////////////
+    "clock": {
+        "interval": 60,
+        "format": "{:%a, %b %d | %H:%M %p}",
+        "tooltip-format": "<tt><big>{calendar}</big></tt>",
+        "on-click": ""
+    },
+
+//////////////////////////////////////////////////////////////////////////
+// CUSTOM MODULES
+//////////////////////////////////////////////////////////////////////////
+    "custom/logo": {
+        "format": "󰅢",
+        "tooltip-format": "{}"
+    },
+    "custom/updates": {
+        "format": "󰅢",
+        "interval": 8000,
+        "exec": "checkupdates | wc -l",
+        "exec-if": "exit 0",
+        "on-click": "kitty sh -c 'paru -Syu --noconfirm; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar",
+        "signal": 8,
+        "tooltip-format": "{} updates"
+    },
+    "custom/gpu-mode": {
+        "format": "{}",
+        "exec": "~/.config/waybar/scripts/gpu-mode.sh",
+        "on-click" : "",
+        "interval": 5,
+        "return-type": "json",
+        "tooltip": true
+    },
     "custom/power-profile": {
         "format": "{}",
         "exec": "~/.config/waybar/scripts/power-profile-check.sh",
@@ -296,17 +254,35 @@
         "return-type": "json",
         "tooltip": true
     },
-/////////////////////////////////////
-    "clock": {
+    "custom/microphone": {
+        "return-type": "json",
+        "exec": "/home/rambeau/.config/waybar/scripts/mic-volume.sh",
         "interval": 1,
-        "format": "{:%H:%M:%S %p}",
-        "format-alt": "{:%a, %b %d}",
-        "tooltip-format": "<tt><big>{calendar}</big></tt>"
+        "format": "{}",
+        "tooltip": true,
+        "on-click": "pavucontrol",
+        "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+        "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +5%",
+        "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -5%"
     },
-/////////////////////////////////////
-    "custom/power": {
-        "format": "",
-        "on-click": "wlogout",
-        "tooltip": false
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "󰂞",
+            "none": "󰂚",
+            "dnd-notification": "󰂛",
+            "dnd-none": "󰂛",
+            "inhibited-notification": "󰂞",
+            "inhibited-none": "󰂚",
+            "dnd-inhibited-notification": "󰂛",
+            "dnd-inhibited-none": "󰂛"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
     }
 }

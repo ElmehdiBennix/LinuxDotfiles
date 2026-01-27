@@ -1,0 +1,242 @@
+# =============================================================================
+# 1. THE PACKAGE MANAGERS & UPDATERS
+# =============================================================================
+paru                         # Your AUR helper (included to keep it updated)
+topgrade                     # One command to update Pacman, AUR, Nix, Flatpak
+flatpak                      # Universal sandbox apps
+flatseal                     # Manage Flatpak permissions
+nix                          # Nix package manager
+
+# =============================================================================
+# 2. DRIVERS & HARDWARE (Nvidia / MSI / Monitors)
+# =============================================================================
+nvidia-dkms                  # Nvidia driver (DKMS for kernel flexibility)
+nvidia-utils                 # Driver libraries
+lib32-nvidia-utils           # 32-bit support for Steam
+nvidia-vaapi-driver          # Hardware video acceleration
+vulkan-icd-loader            # Vulkan support
+lib32-vulkan-icd-loader      # 32-bit Vulkan
+# light or ddcutil                      # Monitor control (Brightness/Contrast via I2C)
+# envycontrol                  # GPU switching (Laptop specific)
+nvidia-container-toolkit     # Docker GPU passthrough
+msi-ec-git                   # MSI laptop battery/fan control
+mcontrolcenter               # GUI for hardware settings
+brightnessctl                # CLI brightness control
+libva-utils                  # Tools like 'vainfo'
+
+# =============================================================================
+# 3. SHELL & TERMINAL POWER TOOLS
+# =============================================================================
+zsh                          # The shell
+fastfetch                    # System info
+btop                         # System monitor
+zellij                       # Terminal multiplexer
+stow                         # Dotfile management
+eza                          # Modern 'ls'
+zoxide                       # Modern 'cd'
+bat                          # Modern 'cat'
+ripgrep                      # Modern 'grep'
+neovim                       # Text editor
+fzf                          # Fuzzy finder
+jq                           # JSON processor
+curlie                       # Modern 'curl'
+bc                           # CLI calculator
+openCode
+gemini-cli                   # GO-based Gemini CLI (not the Python SDK)
+wl-clipboard                 # Wayland copy/paste
+cliphist                     # Clipboard history
+wl-ocr                       # Extract text from screen selection
+
+# =============================================================================
+# 4. SYSTEM ADMIN & HOMELAB
+# =============================================================================
+ly                           # TUI Login Manager
+openssh                      # SSH
+ufw                          # Firewall
+sunshine                     # Game streaming host
+miniupnpc                    # UPNP control
+auto-cpufreq                 # CPU power management
+rclone                       # Cloud sync
+nmap                         # Network auditing
+tailscale                    # Mesh VPN
+speedtest++                  # CLI speedtest
+timeshift                    # System backups/snapshots
+
+# =============================================================================
+# 5. DEVELOPMENT STACK
+# =============================================================================
+git                          # Version control
+gh                           # GitHub CLI
+lazygit                      # Git TUI
+docker                       # Container engine
+docker-buildx                # Modern builds
+docker-compose               # Multi-container orchestration
+lazydocker                   # Docker TUI
+nodejs                       # JS Runtime
+pnpm                         # JS package manager
+go                           # Programming language
+gcc                          # C Compiler
+make                         # Build tool
+python                       # Python 3
+python-pip
+python-pipx                  # Isolated Python apps
+distrobox                    # Run any Linux distro in terminal
+
+# =============================================================================
+# 6. THE HYPRLAND DESKTOP ENVIRONMENT
+# =============================================================================
+hyprland                     # The compositor
+hyprlock                     # Lock screen
+hypridle                     # Idle daemon
+hyprshot                     # Screenshots
+hyprpicker                   # Color picker
+hyprsunset                   # Night light
+hyprlux                      # Brightness/Gamma control
+vicinae-bin                  # Your chosen launcher
+waybar                       # Top bar
+swaync                       # Notification center
+# avizo or swayosd-git                  # Visual Volume/Brightness bars
+polkit-gnome                 # GUI privilege prompts
+xdg-desktop-portal
+xdg-desktop-portal-hyprland  # Screen sharing / Portals
+xwaylandvideobridge          # Fixes Discord screen share
+nwg-displays                 # Monitor management GUI
+nwg-look                     # GTK theme applier
+qt5ct-kde                    # Qt5 settings
+qt6ct-kde                    # Qt6 settings
+
+# =============================================================================
+# 7. PRODUCTIVITY & APPS
+# =============================================================================
+nautilus                     # File manager
+gvfs-mtp                     # Phone connection
+file-roller                  # Archive integration
+sushi                        # Spacebar file preview
+zathura                      # Minimalist PDF viewer
+zathura-pdf-mupdf            # PDF backend
+vscode                       # Code editor
+obsidian                     # Note taking
+onlyoffice-bin               # Office suite
+krita                        # Digital painting
+davinci-resolve              # Video editing
+obs-studio                   # Recording
+legcord-bin                  # Lightweight Discord
+qview                        # Fast image viewer
+peazip-gtk2-bin              # Archive manager
+zen-browser                  # High-performance browser
+vivaldi                      # Feature-rich browser
+
+# =============================================================================
+# 8. GAMING, MEDIA & AUDIO
+# =============================================================================
+steam                        # Gaming
+hydra-launcher-bin           # Game launcher
+protonplus                   # Manage Proton-GE versions
+easyeffects                  # System-wide audio effects
+pipewire                     # Media server
+wireplumber                  # Session manager
+pavucontrol                  # Audio GUI
+mpv                          # Video player
+vlc                          # Video player (legacy)
+stremio                      # Streaming
+lollypop                     # Music player
+qbittorrent                  # Torrent client
+
+# =============================================================================
+# 9. TRAY, THEMES & FONTS
+# =============================================================================
+nm-applet                    # Wi-Fi tray
+blueman                      # Bluetooth tray
+kdeconnect                   # Phone sync
+udiskie                      # Auto-mount USB
+syncthing-tray               # Sync tray
+sunshine
+sunshine-tray                # Sunshine GUI
+awww-git                     # Wallpaper manager
+matugen-bin                  # Material You theme generator
+tela-icon-theme              # Icons
+ttf-jetbrains-mono-nerd      # Main font
+ttf-apple-emoji              # iOS Emojis
+breeze                       # Base cursor pack
+breeze-gtk                   # GTK Breeze
+breeze5                      # Breeze Icons
+
+syncthing
+syncthin-tray
+
+# =============================================================================
+# 1. SECURITY & SECRETS (KeePassXC Global Integration)
+# =============================================================================
+keepassxc                    # The main vault and Secret Service provider
+libsecret                    # Necessary for apps to "talk" to KeePassXC via DBus
+python-secretstorage         # Allows Python-based apps to access the keyring
+
+# =============================================================================
+# 2. SYSTEM MAINTENANCE & DISK TOOLS
+# =============================================================================
+gnome-disk-utility           # The best GUI for formatting USBs and managing partitions
+baobab                       # "Disk Usage Analyzer" - find what's eating your space
+pacman-contrib               # Provides 'paccache' to prevent /var/cache from filling up
+
+# =============================================================================
+# 3. FONT FALLBACKS (Prevents "Tofu" blocks on the web)
+# =============================================================================
+noto-fonts                   # Standard global fallback fonts
+noto-fonts-cjk               # Support for Chinese, Japanese, and Korean characters
+ttf-dejavu                   # High-compatibility fallback font
+ttf-liberation               # Metric-compatible fonts for Office docs/Steam
+
+# =============================================================================
+# 4. PRINTING & NVIDIA STABILITY
+# =============================================================================
+cups                         # The actual printing service (enable with systemctl)
+system-config-printer        # Simple GUI to add/configure printers
+egl-wayland                  # Crucial for Nvidia stability in Wayland sessions
+
+# =============================================================================
+# 5. TERMINAL QUALITY OF LIFE (QoL)
+# =============================================================================
+man-db                       # Enables the 'man' command for manual pages
+man-pages                    # The actual documentation files
+trash-cli                    # Safe deletion: use 'trash-put' instead of 'rm'
+
+
+
+
+
+
+
+# Hardening & Sandboxing
+apparmor             # Mandatory Access Control (MAC)
+firejail             # Sandbox for risky applications
+usbguard             # Protects against malicious USB devices
+
+# Privacy & Network Security
+dnscrypt-proxy       # Encrypts DNS queries (DNS-over-HTTPS)
+
+# Firmware & Hardware Security
+fwupd                # BIOS/Firmware security updates
+
+
+
+# GUI for Fast Tweaks
+gufw                         # Firewall GUI
+qpwgraph                     # Visual Audio Routing (Pipewire)
+input-remapper-git           # GUI for Mouse/Keyboard remapping
+solaar                       # Logitech Device Manager (if applicable)
+
+# Hardware & GPU Monitoring
+nvtop                        # GPU usage monitor (Terminal but visual)
+gsmartcontrol                # SSD Health checker
+
+# Disk & Partitioning
+gparted                      # The pro tool for partition management
+
+# Package Management GUI
+octopi                       # Fast Pacman/AUR browser
+mission-center
+cachyos-hello
+
+# lan scanning for apps
+avahi
+nss-mdns

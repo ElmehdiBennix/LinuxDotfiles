@@ -1,31 +1,12 @@
-# [[ -v terminfo ]] || zmodload zsh/terminfo
+#!/bin/zsh
+###############################################################
+# options.zsh - Shell options, history, and key bindings.
+###############################################################
 
-# if [[ -n "$terminfo[kcuu1]" ]]; then
-#   bindkey -M emacs "$terminfo[kcuu1]" history-substring-search-up
-#   bindkey -M viins "$terminfo[kcuu1]" history-substring-search-up
-# fi
-# if [[ -n "$terminfo[kcud1]" ]]; then
-#   bindkey -M emacs "$terminfo[kcud1]" history-substring-search-down
-#   bindkey -M viins "$terminfo[kcud1]" history-substring-search-down
-# fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# =============================================================
 # Load TTY colors
+# =============================================================
+
 if [[ -f "$HOME/.cache/matugen/tty_colors" ]]; then
   source "$HOME/.cache/matugen/tty_colors"
 
@@ -49,9 +30,29 @@ if [[ -f "$HOME/.cache/matugen/tty_colors" ]]; then
   print -Pn "\e]4;15;${COLOR_15}\a"
 fi
 
-#########################
+# =============================================================
+# history settings
+# =============================================================
+
+# Ensure history directory exists (XDG Compliance)
+_zsh_history_dir="${XDG_STATE_HOME:-$HOME/.local/state}/zsh"
+[[ -d "$_zsh_history_dir" ]] || mkdir -p "$_zsh_history_dir"
+
+HISTSIZE=10000
+HISTFILE="$_zsh_history_dir/history"
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_find_no_dups
+
+# =============================================================
 # key bindings
-#########################
+# =============================================================
 
 # use ctrl + shift + left/right to highlight text backward/forward
 # bindkey '^[[1;6D' backward-word
@@ -80,21 +81,3 @@ fi
 # bindkey '^[3~' kill-whole-line
 # # use fn+Delete to delete the entire line from cursor to end
 # bindkey '^[[4~' kill-line
-
-#########################################################################
-# history settings
-#########################################################################
-
-HISTSIZE=4000
-HISTFILE=~/.zsh_history
-SAVEHIST=$HISTSIZE
-HISTDUP=erase
-
-setopt appendhistory
-setopt sharehistory
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_find_no_dups
-
-#########################################################################

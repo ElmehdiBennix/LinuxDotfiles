@@ -6,11 +6,9 @@ waybar &
 killall -q swaync
 swaync &
 
-killall -q  vicinae
+killall -q vicinae
 vicinae server &
 
-hyprctl dispatch vdeskreset
 hyprctl reload
-
 
 exit 0

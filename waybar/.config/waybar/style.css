@@ -15,7 +15,7 @@
 
 /* Main window styling */
 window#waybar {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.3);
     /* border-radius: 10px; */
 }
 
@@ -49,21 +49,27 @@ window#waybar {
 #battery,
 #workspaces,
 #systemd-failed-units {
-    /* background-color: rgba(0, 0, 0, 0.4); */
     color: @on_background;
-    padding: 0 7px;
+    padding: 0 6px;
     margin: 0 0px;
-    border-radius: 10px;
-    min-height: 30px;
+    border-radius: 12px;
+    min-height: 10px;
 }
 
+
+
+
+
 /* ============================================================================= */
-/* --- Module-Specific Overrides & States --- */
+/* --- workspaces --- */
 /* ============================================================================= */
 
+
 #workspaces button.active {
+    /* background-color: rgba(0, 0, 255, 0.1); */
     color: @on_background;
     border-radius: 0;
+
     border-bottom: 2px solid @on_background;
 }
 
@@ -78,51 +84,56 @@ window#waybar {
     }
 }
 
-/* --- CPU (override base color) --- */
-#cpu {
-    color: @color14;
-}
 
+/* ============================================================================= */
 /* --- Power Profiles --- */
+/* ============================================================================= */
+
 #custom-power-profile.performance,
 #custom-power-profile.error {
     color: #cc241d;
-    background-color: rgba(255, 0, 0, 0.1);
+    /* background-color: rgba(255, 0, 0, 0.1); */
 }
 
 #custom-power-profile.balanced {
     color: #d79921;
-    background-color: rgba(255, 255, 0, 0.1);
+    /* background-color: rgba(255, 255, 0, 0.1); */
 }
 
 #custom-power-profile.power-saver {
     color: #8ec07c;
-    background-color: rgba(0, 255, 0, 0.1);
+    /* background-color: rgba(0, 255, 0, 0.1); */
 }
 
-/* --- Network & Bluetooth --- */
-#network.disabled {
-    color: #cc241d;
-    background-color: rgba(255, 0, 0, 0.1);
+
+/* ============================================================================= */
+/* --- gpu-mode --- */
+/* ============================================================================= */
+
+#custom-gpu-mode.nvidia {
+    color: #76B900;
+    /* background-color: rgba(118, 185, 0, 0.15); */
 }
 
-#bluetooth.disabled {
-    color: #458588;
-    background-color: rgba(0, 0, 255, 0.1);
+#custom-gpu-mode.integrated {
+    color: #0071C5;
+    /* background-color: rgba(0, 113, 197, 0.15); */
 }
 
-/* --- Audio --- */
-#pulseaudio.sink-muted {
-    color: #d79921;
-    background-color: rgba(255, 255, 0, 0.1);
+#custom-gpu-mode.hybrid {
+    color: #FABD2F;
+    /* background-color: rgba(250, 189, 47, 0.15); */
 }
 
-#custom-microphone.source-muted {
-    color: #cc241d;
-    background-color: rgba(255, 0, 0, 0.1);
+#custom-gpu-mode.error {
+    color: #FB4934;
+    /* background-color: rgba(251, 73, 52, 0.15); */
 }
 
-/* --- Battery --- */
+
+/* ============================================================================= */
+/* --- battery --- */
+/* ============================================================================= */
 #battery.plugged,
 #battery.charging {
     color: #8ec07c;
@@ -137,72 +148,15 @@ window#waybar {
     color: #cc241d;
 }
 
-/* --- Notifications --- */
-#custom-notification.notification {
-    color: #d79921;
-}
 
-#custom-notification.dnd-notification,
-#custom-notification.inhibited-notification {
-    color: #cc241d;
-}
 
-/* ============================================================================= */
-/* --- Drawer Group ("Extras") & System Health --- */
-/* ============================================================================= */
 
-/* --- GPU Mode (The visible part of the group) --- */
-#custom-gpu-mode.nvidia {
-    color: #76B900;
-    background-color: rgba(118, 185, 0, 0.15);
-}
 
-#custom-gpu-mode.integrated {
-    color: #0071C5;
-    background-color: rgba(0, 113, 197, 0.15);
-}
 
-#custom-gpu-mode.hybrid {
-    color: #FABD2F;
-    background-color: rgba(250, 189, 47, 0.15);
-}
 
-#custom-gpu-mode.error {
-    color: #FB4934;
-    background-color: rgba(251, 73, 52, 0.15);
-}
 
-/* --- System Monitors (Modules inside the drawer) --- */
-/* Individual colors for the drawer modules (size is handled by the unified style) */
-#temperature {
-    color: #81A1C1;
-}
 
-#memory {
-    color: #A3BE8C;
-}
 
-#disk {
-    color: #B48EAD;
-}
-
-/* Shared warning/critical states for drawer modules */
-#temperature.warning,
-#memory.warning,
-#disk.warning {
-    color: #EBCB8B;
-    /* Warning Yellow */
-    background-color: rgba(235, 203, 139, 0.15);
-}
-
-#temperature.critical,
-#memory.critical,
-#disk.critical {
-    color: #BF616A;
-    /* Critical Red */
-    background-color: rgba(191, 97, 106, 0.2);
-    font-weight: bold;
-}
 /* ============================================================================= */
 /* --- slider --- */
 /* ============================================================================= */

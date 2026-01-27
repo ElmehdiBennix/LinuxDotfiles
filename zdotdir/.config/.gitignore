@@ -1,0 +1,5 @@
+# Ignore the secrets file
+.zshrc.d/.secrets.zsh
+
+# Ignore potential history files if they accidentally get created here
+**/.antidote
