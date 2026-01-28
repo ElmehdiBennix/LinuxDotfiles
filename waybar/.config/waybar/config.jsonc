@@ -18,12 +18,13 @@
         "hyprland/workspaces",
         "group/music-window",
         "custom/notification"
-
     ],
     "modules-right": [
-        "clock", // this should have a tasker or pomodoro
+        "gamemode",
+        "privacy",
         "group/audio",
-        "group/battery-driver" // this needs improvements
+        "clock",
+        "group/battery-driver"
     ],
 // ########################################################################
 // GROUPS
@@ -33,38 +34,37 @@
         "drawer": {
             "click-to-reveal": false,
             "transition-duration": 400,
-            "children-class": "extras",
+            "children-class": "system",
             "transition-left-to-right": true
         },
         "modules": [
-            "group/performace",
+            "group/performance",
             "custom/updates",
             "custom/gpu-mode",
             "systemd-failed-units",
             "tray"
         ]
     },
-
-       "group/performace":{
+    "group/performance":{
         "orientation": "inherit",
         "modules": [
             "temperature",
             "cpu",
-            "memory"
+            "memory",
+            "disk"
         ]
     },
     "group/music-window": {
         "orientation": "horizontal",
         "drawer": {
-            "click-to-reveal": true,
+            "click-to-reveal": false,
             "transition-duration": 500,
-            "children-class": "music-child",
+            "children-class": "music-window",
             "transition-left-to-right": true
         },
         "modules": [
-            "hyprland/window", // The "Handle" (always visible)
-            // "cava",            // Hidden until clicked
-            "mpris"            // Hidden until clicked
+            "hyprland/window",
+            "mpris"
         ]
     },
     "group/audio": {
@@ -82,7 +82,7 @@
             "transition-left-to-right": true
         },
         "modules": [
-            "pulseaudio",
+            "custom/audio",
             "pulseaudio/slider"
         ]
     },
@@ -91,7 +91,7 @@
         "drawer": {
             "transition-duration": 400,
             "children-class": "battery-driver",
-            "transition-left-to-right": true
+            "transition-left-to-right": false
         },
         "modules": [
             "battery",
@@ -102,18 +102,25 @@
 // MODULES
 //////////////////////////////////////////////////////////////////////////
     "mpris": {
-        "interval": "2",
+        "interval": 2,
         "format": "{player_icon} {title} {length}",
         "format-paused": "{status_icon} <i>{title} {length}</i>",
         "player-icons": {
-            "default": "▶"
+            "default": "▶",
+            "spotify": "",
+            "firefox": "",
+            "chromium": "",
+            "chrome": "",
+            "brave": "",
+            "discord": "",
+            "kdeconnect": "",
+            "vlc": "󰕼",
+            "mpv": ""
         },
         "status-icons": {
             "paused": "⏸"
         }
-	// "ignored-players": ["firefox"]
     },
-/////////////////////////////////////
     "temperature": {
         "thermal-zone": 0,
         "format": "{temperatureC}°C ❄",
@@ -123,77 +130,93 @@
         "format-critical": "{temperatureC}°C 󰈸",
         "tooltip": false
     },
-/////////////////////////////////////
-    "memory": {
-        "format": "{}% ",
-        // Thresholds for the .warning and .critical CSS classes
-        "warning-threshold": 70,
-        "critical-threshold": 90
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": true
     },
-/////////////////////////////////////
+    "memory": {
+        "format": "{}% "
+    },
+    "disk": {
+        "interval": 30,
+        "format": "{percentage_used}% ",
+        "path": "/"
+    },
     "systemd-failed-units": {
-        "hide-on-ok": true, // Do not hide if there is zero failed units.
+        "hide-on-ok": true,
         "format": "✗ {nr_failed}",
         "format-ok": "✓",
-        "on-click": "",
-        "system": true, // Monitor failed systemwide units.
-        "user": false // Ignore failed user units.
+        "on-click": "kitty --hold systemctl --failed",
+        "system": true,
+        "user": false
     },
-/////////////////////////////////////
     "hyprland/window": {
         "format": "{class} | {title}",
         "max-length" : 30,
         "format-window-separator": ""
     },
-        "hyprland/workspaces": {
-        "format": "{icon}{windows}",
+    "hyprland/workspaces": {
+        "format": "{icon} {windows}",
         "format-window-separator": "",
         "workspace-taskbar": {
             "enable": true,
             "update-active-window": true,
             "icon-size": 20
-            // "on-click-window": "${SCRIPTS}/focus-window.sh {address} {button}"
         }
     },
-/////////////////////////////////////
     "tray": {
         "icon-size": 14,
         "spacing": 14,
         "reverse-direction": true
     },
-/////////////////////////////////////
+    "gamemode": {
+        "format": "{glyph}",
+        "format-alt": "{glyph} {count}",
+        "glyph": "",
+        "hide-not-running": true,
+        "use-icon": true,
+        "icon-name": "input-gaming-symbolic",
+        "icon-spacing": 4,
+        "icon-size": 20,
+        "tooltip": true,
+        "tooltip-format": "Games running: {count}"
+    },
+    "privacy": {
+        "icon-spacing": 4,
+        "icon-size": 18,
+        "transition-duration": 250,
+        "modules": [
+            {
+                "type": "screenshare",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            },
+            {
+                "type": "audio-in",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            }
+        ]
+    },
     "pulseaudio/slider": {
         "min": 0,
         "max": 100,
         "orientation": "horizontal"
     },
-    "pulseaudio": {
-        "interval": 2,
-        "format": "{icon}",
-        "format-muted": "󰸈",
-        "format-icons": {
-            "headphone": "󰋋",
-            "bluez_output.70_AE_D5_BA_99_AB.1": "󰋟",
-            "hands-free": "󰋎",
-            "headset": "󰋋",
-            "headset-muted": "󰋐",
-            "default": [
-                "",
-                "",
-                ""
-            ]
-        },
+    "custom/audio": {
+        "return-type": "json",
+        "exec": "~/.config/waybar/scripts/check-volume.sh sink",
+        "interval": 1,
+        "format": "{}",
         "on-click": "pavucontrol",
         "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
         "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
-        "tooltip": false,
+        "tooltip": true,
         "ignored-sinks": [
             "Easy Effects Sink"
         ]
     },
-
-/////////////////////////////////////
     "battery": {
         "interval": 5,
         "states": {
@@ -215,20 +238,16 @@
         "tooltip": true,
         "tooltip-format": "Charge: {capacity}%"
     },
-/////////////////////////////////////
     "clock": {
         "interval": 60,
         "format": "{:%a, %b %d | %H:%M %p}",
         "tooltip-format": "<tt><big>{calendar}</big></tt>",
-        "on-click": ""
+        "on-click": "gnome-calendar"
     },
-
-//////////////////////////////////////////////////////////////////////////
-// CUSTOM MODULES
-//////////////////////////////////////////////////////////////////////////
     "custom/logo": {
-        "format": "󰅢",
-        "tooltip-format": "{}"
+        "format": "",
+        "on-click": "vicinae toggle",
+        "tooltip-format": "Vicinae Menu"
     },
     "custom/updates": {
         "format": "󰅢",
@@ -241,22 +260,23 @@
     },
     "custom/gpu-mode": {
         "format": "{}",
-        "exec": "~/.config/waybar/scripts/gpu-mode.sh",
-        "on-click" : "",
+        "exec": "~/.config/waybar/scripts/check-gpu-mode.sh",
+        "on-click" : "~/.config/vicinae/menus/switch-gpu-mode.sh",
         "interval": 5,
         "return-type": "json",
         "tooltip": true
     },
     "custom/power-profile": {
         "format": "{}",
-        "exec": "~/.config/waybar/scripts/power-profile-check.sh",
+        "exec": "~/.config/waybar/scripts/check-power-profile.sh",
+        "on-click": "kitty --hold auto-cpufreq --stats",
         "interval": 5,
         "return-type": "json",
         "tooltip": true
     },
     "custom/microphone": {
         "return-type": "json",
-        "exec": "/home/rambeau/.config/waybar/scripts/mic-volume.sh",
+        "exec": "~/.config/waybar/scripts/check-volume.sh source",
         "interval": 1,
         "format": "{}",
         "tooltip": true,

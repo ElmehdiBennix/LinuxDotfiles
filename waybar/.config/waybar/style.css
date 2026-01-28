@@ -15,7 +15,8 @@
 
 /* Main window styling */
 window#waybar {
-    background: rgba(0, 0, 0, 0.3);
+
+    background: alpha(@background, 0.4);
     /* border-radius: 10px; */
 }
 
@@ -37,10 +38,10 @@ window#waybar {
 #network,
 #bluetooth,
 #pulseaudio,
+#custom-audio,
 #pulseaudio-slider,
 #custom-microphone,
 #custom-gpu-mode,
-#custom-power,
 #custom-menu,
 #custom-notification,
 #temperature,
@@ -147,15 +148,6 @@ window#waybar {
 #battery.plugordie {
     color: #cc241d;
 }
-
-
-
-
-
-
-
-
-
 
 /* ============================================================================= */
 /* --- slider --- */

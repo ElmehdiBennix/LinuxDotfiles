@@ -73,7 +73,7 @@
                 },
                 {
                     "label": "wallpaper",
-                    "command": "swaync-client -t -sw"
+                    "command": "~/.config/vicinae/menus/switch-wallpaper.sh"
                 },
                 {
                     "label": " airplane ",
