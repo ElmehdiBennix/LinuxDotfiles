@@ -15,8 +15,7 @@
 
 /* Main window styling */
 window#waybar {
-
-    background: alpha(@background, 0.4);
+    background: rgba(0, 0, 0, 0.3);
     /* border-radius: 10px; */
 }
 

@@ -24,9 +24,9 @@
       }
    },
    "launcher_window": {
-      "opacity": 1,
+      "opacity": 0.9,
       "client_side_decorations": {
-         "enabled": false
+         "enabled": true
       }
    },
    "providers": {

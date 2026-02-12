@@ -203,9 +203,6 @@ trash-cli                    # Safe deletion: use 'trash-put' instead of 'rm'
 
 
 
-
-
-
 # Hardening & Sandboxing
 apparmor             # Mandatory Access Control (MAC)
 firejail             # Sandbox for risky applications
@@ -240,3 +237,50 @@ cachyos-hello
 # lan scanning for apps
 avahi
 nss-mdns
+
+
+
+
+1. DaVinci Resolve (Video Post-Production)
+
+2. Blender (3D Creation Suite)
+
+3. Visual Studio Code / Neovim (Development)
+
+4. Ardour (Pro Digital Audio Workstation)
+
+5. OBS Studio (Broadcasting & Recording)
+
+6. Audacity (Audio Editing & Repair)
+
+7. Krita (Digital Painting & Illustration)
+
+8. Docker / Podman (Containerization)
+
+9. Wireshark (Network Analysis)
+
+10. Timeshift / Snapper (System Reliability)
+
+godot android-studio audacity cachyos-gaming-meta proton plus
+
+
+# art for game
+blender 3d
+audio and music creation
+video creation
+pixel art creation
+general art creation
+engine
+
+hyprdynamicmonitors
+
+obs-studio-browser
+obs-vkcapture lib32-obs-vkcapture
+
+bottles
+
+ncdu
+navi
+wiremix
+impala
+bluetui
