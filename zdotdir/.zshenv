@@ -27,3 +27,11 @@ path=(
   /sbin
   $path
 )
+
+
+
+# UFW Management Aliases
+alias firewall="sudo ufw status numbered"
+alias block="sudo ufw deny"  # Usage: block from 192.168.1.5
+alias allow="sudo ufw allow" # Usage: allow 22/tcp
+alias openports="sudo lsof -i -P -n | grep LISTEN" # See what ports are open locally
