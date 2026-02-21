@@ -29,13 +29,17 @@ else
     exit 1
 fi
 
-# Get the terminal from Hyprland variables or use a default
-TERMINAL=$(hyprctl getoption general:terminal | grep -o '"[^"]*"' | tr -d '"' 2>/dev/null || echo "kitty")
+TERMINAL_CMD="$TERMINAL"
 
-# If terminal is not set or empty, use kitty as default
-if [ -z "$TERMINAL" ]; then
-    TERMINAL="kitty"
+if [ -z "$TERMINAL_CMD" ]; then
+    ATTRIBUTES_FILE="$HOME/.config/hypr/0_session/attributes.conf"
+    if [ -f "$ATTRIBUTES_FILE" ]; then
+        TERMINAL_CMD=$(grep "\$terminal =" "$ATTRIBUTES_FILE" | cut -d'=' -f2 | tr -d ' ' | tr -d '"')
+    fi
 fi
 
-# Launch the floating terminal with the specified application
-hyprctl dispatch exec "[float; size $WIDTH $HEIGHT; center] $TERMINAL -e $APP_NAME"
+if [ -z "$TERMINAL_CMD" ]; then
+    TERMINAL_CMD="ghostty"
+fi
+
+hyprctl dispatch exec "[float; size $WIDTH $HEIGHT; center] uwsm app -- $TERMINAL_CMD -e $APP_NAME"

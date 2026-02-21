@@ -1,9 +1,5 @@
 #!/bin/env bash
 
-MAIN_KB_CAPS=$(hyprctl devices | grep -B 6 "main: yes" | grep "capsLock" | head -1 | awk '{print $2}')
-
-if [ "$MAIN_KB_CAPS" = "yes" ]; then
-    echo "Caps Lock"
-else
-    echo ""
+if hyprctl devices | grep -B 6 "main: yes" | grep -q "capsLock: yes"; then
+    echo "󰪛"
 fi

@@ -1,0 +1,31 @@
+# Ghostty Configuration
+
+command = /bin/zsh
+
+font-family = JetBrainsMono Nerd Font Propo
+font-size = 10
+font-feature = ss01
+font-feature = ss02
+font-feature = calt
+font-feature = liga
+
+# Window settings
+window-width = 950
+window-height = 500
+window-padding-x = 10
+window-padding-y = 10
+window-decoration = false
+window-inherit-working-directory = true
+
+# Visuals
+background-opacity = 0.6
+background-blur = true
+cursor-style = bar
+
+
+# Mouse/Scroll
+scrollback-limit = 2000
+copy-on-select = true
+
+# Behavior
+confirm-close-surface = false

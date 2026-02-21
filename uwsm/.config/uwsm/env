@@ -1,0 +1,53 @@
+export HYPRCURSOR_THEME=Bibata-Modern-Classic
+export HYPRCURSOR_SIZE=10
+export XCURSOR_THEME=Bibata-Modern-Classic
+export XCURSOR_SIZE=10
+
+export XDG_CURRENT_DESKTOP=Hyprland
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=Hyprland
+
+export SDL_VIDEODRIVER=wayland
+export CLUTTER_BACKEND=wayland
+export ECORE_EVAS_ENGINE=wayland
+export ELM_ENGINE=wayland
+
+export ELECTRON_OZONE_PLATFORM_HINT=auto
+export OZONE_PLATFORM=wayland
+export MOZ_DISABLE_RDD_SANDBOX=1
+export MOZ_ENABLE_WAYLAND=1
+
+export GDK_BACKEND=wayland,x11
+export GDK_SCALE=1
+
+export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_QPA_PLATFORMTHEME_QT6=qt6ct
+export QT_QPA_PLATFORM=wayland;xcb
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+
+# Dynamic GPU configuration based on supergfxctl mode
+GFX_MODE=$(supergfxctl -g 2>/dev/null || echo "Hybrid")
+
+if [ "$GFX_MODE" = "Hybrid" ]; then
+    # Hybrid mode: Use NVIDIA dGPU (card2) + Intel iGPU (card1)
+    export AQ_DRM_DEVICES=/dev/dri/card2:/dev/dri/card1
+    export GBM_BACKEND=nvidia-drm
+    export __VK_LAYER_NV_optimus=NVIDIA_only
+    export __GLX_VENDOR_LIBRARY_NAME=nvidia
+    export LIBVA_DRIVER_NAME=nvidia
+    export NVD_BACKEND=direct
+    export __NV_PRIME_RENDER_OFFLOAD=1
+elif [ "$GFX_MODE" = "Integrated" ]; then
+    # Integrated mode: Use Intel iGPU only (card1)
+    export AQ_DRM_DEVICES=/dev/dri/card1
+    # Unset NVIDIA-specific variables
+    unset GBM_BACKEND
+    unset __VK_LAYER_NV_optimus
+    unset __GLX_VENDOR_LIBRARY_NAME
+    unset LIBVA_DRIVER_NAME
+    unset NVD_BACKEND
+    unset __NV_PRIME_RENDER_OFFLOAD
+    # Force Intel rendering
+    export LIBVA_DRIVER_NAME=iHD
+fi

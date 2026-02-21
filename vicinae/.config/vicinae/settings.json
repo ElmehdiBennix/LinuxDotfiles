@@ -14,13 +14,14 @@
    "search_files_in_root": true,
    "font": {
       "normal": {
+         "family": "JetBrainsMono Nerd Font Propo",
          "size": 10.5
       }
    },
    "theme": {
       "dark": {
          "name": "matugen",
-         "icon_theme": "WhiteSur-dark"
+         "icon_theme": "Colloid-Grey"
       }
    },
    "launcher_window": {
@@ -33,10 +34,67 @@
       "applications": {
          "preferences": {
             "paths": [
-               "/home/rambeau/.local/share/applications",
                "/usr/share/applications"
             ]
+         },
+         "entrypoints": {
+            "assistant": {
+               "enabled": false
+            },
+            "designer": {
+               "enabled": false
+            },
+            "linguist": {
+               "enabled": false
+            },
+            "qdbusviewer": {
+               "enabled": false
+            },
+            "qv4l2": {
+               "enabled": false
+            },
+            "qvidcap": {
+               "enabled": false
+            }
          }
+      },
+      "core": {
+         "entrypoints": {
+            "about": {
+               "enabled": false
+            },
+            "documentation": {
+               "enabled": false
+            },
+            "report-bug": {
+               "enabled": false
+            },
+            "settings": {
+               "enabled": true
+            },
+            "sponsor": {
+               "enabled": false
+            }
+         }
+      },
+      "developer": {
+         "enabled": true
+      },
+      "raycast-compat": {
+         "enabled": false
+      },
+      "system": {
+         "entrypoints": {
+            "browse-apps": {
+               "enabled": true
+            }
+         }
+      },
+      "theme": {
+         "enabled": false
+      },
+      "clipboard": {
+         "enabled": true
       }
    }
 }

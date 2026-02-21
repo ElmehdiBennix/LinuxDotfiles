@@ -1,13 +1,10 @@
 #!/bin/sh
 
-killall -q waybar
-waybar &
+killall -q waybar swaync
 
-killall -q swaync
-swaync &
-
-killall -q vicinae
-vicinae server &
+uwsm app -- waybar &
+uwsm app -- swaync &
+uwsm app -- vicinae server --restart &
 
 hyprctl reload
 

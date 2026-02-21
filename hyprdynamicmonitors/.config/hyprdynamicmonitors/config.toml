@@ -1,0 +1,54 @@
+[general]
+destination = "$HOME/.config/hypr/monitors.conf"
+
+[power_events]
+
+[power_events.dbus_query_object]
+path = "/org/freedesktop/UPower/devices/line_power_ADP1"
+
+[[power_events.dbus_signal_match_rules]]
+object_path = "/org/freedesktop/UPower/devices/line_power_ADP1"
+
+
+[profiles.dual_monitors]
+config_file = "/home/rambeau/.config/hyprdynamicmonitors/hyprconfigs/dual_monitors.go.tmpl"
+config_file_type = "template"
+[profiles.dual_monitors.conditions]
+
+[[profiles.dual_monitors.conditions.required_monitors]]
+description = "ASR PG27F15RS1A 0x00000929"
+monitor_tag = "monitor0"
+
+[[profiles.dual_monitors.conditions.required_monitors]]
+description = "AU Optronics 0x978F"
+monitor_tag = "monitor1"
+
+
+[profiles.dual]
+config_file = "/home/rambeau/.config/hyprdynamicmonitors/hyprconfigs/dual.go.tmpl"
+config_file_type = "template"
+[profiles.dual.conditions]
+
+[[profiles.dual.conditions.required_monitors]]
+description = "AU Optronics 0x978F"
+monitor_tag = "monitor0"
+
+
+[profiles.single]
+config_file = "/home/rambeau/.config/hyprdynamicmonitors/hyprconfigs/single.go.tmpl"
+config_file_type = "template"
+[profiles.single.conditions]
+
+[[profiles.single.conditions.required_monitors]]
+description = "AU Optronics 0x978F"
+monitor_tag = "monitor0"
+
+
+[profiles.dsa]
+config_file = "/home/rambeau/.config/hyprdynamicmonitors/hyprconfigs/dsa.go.tmpl"
+config_file_type = "template"
+[profiles.dsa.conditions]
+
+[[profiles.dsa.conditions.required_monitors]]
+description = "AU Optronics 0x978F"
+monitor_tag = "monitor0"

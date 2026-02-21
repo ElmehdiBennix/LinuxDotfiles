@@ -1,15 +1,15 @@
 {
-//////////////////////////////////////////////////////////////////////////
-// GENERAL CONFIG
-//////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////
+    // GENERAL CONFIG
+    //////////////////////////////////////////////////////////////////////////
     "layer": "top",
     "position": "top",
     "spacing": 0,
     "margin": "5px 10px 0px 10px",
     "reload_style_on_change": true,
-// ########################################################################
-// MODULES ORDER
-// ########################################################################
+    // ########################################################################
+    // MODULES ORDER
+    // ########################################################################
     "modules-left": [
         "group/system"
     ],
@@ -23,12 +23,13 @@
         "gamemode",
         "privacy",
         "group/audio",
+        "group/network",
         "clock",
         "group/battery-driver"
     ],
-// ########################################################################
-// GROUPS
-// ########################################################################
+    // ########################################################################
+    // GROUPS
+    // ########################################################################
     "group/system": {
         "orientation": "inherit",
         "drawer": {
@@ -45,7 +46,7 @@
             "tray"
         ]
     },
-    "group/performance":{
+    "group/performance": {
         "orientation": "inherit",
         "modules": [
             "temperature",
@@ -74,6 +75,13 @@
             "custom/microphone"
         ]
     },
+    "group/network": {
+        "orientation": "inherit",
+        "modules": [
+            "network",
+            "bluetooth"
+        ]
+    },
     "group/output": {
         "orientation": "inherit",
         "drawer": {
@@ -98,9 +106,9 @@
             "custom/power-profile"
         ]
     },
-//////////////////////////////////////////////////////////////////////////
-// MODULES
-//////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////
+    // MODULES
+    //////////////////////////////////////////////////////////////////////////
     "mpris": {
         "interval": 2,
         "format": "{player_icon} {title} {length}",
@@ -146,13 +154,13 @@
         "hide-on-ok": true,
         "format": "✗ {nr_failed}",
         "format-ok": "✓",
-        "on-click": "kitty --hold systemctl --failed",
+        "on-click": "ghostty -e --hold systemctl --failed",
         "system": true,
         "user": false
     },
     "hyprland/window": {
         "format": "{class} | {title}",
-        "max-length" : 30,
+        "max-length": 30,
         "format-window-separator": ""
     },
     "hyprland/workspaces": {
@@ -205,10 +213,10 @@
     },
     "custom/audio": {
         "return-type": "json",
-        "exec": "~/.config/waybar/scripts/check-volume.sh sink",
+        "exec": "~/.config/waybar/scripts/check_volume.sh sink",
         "interval": 1,
         "format": "{}",
-        "on-click": "pavucontrol",
+        "on-click": "~/.config/hypr/scripts/floating_run.sh wiremix",
         "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
         "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
@@ -254,33 +262,33 @@
         "interval": 8000,
         "exec": "checkupdates | wc -l",
         "exec-if": "exit 0",
-        "on-click": "kitty sh -c 'paru -Syu --noconfirm; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar",
+        "on-click": "ghostty -e sh -c 'paru -Syu --noconfirm; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar",
         "signal": 8,
         "tooltip-format": "{} updates"
     },
     "custom/gpu-mode": {
         "format": "{}",
-        "exec": "~/.config/waybar/scripts/check-gpu-mode.sh",
-        "on-click" : "~/.config/vicinae/menus/switch-gpu-mode.sh",
+        "exec": "~/.config/waybar/scripts/check_gpu_mode.sh",
+        "on-click": "~/.config/vicinae/menus/gpu_mode.sh",
         "interval": 5,
         "return-type": "json",
         "tooltip": true
     },
     "custom/power-profile": {
         "format": "{}",
-        "exec": "~/.config/waybar/scripts/check-power-profile.sh",
-        "on-click": "kitty --hold auto-cpufreq --stats",
+        "exec": "~/.config/waybar/scripts/check_power_profile.sh",
+        "on-click": "ghostty -e --hold auto-cpufreq --stats",
         "interval": 5,
         "return-type": "json",
         "tooltip": true
     },
     "custom/microphone": {
         "return-type": "json",
-        "exec": "~/.config/waybar/scripts/check-volume.sh source",
+        "exec": "~/.config/waybar/scripts/check_volume.sh source",
         "interval": 1,
         "format": "{}",
         "tooltip": true,
-        "on-click": "pavucontrol",
+        "on-click": "~/.config/hypr/scripts/floating_run.sh wiremix",
         "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
         "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +5%",
         "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -5%"
@@ -304,5 +312,39 @@
         "on-click": "swaync-client -t -sw",
         "on-click-right": "swaync-client -d -sw",
         "escape": true
+    },
+    "network": {
+        "format-wifi": "{icon}",
+        "format-ethernet": "{icon} {ipaddr}",
+        "format-disconnected": "󰤭 Disconnected",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}",
+        "tooltip-format-ethernet": "{ifname} {ipaddr}/{cidr}",
+        "tooltip-format-disconnected": "Disconnected",
+        "format-icons": {
+            "wifi": [
+                "󰤯",
+                "󰤟",
+                "󰤢",
+                "󰤥",
+                "󰤨"
+            ],
+            "ethernet": [
+                "󰈀"
+            ]
+        },
+        "interval": 5,
+        "on-click": "~/.config/hypr/scripts/floating_run.sh wifitui"
+    },
+    "bluetooth": {
+        "format": "{icon}",
+        "format-on": "󰂯",
+        "format-off": "󰂲",
+        "format-connected": "󰂱",
+        "format-connected-battery": "󰂱",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "~/.config/hypr/scripts/floating_run.sh bluetui"
     }
 }

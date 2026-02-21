@@ -3,22 +3,22 @@
 # =============================================================================
 zsh                          # The shell
 fastfetch                    # System information display
-bottom                       # Resource monitor with TUI
+btop                         # Resource monitor with TUI
 nvtop                        # GPU task monitor
 tmux                         # Terminal multiplexer
-chezmoi                      # Secure dotfile management
+stow || chezmoi              # Secure dotfile management
 eza                          # Modern replacement for 'ls'
 zoxide                       # Smarter 'cd' with memory
 bat                          # Cat clone with syntax highlighting
 ripgrep                      # Faster replacement for 'grep'
-neovim                       # Extensible text editor
+vim                          # Extensible text editor
 fzf                          # Command-line fuzzy finder
 jq                           # Command-line JSON processor
 ncdu                         # Intuitive version of 'du'
 navi                         # Interactive cheatsheet tool
-yazi
+yazi                         # file manager
+tldr
 ripdrag
-fuse3
 
 # =============================================================================
 # DEVELOPMENT STACK
@@ -32,8 +32,8 @@ lazydocker                   # Terminal UI for docker
 docker                       # Container runtime engine
 docker-buildx                # Docker CLI plugin for extended build capabilities
 docker-compose               # Define and run multi-container applications
-nodejs                       # JavaScript runtime environment
 pnpm                         # Fast, disk space efficient package manager
+nodejs                       # JavaScript runtime environment
 gcc                          # GNU Compiler Collection (C/C++)
 make                         # Utility for directing compilation
 python                       # Python 3 interpreter
@@ -43,6 +43,7 @@ distrobox                    # Use any Linux distribution inside your terminal
 posting                      # TUI HTTP API client (Postman alternative)
 openCode                     # Open source code editor
 openclaw                     # Open source game engine reimplementation
+downgrade
 
 # =============================================================================
 # THE HYPRLAND DESKTOP ENVIRONMENT
@@ -56,7 +57,7 @@ hyprland                     # Dynamic tiling Wayland compositor
 hyprlock                     # Screen locking utility for Hyprland
 hypridle                     # Idle management daemon
 hyprshot                     # Screenshot utility
-Satty                        # screen shot edditing
+satty                        # screen shot edditing
 hyprpicker                   # Wayland color picker
 hyprsunset                   # Blue light filter and temperature control
 waybar                       # Highly customizable Wayland bar
@@ -64,31 +65,31 @@ swaync                       # Notification daemon and center
 vicinae-bin                  # Application launcher
 hyprpolkitagent              # Polkit authentication agent
 wl-clipboard                 # Command-line copy/paste utilities
-cliphist                     # Clipboard history manager
-wl-ocr                       # OCR tool to extract text from screen selection
-hyprdynamicmonitors||hyprmon # Dynamic monitor management tool or TUI alternative
+hyprdynamicmonitors-bin      # Dynamic monitor management tool or TUI alternative
 wifitui                      # Terminal UI for Wi-Fi management
 bluetui                      # Terminal UI for Bluetooth
 wiremix                      # Terminal UI for Audio (PipeWire/Pulse)
-wvkbd                        # On-screen keyboard for Wayland
+tesseract
+tesseract-data-eng                       # OCR tool to extract text from screen selection
 
 # =============================================================================
-# THEMES & FONTS
+# THEMES & FONTS (all good)
 # =============================================================================
+awww-git                     # Animated wallpaper daemon
+matugen-bin                  # Material You color scheme generator
+
 qt5-wayland                  # Qt5 Wayland integration platform
 qt6-wayland                  # Qt6 Wayland integration platform
+
 nwg-look                     # GTK3 settings editor for Wayland
 qt5ct-kde                    # Qt5 configuration tool
 qt6ct-kde                    # Qt6 configuration tool
-kavantum                     # SVG-based theme engine for Qt
-awww-git                     # Animated wallpaper daemon
-matugen-bin                  # Material You color scheme generator
-tela-icon-theme              # Colorful flat icon theme
-ttf-jetbrains-mono-nerd      # Monospace font with Nerd Font icons
-ttf-apple-emoji              # iOS style Color Emoji font
-breeze                       # Default KDE style and cursor theme
+
 breeze-gtk                   # Breeze theme for GTK applications
-WhiteSur                     # MacOS Big Sur like theme
+ttf-jetbrains-mono-nerd      # nerd font
+ttf-apple-emoji              # emoji font
+Bibata_Cursor                # cursor theme
+Colloid                      # icon theme
 
 # =============================================================================
 # SYSTEM CONFIG OPTIONS & TRAYS
@@ -97,12 +98,12 @@ easyeffects                  # System-wide audio equalizer and effects
 qpwgraph                     # input and output for redircting audio into apps
 udiskie                      # Automounter for removable media
 kdeconnect                   # Integration between phone and computer
+
 updog                        # Simple HTTP server for file sharing via QR code
 syncthing                    # Continuous file synchronization
 syncthing-tray               # System tray icon for Syncthing
 sunshine                     # Self-hosted game stream host
 sunshine-tray                # System tray GUI for Sunshine
-cachyos-settings             # CachyOS specific system optimizations
 
 # =============================================================================
 # APPS
@@ -164,17 +165,14 @@ snapper                      # Tool for filesystem snapshot management
 brightnessctl                # Lightweight brightness control
 ddcutil                      # Control monitor settings (brightness/contrast)
 rclone                       # Rsync for cloud storage
-man-db                       # Utility for reading manual pages
-man-pages                    # Linux manual pages documentation
+
 trash-cli                    # Command line trashcan interface
-pacman-contrib               # Contrib scripts including 'paccache' cleanup
-vulkan-tools                 # Diagnostic utilities for Vulkan
-libva-utils                  # Tools for VA-API (Video Acceleration)
+vulkan-tools                 # vkcube Diagnostic utilities for Vulkan
+libva-utils                  # vainfo Tools for VA-API (Video Acceleration)
 
 # =============================================================================
 # DISK & PARTITIONING
 # =============================================================================
-balenaetcher                 # Flash OS images to SD cards and USB drives
 btrfs-assistant              # GUI for managing Btrfs filesystems and Snapper
 gparted                      # Partition editor
 
@@ -195,13 +193,11 @@ flatseal                     # Permissions manager for Flatpak apps
 # =============================================================================
 # PASSWORDS & SECRETS
 # =============================================================================
-pkttyagent                   # Polkit authentication agent for text sessions
 keepassxc                    # Offline password manager
 libsecret                    # Library for storing secrets
 python-secretstorage         # Python bindings for FreeDesktop Secret Service
 sops                         # Secrets operations (encryption/decryption)
 age                          # Simple, modern and secure file encryption
-gpg                          # GNU Privacy Guard for signing and encryption
 
 # =============================================================================
 # NETWORK
@@ -239,15 +235,17 @@ Hashcat                      # Advanced password recovery utility
 # =============================================================================
 # NVIDIA & HARDWARE
 # =============================================================================
-msi-ec-git                   # Kernel driver for MSI Embedded Controller
+msi-ec-dkms-git              # Kernel driver for MSI Embedded Controller
+mcontrolcenter-bin           # GUI for MSI laptop hardware settings
 supergfxctl                  # GPU switching utility (Laptop specific)
-egl-wayland                  # EGLStream-based Wayland implementation (Nvidia)
-mcontrolcenter               # GUI for MSI laptop hardware settings
-libva-nvidia-driver          # VA-API implementation for Nvidia
+
+egl-wayland
+libva-nvidia-driver
 nvidia-vaapi-driver          # VA-API implementation for NVDEC (Firefox)
 
 
 
 
 
+tui keyboard               # On-screen keyboard for Wayland
 dashboard scipt for pomodor and calender and todo etc
