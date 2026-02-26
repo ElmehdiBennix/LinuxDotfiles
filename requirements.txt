@@ -44,6 +44,7 @@ posting                      # TUI HTTP API client (Postman alternative)
 openCode                     # Open source code editor
 openclaw                     # Open source game engine reimplementation
 downgrade
+cloudflared
 
 # =============================================================================
 # THE HYPRLAND DESKTOP ENVIRONMENT
@@ -54,23 +55,23 @@ xdg-desktop-portal-gtk       # GTK implementation for desktop portals
 xwaylandvideobridge          # Utility to allow streaming to XWayland apps
 uwsm                         # Universal Wayland Session Manager
 hyprland                     # Dynamic tiling Wayland compositor
+hyprpolkitagent              # Polkit authentication agent
 hyprlock                     # Screen locking utility for Hyprland
 hypridle                     # Idle management daemon
 hyprshot                     # Screenshot utility
 satty                        # screen shot edditing
+tesseract
+tesseract-data-eng           # OCR tool to extract text from screen selection
+wl-clipboard                 # Command-line copy/paste utilities
 hyprpicker                   # Wayland color picker
 hyprsunset                   # Blue light filter and temperature control
 waybar                       # Highly customizable Wayland bar
 swaync                       # Notification daemon and center
 vicinae-bin                  # Application launcher
-hyprpolkitagent              # Polkit authentication agent
-wl-clipboard                 # Command-line copy/paste utilities
-hyprdynamicmonitors-bin      # Dynamic monitor management tool or TUI alternative
 wifitui                      # Terminal UI for Wi-Fi management
 bluetui                      # Terminal UI for Bluetooth
 wiremix                      # Terminal UI for Audio (PipeWire/Pulse)
-tesseract
-tesseract-data-eng                       # OCR tool to extract text from screen selection
+hyprdynamicmonitors-bin      # Dynamic monitor management tool or TUI alternative
 
 # =============================================================================
 # THEMES & FONTS (all good)
@@ -113,15 +114,22 @@ ghostty                      # GPU-accelerated terminal emulator
 nautilus                     # GNOME file manager
 file-roller                  # Archive manager for GNOME
 sushi                        # Quick previewer for Nautilus
-gvfs-mtp                     # Virtual filesystem implementation for MTP (Android)
 zen-browser                  # High-performance privacy-focused browser
 pwa
 vscode                       # Visual Studio Code editor
 obsidian                     # Markdown-based knowledge base
 qview                        # Minimalist and fast image viewer
 mpv                          # Command line video player
+
+open with
+videoplay in yazi
+audio play in yazi
+extraction and zipping and unzipping with password
+drag and drop
+
 zathura                      # Highly customizable document viewer
 zathura-pdf-mupdf            # PDF support for Zathura
+gvfs-mtp                     # Virtual filesystem implementation for MTP (Android)
 
 # General Apps
 vlc                          # Multimedia player (legacy backup)
@@ -133,7 +141,11 @@ android-studio               # Integrated Development Environment for Android
 onlyoffice-bin               # Office suite compatible with MS Office
 gimp
 davinci-resolve              # Professional video editing and color correction
-obs-studio                   # Software for video recording and live streaming
+
+obs-studio-browser           # Software for video recording and live streaming
+obs-vkcapture
+lib32-obs-vkcapture
+
 krita                        # Digital painting and illustration
 reaper & Fmod studio         # Digital Audio Workstation and Audio Middleware
 godot                        # Open source game engine
@@ -149,7 +161,6 @@ steam                        # Valve's digital distribution platform
 heroic-launcher              # Epic Games, GOG and Amazon Prime launcher
 hydra-launcher-git           # Game launcher and manager
 protonplus                   # Manager for Proton-GE and Wine versions
-bottles                      # Run Windows software in containers
 KVM                          # Kernel-based Virtual Machine virtualization
 
 # =============================================================================
@@ -246,6 +257,7 @@ nvidia-vaapi-driver          # VA-API implementation for NVDEC (Firefox)
 
 
 
+libappindicator
 
 tui keyboard               # On-screen keyboard for Wayland
 dashboard scipt for pomodor and calender and todo etc

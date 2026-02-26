@@ -20,34 +20,71 @@ export MOZ_ENABLE_WAYLAND=1
 export GDK_BACKEND=wayland,x11
 export GDK_SCALE=1
 
+# Helps with flickering/perfor  mance on modern kernels
+export WLR_DRM_NO_ATOMIC=1
+
 export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_QPA_PLATFORMTHEME_QT6=qt6ct
 export QT_QPA_PLATFORM=wayland;xcb
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 
+export PROTON_ENABLE_WAYLAND=1
+export VKD3D_CONFIG=1
+
 # Dynamic GPU configuration based on supergfxctl mode
 GFX_MODE=$(supergfxctl -g 2>/dev/null || echo "Hybrid")
 
+# Detect GPUs by driver (survives card number swaps)
+drm_dir=/sys/class/drm
+find_cards() {
+    for card in $drm_dir/card*-HDMI* $drm_dir/card*-DP* $drm_dir/card*-eDP*; do
+        [ -e "$card/device/driver" ] && basename "$(readlink -f "$card/device/driver")"
+    done | sort -u
+}
+drivers=$(find_cards)
+
 if [ "$GFX_MODE" = "Hybrid" ]; then
-    # Hybrid mode: Use NVIDIA dGPU (card2) + Intel iGPU (card1)
-    export AQ_DRM_DEVICES=/dev/dri/card2:/dev/dri/card1
+    # Sort cards by driver: NVIDIA first, then others
+    nvidia_card="" intel_card=""
+    for dev in /dev/dri/card*; do
+        [ -e "$dev" ] || continue
+        driver=$(basename "$(readlink -f /sys/class/drm/$(basename $dev)/device/driver)")
+        if [ "$driver" = "nvidia" ]; then
+            nvidia_card=$dev
+        elif [ "$driver" = "i915" ]; then
+            intel_card=$dev
+        fi
+    done
+    
+    if [ -n "$nvidia_card" ] && [ -n "$intel_card" ]; then
+        export AQ_DRM_DEVICES=$nvidia_card:$intel_card
+    fi
+    export LIBVA_DRIVER_NAME=nvidia
+
+    export PROTON_ENABLE_NVAPI=1
     export GBM_BACKEND=nvidia-drm
     export __VK_LAYER_NV_optimus=NVIDIA_only
     export __GLX_VENDOR_LIBRARY_NAME=nvidia
-    export LIBVA_DRIVER_NAME=nvidia
     export NVD_BACKEND=direct
     export __NV_PRIME_RENDER_OFFLOAD=1
 elif [ "$GFX_MODE" = "Integrated" ]; then
-    # Integrated mode: Use Intel iGPU only (card1)
-    export AQ_DRM_DEVICES=/dev/dri/card1
+    # Integrated mode: Find Intel card
+    for dev in /dev/dri/card*; do
+        [ -e "$dev" ] || continue
+        driver=$(basename "$(readlink -f /sys/class/drm/$(basename $dev)/device/driver)")
+        if [ "$driver" = "i915" ]; then
+            export AQ_DRM_DEVICES=$dev
+            break
+        fi
+    done
+    export LIBVA_DRIVER_NAME=iHD
     # Unset NVIDIA-specific variables
+    unset PROTON_ENABLE_NVAPI
     unset GBM_BACKEND
     unset __VK_LAYER_NV_optimus
     unset __GLX_VENDOR_LIBRARY_NAME
     unset LIBVA_DRIVER_NAME
     unset NVD_BACKEND
     unset __NV_PRIME_RENDER_OFFLOAD
-    # Force Intel rendering
-    export LIBVA_DRIVER_NAME=iHD
 fi

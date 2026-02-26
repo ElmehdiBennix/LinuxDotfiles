@@ -5,7 +5,7 @@
     "layer": "top",
     "position": "top",
     "spacing": 0,
-    "margin": "5px 10px 0px 10px",
+    "margin": "2px 2px 0px 2px",
     "reload_style_on_change": true,
     // ########################################################################
     // MODULES ORDER
@@ -22,8 +22,8 @@
     "modules-right": [
         "gamemode",
         "privacy",
-        "group/audio",
         "group/network",
+        "group/audio",
         "clock",
         "group/battery-driver"
     ],

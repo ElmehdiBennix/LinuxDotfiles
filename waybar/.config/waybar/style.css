@@ -15,8 +15,9 @@
 
 /* Main window styling */
 window#waybar {
-    background: rgba(0, 0, 0, 0.3);
-    /* border-radius: 10px; */
+    background: @background;
+    opacity: 0.85;
+    border-radius: 5px;
 }
 
 /*
@@ -49,11 +50,34 @@ window#waybar {
 #battery,
 #workspaces,
 #systemd-failed-units {
-    color: @on_background;
-    padding: 0 6px;
-    margin: 0 0px;
+    color: @on_surface_variant;
+    padding: 4px 4px;
     border-radius: 12px;
-    min-height: 10px;
+    transition: background-color 0.2s ease;
+}
+
+
+#clock:hover,
+#mpris:hover,
+#cpu:hover,
+#tray:hover,
+#custom-arch:hover,
+#custom-updates:hover,
+#custom-power-profile:hover,
+#network:hover,
+#bluetooth:hover,
+#pulseaudio:hover,
+#custom-audio:hover,
+#custom-microphone:hover,
+#custom-gpu-mode:hover,
+#custom-menu:hover,
+#custom-notification:hover,
+#temperature:hover,
+#memory:hover,
+#disk:hover,
+#battery:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: @on_surface;
 }
 
 
@@ -66,16 +90,14 @@ window#waybar {
 
 
 #workspaces button.active {
-    /* background-color: rgba(0, 0, 255, 0.1); */
+    background-color: rgba(255, 255, 255, 0.12);
     color: @on_background;
-    border-radius: 0;
-
-    border-bottom: 2px solid @on_background;
+    border-radius: 6px;
 }
 
-#workspaces button.urgent {
-    background-color: #cc241d;
-    animation: blink 1s linear infinite;
+#workspaces button {
+    color: @on_surface_variant;
+    padding: 0 8px;
 }
 
 @keyframes blink {
@@ -178,13 +200,14 @@ window#waybar {
 /* ============================================================================= */
 
 tooltip {
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
+    background: @surface_container;
+    border: 1px solid @outline_variant;
+    border-radius: 12px;
 }
 
 tooltip label {
-    color: rgba(255, 255, 255, 0.8);
+    color: @on_surface;
     text-shadow: none;
     background: transparent;
-    margin: 2px;
+    margin: 4px;
 }
