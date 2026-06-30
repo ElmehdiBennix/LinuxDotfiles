@@ -28,8 +28,6 @@ path=(
   $path
 )
 
-
-
 # UFW Management Aliases
 alias firewall="sudo ufw status numbered"
 alias block="sudo ufw deny"  # Usage: block from 192.168.1.5

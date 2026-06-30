@@ -20,7 +20,7 @@
    },
    "theme": {
       "dark": {
-         "name": "matugen",
+         "name": "noctalia",
          "icon_theme": "Colloid-Grey"
       }
    },
@@ -58,6 +58,9 @@
             }
          }
       },
+      "clipboard": {
+         "enabled": true
+      },
       "core": {
          "entrypoints": {
             "about": {
@@ -81,7 +84,7 @@
          "enabled": true
       },
       "raycast-compat": {
-         "enabled": false
+         "enabled": true
       },
       "system": {
          "entrypoints": {
@@ -92,9 +95,6 @@
       },
       "theme": {
          "enabled": false
-      },
-      "clipboard": {
-         "enabled": true
       }
    }
 }

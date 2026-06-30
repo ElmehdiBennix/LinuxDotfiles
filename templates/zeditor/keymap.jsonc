@@ -1,0 +1,56 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "bindings": {
+      // Pane Navigation
+      "alt-left": "workspace::ActivatePaneLeft",
+      "alt-right": "workspace::ActivatePaneRight",
+      "alt-up": "workspace::ActivatePaneUp",
+      "alt-down": "workspace::ActivatePaneDown",
+
+      // Move Tabs between Panes
+      "alt-shift-left": [
+        "workspace::MoveItemToPaneInDirection",
+        { "direction": "left" },
+      ],
+      "alt-shift-right": [
+        "workspace::MoveItemToPaneInDirection",
+        { "direction": "right" },
+      ],
+      "alt-shift-up": [
+        "workspace::MoveItemToPaneInDirection",
+        { "direction": "up" },
+      ],
+      "alt-shift-down": [
+        "workspace::MoveItemToPaneInDirection",
+        { "direction": "down" },
+      ],
+
+      // resize panes
+      "alt-=": "vim::ResizePaneRight",
+      "alt--": "vim::ResizePaneLeft",
+      "alt-+": "vim::ResizePaneUp",
+      "alt-_": "vim::ResizePaneDown",
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      // Rebinding Move Line to Ctrl instead of Alt
+      "ctrl-d": "editor::GoToDefinition",
+      "ctrl-up": "editor::MoveLineUp",
+      "ctrl-down": "editor::MoveLineDown",
+      "ctrl-alt-up": ["editor::AddSelectionAbove", { "skip_soft_wrap": true }],
+      "ctrl-alt-down": [
+        "editor::AddSelectionBelow",
+        { "skip_soft_wrap": true },
+      ],
+    },
+  },
+]

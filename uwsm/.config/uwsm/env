@@ -1,3 +1,7 @@
+# Machine identification
+export HYPRLAND_MACHINE=$(hostname)
+
+# Hyprland cursor settings
 export HYPRCURSOR_THEME=Bibata-Modern-Classic
 export HYPRCURSOR_SIZE=10
 export XCURSOR_THEME=Bibata-Modern-Classic
@@ -20,7 +24,7 @@ export MOZ_ENABLE_WAYLAND=1
 export GDK_BACKEND=wayland,x11
 export GDK_SCALE=1
 
-# Helps with flickering/perfor  mance on modern kernels
+# Helps with flickering/performance on modern kernels
 export WLR_DRM_NO_ATOMIC=1
 
 export QT_QPA_PLATFORMTHEME=qt5ct
@@ -56,7 +60,7 @@ if [ "$GFX_MODE" = "Hybrid" ]; then
             intel_card=$dev
         fi
     done
-    
+
     if [ -n "$nvidia_card" ] && [ -n "$intel_card" ]; then
         export AQ_DRM_DEVICES=$nvidia_card:$intel_card
     fi

@@ -9,22 +9,31 @@ tmux                         # Terminal multiplexer
 stow || chezmoi              # Secure dotfile management
 eza                          # Modern replacement for 'ls'
 zoxide                       # Smarter 'cd' with memory
+fd
 bat                          # Cat clone with syntax highlighting
 ripgrep                      # Faster replacement for 'grep'
-vim                          # Extensible text editor
+nvim                          # Extensible text editor
 fzf                          # Command-line fuzzy finder
 jq                           # Command-line JSON processor
+yazi                         # file manager
+tldrra
+
 ncdu                         # Intuitive version of 'du'
 navi                         # Interactive cheatsheet tool
-yazi                         # file manager
-tldr
 ripdrag
+
+
+sysfs-utils
+foliate
+
+coolercontrol
+adw-gtk-theme f
 
 # =============================================================================
 # DEVELOPMENT STACK
 # =============================================================================
-Mise                         # tool for handelling dev env
-gh                           # GitHub CLI tool
+mise                         # tool for handelling dev env
+github-cli                   # GitHub CLI tool
 git                          # Distributed version control system
 git revert history           # rever history and rewrite it
 lazygit                      # Simple terminal UI for git commands
@@ -50,8 +59,8 @@ cloudflared
 # THE HYPRLAND DESKTOP ENVIRONMENT
 # =============================================================================
 xdg-desktop-portal-hyprland  # XDG desktop portal backend for Hyprland
-xdg-desktop-portal           # Portal frontend service
 xdg-desktop-portal-gtk       # GTK implementation for desktop portals
+xdg-desktop-portal           # Portal frontend service
 xwaylandvideobridge          # Utility to allow streaming to XWayland apps
 uwsm                         # Universal Wayland Session Manager
 hyprland                     # Dynamic tiling Wayland compositor
@@ -76,8 +85,8 @@ hyprdynamicmonitors-bin      # Dynamic monitor management tool or TUI alternativ
 # =============================================================================
 # THEMES & FONTS (all good)
 # =============================================================================
-awww-git                     # Animated wallpaper daemon
-matugen-bin                  # Material You color scheme generator
+awww                     # Animated wallpaper daemon
+matugen                  # Material You color scheme generator
 
 qt5-wayland                  # Qt5 Wayland integration platform
 qt6-wayland                  # Qt6 Wayland integration platform
@@ -89,8 +98,8 @@ qt6ct-kde                    # Qt6 configuration tool
 breeze-gtk                   # Breeze theme for GTK applications
 ttf-jetbrains-mono-nerd      # nerd font
 ttf-apple-emoji              # emoji font
-Bibata_Cursor                # cursor theme
-Colloid                      # icon theme
+bibata-cursor-theme-bin      # cursor theme
+colloid-icon-theme-git       # icon theme
 
 # =============================================================================
 # SYSTEM CONFIG OPTIONS & TRAYS

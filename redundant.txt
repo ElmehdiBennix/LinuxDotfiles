@@ -1,0 +1,56 @@
+1. Hard Redundancies (Functional Duplicates)
+
+You have two tools for the same job. You should pick one and remove the other.
+
+    stow: Redundant if you use chezmoi (or vice-versa). Most modern Hyprland users prefer chezmoi for its secret handling.
+
+    vlc: Redundant. mpv is the standard for Wayland/Hyprland; it's faster, supports hardware acceleration better, and is the engine behind most terminal-based video tools.
+
+    vivaldi: Redundant. Since you have zen-browser (highly optimized for Wayland) and vesktop (Discord), Vivaldi is just extra Chromium bloat.
+
+    qview: Redundant. You already have sushi (Nautilus previewer) and yazi has built-in image preview capabilities.
+
+    python-pip: Redundant. You have python-pipx. You should never use pip to install packages globally on Arch; use pipx for apps and mise for dev environments.
+
+2. Wayland & Screen Sharing Redundancies
+
+Because you are using modern tools, these "fix-it" bridges are often no longer needed.
+
+    xwaylandvideobridge: Redundant if you use vesktop. Vesktop has native PipeWire screen sharing support built-in. You only need this bridge if you use the "official" (and broken) Discord/Slack apps from the AUR/Repos.
+
+    xdg-desktop-portal-gtk: Often redundant. xdg-desktop-portal-hyprland handles almost everything now. Only keep this if your file-picker in Firefox/Zen stops working without it.
+
+3. TUI & Dashboard Overlap
+
+Noctalia includes a customized Dashboard and Control Center (usually via Waybar or a custom script).
+
+    wifitui: Redundant. Noctalia’s dashboard or the standard nm-applet (NetworkManager) handles this more elegantly.
+
+    bluetui: Redundant. Use the Noctalia control center or blueman-manager.
+
+    wiremix: Redundant. You have easyeffects and qpwgraph. Managing audio in three different places is overkill.
+
+4. Development Stack Redundancies
+
+
+Since you are using mise, you are managing runtimes in a "virtual" way.
+    nodejs: Redundant. Uninstall the system-wide version via Pacman. Use mise use -g node@latest instead. This prevents system updates from breaking your dev environment.
+
+    python: (Be careful) You need python for system scripts, but you don't need to manually manage it. Let mise handle your development Python versions.
+
+5. Media & Tool Overlap
+
+    stremio vs vlc/mpv: Stremio is great, but ensure you aren't keeping vlc around just because you're "used to it." mpv handles all external Stremio links better.
+
+    ripdrag: Check your yazi configuration. Most modern Yazi setups have a drag-and-drop plugin that makes a standalone ripdrag installation unnecessary.
+
+Recommended "Clean Up" Command
+
+If you want to strip the "bloat" from your list, run this to remove the most obvious redundancies:
+code Bash
+
+sudo pacman -Rs vlc vivaldi qview xwaylandvideobridge wifitui bluetui wiremix stow
+
+Pro-Tip for Noctalia Users:
+
+Noctalia relies heavily on its own internal scripts located in ~/.config/hypr/scripts. Before you remove things like hyprshot or hyprpicker, check if Noctalia’s keybindings point to the package or to a custom script. Your list is very "heavy," and on Hyprland, "less is more" for stability and speed.

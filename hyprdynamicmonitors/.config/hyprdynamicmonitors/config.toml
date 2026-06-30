@@ -1,54 +1,27 @@
 [general]
 destination = "$HOME/.config/hypr/monitors.conf"
 
-[power_events]
 
-[power_events.dbus_query_object]
-path = "/org/freedesktop/UPower/devices/line_power_ADP1"
-
-[[power_events.dbus_signal_match_rules]]
-object_path = "/org/freedesktop/UPower/devices/line_power_ADP1"
-
-
-[profiles.dual_monitors]
-config_file = "/home/rambeau/.config/hyprdynamicmonitors/hyprconfigs/dual_monitors.go.tmpl"
+[profiles.portable]
+config_file = "/home/rambeau/.config/hyprdynamicmonitors/hyprconfigs/portable.go.tmpl"
 config_file_type = "template"
-[profiles.dual_monitors.conditions]
+[profiles.portable.conditions]
 
-[[profiles.dual_monitors.conditions.required_monitors]]
-description = "ASR PG27F15RS1A 0x00000929"
+[[profiles.portable.conditions.required_monitors]]
+description = "LG Display 0x06F7"
 monitor_tag = "monitor0"
 
-[[profiles.dual_monitors.conditions.required_monitors]]
-description = "AU Optronics 0x978F"
+
+
+[profiles.station]
+config_file = "/home/rambeau/.config/hyprdynamicmonitors/hyprconfigs/station.go.tmpl"
+config_file_type = "template"
+[profiles.station.conditions]
+
+[[profiles.station.conditions.required_monitors]]
+description = "LG Display 0x06F7"
+monitor_tag = "monitor0"
+
+[[profiles.station.conditions.required_monitors]]
+description = "Huawei Technologies Co. Inc. ZQE-CBA 0xC080F622"
 monitor_tag = "monitor1"
-
-
-[profiles.dual]
-config_file = "/home/rambeau/.config/hyprdynamicmonitors/hyprconfigs/dual.go.tmpl"
-config_file_type = "template"
-[profiles.dual.conditions]
-
-[[profiles.dual.conditions.required_monitors]]
-description = "AU Optronics 0x978F"
-monitor_tag = "monitor0"
-
-
-[profiles.single]
-config_file = "/home/rambeau/.config/hyprdynamicmonitors/hyprconfigs/single.go.tmpl"
-config_file_type = "template"
-[profiles.single.conditions]
-
-[[profiles.single.conditions.required_monitors]]
-description = "AU Optronics 0x978F"
-monitor_tag = "monitor0"
-
-
-[profiles.dsa]
-config_file = "/home/rambeau/.config/hyprdynamicmonitors/hyprconfigs/dsa.go.tmpl"
-config_file_type = "template"
-[profiles.dsa.conditions]
-
-[[profiles.dsa.conditions.required_monitors]]
-description = "AU Optronics 0x978F"
-monitor_tag = "monitor0"

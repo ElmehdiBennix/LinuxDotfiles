@@ -133,45 +133,92 @@ setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_find_no_dups
 
-#########################################################################
-# KeyBindings
-#########################################################################
 
-# bindkey '^w' history-search-backward
-# bindkey '^s' history-search-forward
-# bindkey "\e[1;3C" forward-word
-# bindkey "\e[1;3D" backward-word
+
+
+
+
+
+
+
+
+
+
+
+
 
 #########################################################################
 # aliases
 #########################################################################
 
-alias CODE="/bin/code"
-alias code="code --reuse-window"
-alias tree="eza --icons=always --colour=always --tree"
-alias LS="/bin/ls"
-alias ls="eza --icons=always --colour=always"
-alias la="ls -la"
-alias CD="/bin/cd"
-alias cd="z"
-alias CAT="/bin/cat"
-alias cat="bat --color=always --plain"
-alias grep="rg"
-alias size="dust -d 1"
-alias zshrc="vim ~/.zshrc"
-alias f="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
-alias d="find . -type d 2>/dev/null | fzf --height 40% --preview='eza --icons=always --long --tree --level 2 {}'"
-# alias cpfile="copyfile"
-# alias cppath="copypath"
+# --- Helper Function for checking command existence ---
+has() { command -v "$1" >/dev/null 2>&1 }
 
-alias parus="paru -Slq | fzf --multi --preview 'paru -Si {1}' | xargs -ro paru -S"
-alias parur="paru -Qeq | fzf --multi --preview 'paru -Qi {1}' | xargs -ro paru -Rns"
+# --- EZA (Modern replacement for ls) ---
+if has eza; then
+    alias ls="eza --icons=always --color=always --group-directories-first"
+    alias la="ls -a"
+    alias ll="ls -lh"
+    alias lla="ls -lah"
+    alias tree="eza --icons=always --tree"
+fi
+
+# --- ZOXIDE (Smarter cd) ---
+# Instead of just an alias, initialize it to get the 'z' and 'zi' commands
+if has zoxide; then
+    eval "$(zoxide init zsh)"
+    alias cd="z"
+fi
+
+# --- BAT (Cat with syntax highlighting) ---
+if has bat; then
+    # Use --style=plain to keep it acting like 'cat' but with color
+    alias cat="bat --color=always --style=plain"
+    # Provide a 'preview' alias for the full bat experience
+    alias b="bat"
+fi
+
+# --- RIPGREP & DUST ---
+has rg && alias grep="rg"
+has dust && alias size="dust -d 1"
+
+# --- FZF (Fuzzy Finder) ---
+if has fzf; then
+    # f: Search files and open in vim
+    alias f="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}' | xargs -r nvim"
+    
+    # d: CD into selected directory
+    d() {
+        local dir
+        dir=$(find ${1:-.} -path '*/.*' -prune -o -type d -print 2> /dev/null | fzf +m --height 40% --preview='eza --icons=always --long --tree --level 2 {}')
+        [ -n "$dir" ] && cd "$dir"
+    }
+fi
+
+# --- Package Manager (Paru/AUR) ---
+if has paru; then
+    alias parus="paru -Slq | fzf --multi --preview 'paru -Si {1}' | xargs -ro paru -S"
+    alias parur="paru -Qeq | fzf --multi --preview 'paru -Qi {1}' | xargs -ro paru -Rns"
+fi
+
+# --- Quality of Life ---
+alias zshrc="vim ~/.zshrc"
+alias reload="source ~/.zshrc"
 
 # Navigation
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
+
+
+
+
+
+
+
+
+
 
 #########################################################################
 # functions
@@ -243,6 +290,12 @@ unloadenv() {
   fi
 }
 
+
+
+
+
+
+
 #########################################################################
 # source externals
 #########################################################################
@@ -250,33 +303,12 @@ unloadenv() {
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
 
-export PATH="$PATH:$HOME/.local/bin:$HOME/.local/scripts"
 
-# Load TTY colors
-if [[ -f "$HOME/.cache/matugen/tty_colors" ]]; then
-  source "$HOME/.cache/matugen/tty_colors"
-
-  # Apply ANSI escape sequences for 16-color TTY
-  print -Pn "\e]4;0;${COLOR_0}\a"
-  print -Pn "\e]4;1;${COLOR_1}\a"
-  print -Pn "\e]4;2;${COLOR_2}\a"
-  print -Pn "\e]4;3;${COLOR_3}\a"
-  print -Pn "\e]4;4;${COLOR_4}\a"
-  print -Pn "\e]4;5;${COLOR_5}\a"
-  print -Pn "\e]4;6;${COLOR_6}\a"
-  print -Pn "\e]4;7;${COLOR_7}\a"
-
-  print -Pn "\e]4;8;${COLOR_8}\a"
-  print -Pn "\e]4;9;${COLOR_9}\a"
-  print -Pn "\e]4;10;${COLOR_10}\a"
-  print -Pn "\e]4;11;${COLOR_11}\a"
-  print -Pn "\e]4;12;${COLOR_12}\a"
-  print -Pn "\e]4;13;${COLOR_13}\a"
-  print -Pn "\e]4;14;${COLOR_14}\a"
-  print -Pn "\e]4;15;${COLOR_15}\a"
-fi
 
 fastfetch
+
+
+
 
 # pnpm
 export PNPM_HOME="/home/rambeau/.local/share/pnpm"
@@ -285,6 +317,12 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+
+
+
+
+
 #compdef opencode
 ###-begin-opencode-completions-###
 #
@@ -293,6 +331,7 @@ esac
 # Installation: opencode completion >> ~/.zshrc
 #    or opencode completion >> ~/.zprofile on OSX.
 #
+
 _opencode_yargs_completions()
 {
   local reply
@@ -313,3 +352,106 @@ else
 fi
 ###-end-opencode-completions-###
 
+
+
+
+
+
+
+export PATH="$PATH:$HOME/.local/bin:$HOME/.local/scripts"
+export EDITOR="zeditor --wait"
+
+
+
+
+
+
+
+# -------------------------------------------------------------------
+#   KEY BIND
+# -------------------------------------------------------------------
+bindkey -e                           # Set Zsh to Emacs mode (standard for command line editing)
+zle_highlight=(region:bg=blue)       # Make the selected text background blue so you can see it
+
+# -------------------------------------------------------------------
+# 3. SELECTION LOGIC (Shift + Arrows)
+# -------------------------------------------------------------------
+
+# Helper: Start a selection "Mark" if one isn't already active
+function _start_selection() { if (( ! REGION_ACTIVE )); then zle set-mark-command; fi }
+
+# Helper: Turn off selection mode (usually when moving without Shift)
+function _clear_selection() { REGION_ACTIVE=0 }
+
+# Loop through every navigation command to create "Select" and "Clear" versions
+foreach move (forward-char backward-char forward-word backward-word beginning-of-line end-of-line beginning-of-buffer-or-history end-of-buffer-or-history) {
+    # Create function that starts/extends selection then moves (e.g., forward-char-select)
+    eval "function $move-select() { _start_selection; zle $move }"
+    # Create function that clears selection then moves normally (e.g., forward-char-clear)
+    eval "function $move-clear() { _clear_selection; zle $move }"
+    # Register these new functions as widgets
+    zle -N $move-select
+    zle -N $move-clear
+}
+
+# -------------------------------------------------------------------
+# 4. SMART DELETION (Deletes selection if active)
+# -------------------------------------------------------------------
+
+# Widget for the Delete key behavior
+function smart-delete() {
+    if (( REGION_ACTIVE )); then      # If text is highlighted...
+        zle kill-region               # ...delete the entire highlight
+    else
+        zle delete-char               # ...otherwise delete one character forward
+    fi
+}
+
+# Widget for the Backspace key behavior
+function smart-backspace() {
+    if (( REGION_ACTIVE )); then      # If text is highlighted...
+        zle kill-region               # ...delete the entire highlight
+    else
+        zle backward-delete-char      # ...otherwise delete one character backward
+    fi
+}
+
+# Register the smart deletion widgets
+zle -N smart-delete
+zle -N smart-backspace
+
+# -------------------------------------------------------------------
+# 5. KEYBINDINGS
+# -------------------------------------------------------------------
+
+# --- Standard Movement (These clear the highlight if you move without Shift) ---
+bindkey "^[[C"      forward-char                         # Right Arrow
+bindkey "^[[D"      backward-char                        # Left Arrow
+bindkey "^[[1;5A"   beginning-of-line-clear              # Ctrl + Up Arrow (Jump to start of command)   # this binded to smthing
+bindkey "^[[1;5B"   end-of-line-clear                    # Ctrl + Down Arrow (Jump to end of command)   # this binded to smthing
+bindkey "^[[1;5D"   backward-word-clear                  # Ctrl + Left Arrow
+bindkey "^[[1;5C"   forward-word-clear                   # Ctrl + Right Arrow
+
+# --- Shift Selection (These start or grow the blue highlight) ---
+bindkey "^[[1;2D"   backward-char-select           # Shift + Left Arrow
+bindkey "^[[1;2C"   forward-char-select            # Shift + Right Arrow
+bindkey "^[[1;6A"   beginning-of-line-select       # Ctrl + Shift + Up Arrow (Select to beginning)
+bindkey "^[[1;6B"   end-of-line-select             # Ctrl + Shift + Down Arrow (Select to end)
+bindkey "^[[1;6D"   backward-word-select           # Ctrl + Shift + Left Arrow
+bindkey "^[[1;6C"   forward-word-select            # Ctrl + Shift + Right Arrow
+
+# --- Modern Deletion ---
+bindkey '^?'        smart-backspace               # Plain Backspace (checks for selection)
+bindkey '^H'        backward-kill-word            # Ctrl + Backspace (Delete word backward)
+bindkey '^[[3~'     smart-delete                  # Plain Delete Key (checks for selection)
+bindkey '^[[3;5~'   kill-word                     # Ctrl + Delete (Delete word forward)
+
+
+
+
+
+print -Pn "\e]4;2;#8aac8b\a"
+
+
+
+# alias -g copy='| fzf | _copy_to_system_clipboard '
