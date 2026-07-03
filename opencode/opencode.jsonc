@@ -1,0 +1,55 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+
+    // LIFE SAVER 1: Token & Context Management
+    // Automatically prunes old tool outputs when context fills up, ensuring
+    // the AI doesn't hit token limits or crash during long "zen" sessions.
+    "compaction": {
+        "auto": true,
+        "prune": true,
+        "reserved": 10000
+    },
+
+    // LIFE SAVER 2: Clean File Watching
+    // A massively expanded ignore list prevents OpenCode from wasting CPU/RAM
+    // on watching large build directories, binaries, and database files.
+    "watcher": {
+        "ignore":[
+            "node_modules/**",
+            "dist/**",
+            "build/**",
+            "out/**",
+            "coverage/**",
+            ".git/**",
+            ".next/**",
+            ".nuxt/**",
+            ".svelte-kit/**",
+            "**/*.log",
+            "**/.DS_Store",
+            "**/*.sqlite",
+            "**/*.db",
+            "**/.env*",
+            "tmp/**"
+        ]
+    },
+
+    // LIFE SAVER 3: Safety Nets
+    // Snapshots allow you to seamlessly undo/revert agent file changes
+    // from the OpenCode UI if the AI makes a mistake.
+    "snapshot": true,
+
+    // Prevents OpenCode from suddenly applying a major UI/system update right
+    // when you are in the middle of a focused session.
+    "autoupdate": "notify",
+
+    // LIFE SAVER 4: Strict Instruction Paths
+    // Instead of raw text, we point to markdown files.
+    // We add `.opencode/rules/*.md` so you can inject custom behaviors.
+    "instructions":[
+        "AGENTS.md",
+        ".cursor/rules/*.md",
+        ".opencode/rules/*.md"
+    ],
+
+    // Your existing, working VS Code MCP integration
+  } 

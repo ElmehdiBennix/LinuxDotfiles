@@ -2,7 +2,7 @@
 # ZINIT
 #########################################################################
 
-#zinit plugin mannager
+# zinit plugin manager
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
@@ -96,17 +96,12 @@ zstyle ':fzf-tab:complete:_zlua:*' query-string input
 # including a preview of the command being executed for the selected PID.
 zstyle ':fzf-tab:complete:kill:argument-rest' extra-opts --preview='$extract ps --pid=$in[(w)1] -o cmd --no-headers -w -w' --preview-window=down:3:wrap
 
-
 #########################################################################
-# ZSH PLUGGINGS
+# ZSH PLUGINS & SNIPPETS
 #########################################################################
 
 zinit ice depth=1; zinit light zsh-users/zsh-syntax-highlighting
 zinit ice depth=1; zinit light zsh-users/zsh-autosuggestions
-
-#########################################################################
-# ZSH snippets
-#########################################################################
 
 zinit snippet OMZP::git
 zinit snippet OMZP::cp
@@ -118,7 +113,7 @@ zinit snippet OMZP::colored-man-pages
 # zinit snippet OMZP::copypath
 
 #########################################################################
-# history settings
+# HISTORY SETTINGS
 #########################################################################
 
 HISTSIZE=4000
@@ -133,22 +128,8 @@ setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_find_no_dups
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #########################################################################
-# aliases
+# ALIASES
 #########################################################################
 
 # --- Helper Function for checking command existence ---
@@ -174,8 +155,6 @@ fi
 if has bat; then
     # Use --style=plain to keep it acting like 'cat' but with color
     alias cat="bat --color=always --style=plain"
-    # Provide a 'preview' alias for the full bat experience
-    alias b="bat"
 fi
 
 # --- RIPGREP & DUST ---
@@ -184,15 +163,18 @@ has dust && alias size="dust -d 1"
 
 # --- FZF (Fuzzy Finder) ---
 if has fzf; then
+    source <(fzf --zsh)
+
     # f: Search files and open in vim
-    alias f="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}' | xargs -r nvim"
-    
-    # d: CD into selected directory
-    d() {
+    alias f="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}' | xargs -r nvim"    
+ 
+    # Folder search with fzf and eza tree preview
+    c() {
         local dir
-        dir=$(find ${1:-.} -path '*/.*' -prune -o -type d -print 2> /dev/null | fzf +m --height 40% --preview='eza --icons=always --long --tree --level 2 {}')
-        [ -n "$dir" ] && cd "$dir"
+        dir=$(find $HOME -type d 2>/dev/null | fzf --height 40% --preview="eza --icons=always --long --tree --level 2 {}")
+        [ -n "$dir" ] && cd "$dir"  # Change to `cd "$dir"` if not using z
     }
+ 
 fi
 
 # --- Package Manager (Paru/AUR) ---
@@ -211,38 +193,22 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
-
-
-
-
-
-
-
-
-
 #########################################################################
-# functions
+# FUNCTIONS
 #########################################################################
 
-zelat() {
+tmuxat() {
  local session
- session=$(zellij ls -r | fzf --ansi --height 10% --reverse --style=full | awk {'print $1'})
- zellij attach $session
+ session=$(tmux list-sessions | fzf --ansi --height 10% --reverse --style=full | awk {'print $1'})
+ tmux attach-session -t $session
 }
 
 # clone personel repos
-ghf() {
+ghc() {
     repo=$(gh repo list | awk '{print $1}' | fzf --height 40% --reverse --preview "gh repo view {}" --preview-window=up:50%:wrap )
     if [[ -n "$repo" ]]; then
         gh repo clone $repo
     fi
-}
-
-# Folder search with fzf and eza tree preview
-c() {
-  local dir
-  dir=$(find $HOME -type d 2>/dev/null | fzf --height 40% --preview="eza --icons=always --long --tree --level 2 {}")
-  [ -n "$dir" ] && z "$dir"  # Change to `cd "$dir"` if not using z
 }
 
 # Function to load environment variables from a .env file
@@ -290,92 +256,23 @@ unloadenv() {
   fi
 }
 
-
-
-
-
-
-
 #########################################################################
-# source externals
+# EXPORTS & ENV VARIABLES
 #########################################################################
 
-source <(fzf --zsh)
-eval "$(zoxide init zsh)"
-
-
-
-fastfetch
-
-
-
-
-# pnpm
-export PNPM_HOME="/home/rambeau/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-
-
-
-
-
-#compdef opencode
-###-begin-opencode-completions-###
-#
-# yargs command completion script
-#
-# Installation: opencode completion >> ~/.zshrc
-#    or opencode completion >> ~/.zprofile on OSX.
-#
-
-_opencode_yargs_completions()
-{
-  local reply
-  local si=$IFS
-  IFS=$'
-' reply=($(COMP_CWORD="$((CURRENT-1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" opencode --get-yargs-completions "${words[@]}"))
-  IFS=$si
-  if [[ ${#reply} -gt 0 ]]; then
-    _describe 'values' reply
-  else
-    _default
-  fi
-}
-if [[ "'${zsh_eval_context[-1]}" == "loadautofunc" ]]; then
-  _opencode_yargs_completions "$@"
-else
-  compdef _opencode_yargs_completions opencode
-fi
-###-end-opencode-completions-###
-
-
-
-
-
-
+eval "$(mise activate zsh)"
 
 export PATH="$PATH:$HOME/.local/bin:$HOME/.local/scripts"
 export EDITOR="zeditor --wait"
 
+#########################################################################
+# KEY BINDINGS
+#########################################################################
 
-
-
-
-
-
-# -------------------------------------------------------------------
-#   KEY BIND
-# -------------------------------------------------------------------
 bindkey -e                           # Set Zsh to Emacs mode (standard for command line editing)
 zle_highlight=(region:bg=blue)       # Make the selected text background blue so you can see it
 
-# -------------------------------------------------------------------
-# 3. SELECTION LOGIC (Shift + Arrows)
-# -------------------------------------------------------------------
+# --- SELECTION LOGIC (Shift + Arrows) ---
 
 # Helper: Start a selection "Mark" if one isn't already active
 function _start_selection() { if (( ! REGION_ACTIVE )); then zle set-mark-command; fi }
@@ -394,9 +291,7 @@ foreach move (forward-char backward-char forward-word backward-word beginning-of
     zle -N $move-clear
 }
 
-# -------------------------------------------------------------------
-# 4. SMART DELETION (Deletes selection if active)
-# -------------------------------------------------------------------
+# --- SMART DELETION (Deletes selection if active) ---
 
 # Widget for the Delete key behavior
 function smart-delete() {
@@ -420,19 +315,15 @@ function smart-backspace() {
 zle -N smart-delete
 zle -N smart-backspace
 
-# -------------------------------------------------------------------
-# 5. KEYBINDINGS
-# -------------------------------------------------------------------
-
-# --- Standard Movement (These clear the highlight if you move without Shift) ---
+# --- STANDARD MOVEMENT (Clears highlight if moved without Shift) ---
 bindkey "^[[C"      forward-char                         # Right Arrow
 bindkey "^[[D"      backward-char                        # Left Arrow
-bindkey "^[[1;5A"   beginning-of-line-clear              # Ctrl + Up Arrow (Jump to start of command)   # this binded to smthing
-bindkey "^[[1;5B"   end-of-line-clear                    # Ctrl + Down Arrow (Jump to end of command)   # this binded to smthing
+bindkey "^[[1;5A"   beginning-of-line-clear              # Ctrl + Up Arrow (Jump to start of command)
+bindkey "^[[1;5B"   end-of-line-clear                    # Ctrl + Down Arrow (Jump to end of command)
 bindkey "^[[1;5D"   backward-word-clear                  # Ctrl + Left Arrow
 bindkey "^[[1;5C"   forward-word-clear                   # Ctrl + Right Arrow
 
-# --- Shift Selection (These start or grow the blue highlight) ---
+# --- SHIFT SELECTION (Starts or grows the blue highlight) ---
 bindkey "^[[1;2D"   backward-char-select           # Shift + Left Arrow
 bindkey "^[[1;2C"   forward-char-select            # Shift + Right Arrow
 bindkey "^[[1;6A"   beginning-of-line-select       # Ctrl + Shift + Up Arrow (Select to beginning)
@@ -440,18 +331,18 @@ bindkey "^[[1;6B"   end-of-line-select             # Ctrl + Shift + Down Arrow (
 bindkey "^[[1;6D"   backward-word-select           # Ctrl + Shift + Left Arrow
 bindkey "^[[1;6C"   forward-word-select            # Ctrl + Shift + Right Arrow
 
-# --- Modern Deletion ---
-bindkey '^?'        smart-backspace               # Plain Backspace (checks for selection)
-bindkey '^H'        backward-kill-word            # Ctrl + Backspace (Delete word backward)
-bindkey '^[[3~'     smart-delete                  # Plain Delete Key (checks for selection)
-bindkey '^[[3;5~'   kill-word                     # Ctrl + Delete (Delete word forward)
+# --- MODERN DELETION ---
+bindkey '^?'        smart-backspace                # Plain Backspace (checks for selection)
+bindkey '^H'        backward-kill-word             # Ctrl + Backspace (Delete word backward)
+bindkey '^[[3~'     smart-delete                   # Plain Delete Key (checks for selection)
+bindkey '^[[3;5~'   kill-word                      # Ctrl + Delete (Delete word forward)
 
-
-
-
+#########################################################################
+# MISCELLANEOUS & STARTUP COMMANDS
+#########################################################################
 
 print -Pn "\e]4;2;#8aac8b\a"
-
-
-
 # alias -g copy='| fzf | _copy_to_system_clipboard '
+
+# Run fastfetch at the very end
+fastfetch

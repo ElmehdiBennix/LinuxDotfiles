@@ -79,6 +79,17 @@
         "widgets": {
             "center": [
                 {
+                    "defaultSettings": {
+                        "autoStartBreaks": false,
+                        "autoStartWork": false,
+                        "longBreakDuration": 15,
+                        "sessionsBeforeLongBreak": 4,
+                        "shortBreakDuration": 5,
+                        "workDuration": 25
+                    },
+                    "id": "plugin:pomodoro"
+                },
+                {
                     "characterCount": 1,
                     "colorizeIcons": true,
                     "emptyColor": "secondary",
@@ -116,16 +127,24 @@
                     "visualizerType": "wave"
                 },
                 {
+                    "defaultSettings": {
+                        "enableCross": true,
+                        "enableWindowsSelection": true,
+                        "keepSourceScreenshot": false,
+                        "recordingNotifications": true,
+                        "recordingSavePath": "~/Videos",
+                        "savePath": "~/Pictures/Screenshots",
+                        "screenshotEditor": "swappy"
+                    },
+                    "id": "plugin:screen-shot-and-record"
+                },
+                {
                     "hideWhenZero": false,
                     "hideWhenZeroUnread": false,
                     "iconColor": "none",
                     "id": "NotificationHistory",
                     "showUnreadBadge": true,
                     "unreadBadgeColor": "primary"
-                },
-                {
-                    "id": "Spacer",
-                    "width": 20
                 }
             ],
             "left": [
@@ -200,17 +219,6 @@
                     "useCustomFont": false
                 },
                 {
-                    "defaultSettings": {
-                        "autoStartBreaks": false,
-                        "autoStartWork": false,
-                        "longBreakDuration": 15,
-                        "sessionsBeforeLongBreak": 4,
-                        "shortBreakDuration": 5,
-                        "workDuration": 25
-                    },
-                    "id": "plugin:pomodoro"
-                },
-                {
                     "deviceNativePath": "__default__",
                     "displayMode": "graphic-clean",
                     "hideIfIdle": false,
@@ -218,18 +226,6 @@
                     "id": "Battery",
                     "showNoctaliaPerformance": true,
                     "showPowerProfiles": true
-                },
-                {
-                    "defaultSettings": {
-                        "enableCross": true,
-                        "enableWindowsSelection": true,
-                        "keepSourceScreenshot": false,
-                        "recordingNotifications": true,
-                        "recordingSavePath": "~/Videos",
-                        "savePath": "~/Pictures/Screenshots",
-                        "screenshotEditor": "swappy"
-                    },
-                    "id": "plugin:screen-shot-and-record"
                 }
             ]
         }
@@ -493,7 +489,7 @@
     "nightLight": {
         "autoSchedule": true,
         "dayTemp": "6500",
-        "enabled": true,
+        "enabled": false,
         "forced": false,
         "manualSunrise": "06:30",
         "manualSunset": "18:30",

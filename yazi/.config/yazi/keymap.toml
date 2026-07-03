@@ -1,0 +1,26 @@
+[mgr]
+prepend_keymap = [
+  # --- Nautilus-style Navigation ---
+  { on = [ "<Enter>" ],     run = "enter",                 desc = "Enter directory or open file" },
+  { on = [ "<Backspace>" ], run = "leave",                 desc = "Go back to parent directory" },
+  
+  # --- Nautilus-style File Operations ---
+  { on = [ "<Delete>" ],    run = "remove",                desc = "Move file to trash" },
+  { on = [ "<S-Delete>" ],  run = "remove --permanently",  desc = "Permanently delete file" },
+  { on = [ "<C-c>" ],       run = "yank",                  desc = "Copy file (Yazi internal)" },
+  { on = [ "<C-x>" ],       run = "yank --cut",            desc = "Cut file (Yazi internal)" },
+  { on = [ "<C-v>" ],       run = "paste",                 desc = "Paste file (Yazi internal)" },
+  
+  # --- File Creation & Renaming ---
+  { on = [ "<F2>" ],        run = "rename --cursor=before_ext", desc = "Rename file" },
+  
+  # --- System Clipboard Integration (Wayland/Ghostty) ---
+  # 1. Copy as a FILE (to paste into Discord, browser uploads, Nautilus, etc.)
+  { on = [ "<C-y>" ],       run = '''shell 'for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list' --confirm''', desc = "Copy file to system clipboard" },
+  
+  # --- Recycle Bin Menu (Requires uhs-robert/recycle-bin.yazi plugin) ---
+  { on = [ "R", "b" ],      run = "plugin recycle-bin",    desc = "Open Recycle Bin menu" },
+
+  # --- Terminal Access ---
+  { on = [ "<C-t>" ],       run = 'shell "$SHELL" --block', desc = "Open terminal here" },
+]
