@@ -36,30 +36,32 @@
         "visualizerType": "linear",
         "volumeFeedback": false,
         "volumeFeedbackSoundFile": "",
-        "volumeOverdrive": false,
+        "volumeOverdrive": true,
         "volumeStep": 5
     },
     "bar": {
         "autoHideDelay": 500,
         "autoShowDelay": 150,
-        "backgroundOpacity": 0,
+        "backgroundOpacity": 0.43,
         "barType": "floating",
         "capsuleColorKey": "none",
         "capsuleOpacity": 1,
-        "contentPadding": 2,
-        "density": "default",
+        "contentPadding": 4,
+        "density": "mini",
         "displayMode": "always_visible",
         "enableExclusionZoneInset": true,
         "fontScale": 1,
-        "frameRadius": 12,
-        "frameThickness": 8,
+        "frameRadius": 24,
+        "frameThickness": 11,
         "hideOnOverview": false,
-        "marginHorizontal": 180,
+        "marginHorizontal": 470,
         "marginVertical": 4,
         "middleClickAction": "none",
         "middleClickCommand": "",
         "middleClickFollowMouse": false,
         "monitors": [
+            "HDMI-A-1",
+            "eDP-1"
         ],
         "mouseWheelAction": "none",
         "mouseWheelWrap": true,
@@ -70,25 +72,19 @@
         "rightClickCommand": "",
         "rightClickFollowMouse": false,
         "screenOverrides": [
+            {
+                "density": "comfortable",
+                "enabled": true,
+                "name": "HDMI-A-1"
+            }
         ],
-        "showCapsule": true,
+        "showCapsule": false,
         "showOnWorkspaceSwitch": true,
         "showOutline": false,
         "useSeparateOpacity": false,
         "widgetSpacing": 6,
         "widgets": {
             "center": [
-                {
-                    "defaultSettings": {
-                        "autoStartBreaks": false,
-                        "autoStartWork": false,
-                        "longBreakDuration": 15,
-                        "sessionsBeforeLongBreak": 4,
-                        "shortBreakDuration": 5,
-                        "workDuration": 25
-                    },
-                    "id": "plugin:pomodoro"
-                },
                 {
                     "characterCount": 1,
                     "colorizeIcons": true,
@@ -212,7 +208,7 @@
                 {
                     "clockColor": "secondary",
                     "customFont": "",
-                    "formatHorizontal": "h:mm AP",
+                    "formatHorizontal": "HH:mm | ddd, MMM dd",
                     "formatVertical": "HH mm - dd MM",
                     "id": "Clock",
                     "tooltipFormat": "HH:mm ddd, MMM dd",
@@ -477,7 +473,7 @@
         "weatherTaliaMascotAlways": false
     },
     "network": {
-        "bluetoothAutoConnect": true,
+        "bluetoothAutoConnect": false,
         "bluetoothDetailsViewMode": "grid",
         "bluetoothHideUnnamedDevices": false,
         "bluetoothRssiPollIntervalMs": 60000,
@@ -493,7 +489,7 @@
         "forced": false,
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
-        "nightTemp": "4000"
+        "nightTemp": "3531"
     },
     "noctaliaPerformance": {
         "disableDesktopWidgets": true,
@@ -756,7 +752,7 @@
         "wallhavenCategories": "111",
         "wallhavenOrder": "desc",
         "wallhavenPurity": "100",
-        "wallhavenQuery": "",
+        "wallhavenQuery": "painting",
         "wallhavenRatios": "",
         "wallhavenResolutionHeight": "",
         "wallhavenResolutionMode": "atleast",
