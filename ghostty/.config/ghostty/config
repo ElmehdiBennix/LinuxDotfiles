@@ -1,5 +1,5 @@
 # Ghostty Configuration
-command = /bin/tmux
+command = sh -c "tmux attach-session || tmux new-session"
 
 theme = noctalia
 

@@ -1,4 +1,4 @@
-# =============================================================================
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwww# =============================================================================
 # SHELL & TERMINAL POWER TOOLS
 # =============================================================================
 zsh                          # The shell
@@ -6,28 +6,30 @@ fastfetch                    # System information display
 btop                         # Resource monitor with TUI
 nvtop                        # GPU task monitor
 tmux                         # Terminal multiplexer
-stow || chezmoi              # Secure dotfile management
+stow                         # Secure dotfile management
 eza                          # Modern replacement for 'ls'
 zoxide                       # Smarter 'cd' with memory
 fd
 bat                          # Cat clone with syntax highlighting
 ripgrep                      # Faster replacement for 'grep'
-nvim                          # Extensible text editor
+nvim                         # Extensible text editor
 fzf                          # Command-line fuzzy finder
 jq                           # Command-line JSON processor
 yazi                         # file manager
-tldrra
+tldr
 
 ncdu                         # Intuitive version of 'du'
-navi                         # Interactive cheatsheet tool
-ripdrag
 
 
 sysfs-utils
 foliate
-
 coolercontrol
 adw-gtk-theme f
+
+xorg-xhost
+proton-vpn-gtk-app
+
+| timer and clock and add desktop enty for windows reboot
 
 # =============================================================================
 # DEVELOPMENT STACK
@@ -36,6 +38,7 @@ mise                         # tool for handelling dev env
 github-cli                   # GitHub CLI tool
 git                          # Distributed version control system
 git revert history           # rever history and rewrite it
+git dash
 lazygit                      # Simple terminal UI for git commands
 lazydocker                   # Terminal UI for docker
 docker                       # Container runtime engine
@@ -48,7 +51,6 @@ make                         # Utility for directing compilation
 python                       # Python 3 interpreter
 python-pip                   # Package installer for Python
 python-pipx                  # Install and run Python applications in isolated environments
-distrobox                    # Use any Linux distribution inside your terminal
 posting                      # TUI HTTP API client (Postman alternative)
 openCode                     # Open source code editor
 openclaw                     # Open source game engine reimplementation
@@ -58,35 +60,35 @@ cloudflared
 # =============================================================================
 # THE HYPRLAND DESKTOP ENVIRONMENT
 # =============================================================================
-xdg-desktop-portal-hyprland  # XDG desktop portal backend for Hyprland
-xdg-desktop-portal-gtk       # GTK implementation for desktop portals
-xdg-desktop-portal           # Portal frontend service
-xwaylandvideobridge          # Utility to allow streaming to XWayland apps
-uwsm                         # Universal Wayland Session Manager
-hyprland                     # Dynamic tiling Wayland compositor
-hyprpolkitagent              # Polkit authentication agent
-hyprlock                     # Screen locking utility for Hyprland
+
+
 hypridle                     # Idle management daemon
 hyprshot                     # Screenshot utility
+hyprpicker                   # Wayland color picker
+hyprsunset                   # Blue light filter and temperature control
+
 satty                        # screen shot edditing
 tesseract
 tesseract-data-eng           # OCR tool to extract text from screen selection
 wl-clipboard                 # Command-line copy/paste utilities
-hyprpicker                   # Wayland color picker
-hyprsunset                   # Blue light filter and temperature control
-waybar                       # Highly customizable Wayland bar
-swaync                       # Notification daemon and center
+
+
+niri
+noctalia
 vicinae-bin                  # Application launcher
-wifitui                      # Terminal UI for Wi-Fi management
+
+wlctl                        # Terminal UI for Wi-Fi management
 bluetui                      # Terminal UI for Bluetooth
 wiremix                      # Terminal UI for Audio (PipeWire/Pulse)
-hyprdynamicmonitors-bin      # Dynamic monitor management tool or TUI alternative
+
+nirimon                      # Dynamic monitor management tool or TUI alternative
+nirinit
+niri-scratchpad-rs
 
 # =============================================================================
 # THEMES & FONTS (all good)
 # =============================================================================
-awww                     # Animated wallpaper daemon
-matugen                  # Material You color scheme generator
+awww                         # Animated wallpaper daemon
 
 qt5-wayland                  # Qt5 Wayland integration platform
 qt6-wayland                  # Qt6 Wayland integration platform
@@ -95,7 +97,6 @@ nwg-look                     # GTK3 settings editor for Wayland
 qt5ct-kde                    # Qt5 configuration tool
 qt6ct-kde                    # Qt6 configuration tool
 
-breeze-gtk                   # Breeze theme for GTK applications
 ttf-jetbrains-mono-nerd      # nerd font
 ttf-apple-emoji              # emoji font
 bibata-cursor-theme-bin      # cursor theme
@@ -124,31 +125,24 @@ nautilus                     # GNOME file manager
 file-roller                  # Archive manager for GNOME
 sushi                        # Quick previewer for Nautilus
 zen-browser                  # High-performance privacy-focused browser
-pwa
-vscode                       # Visual Studio Code editor
 obsidian                     # Markdown-based knowledge base
 qview                        # Minimalist and fast image viewer
 mpv                          # Command line video player
 
-open with
-videoplay in yazi
-audio play in yazi
-extraction and zipping and unzipping with password
-drag and drop
 
 zathura                      # Highly customizable document viewer
 zathura-pdf-mupdf            # PDF support for Zathura
 gvfs-mtp                     # Virtual filesystem implementation for MTP (Android)
 
+
 # General Apps
-vlc                          # Multimedia player (legacy backup)
 stremio                      # Video streaming center
 vivaldi                      # Feature-rich web browser
 vesktop                      # Custom Discord client with Vencord
 spotube                      # Open source Spotify client
 android-studio               # Integrated Development Environment for Android
 onlyoffice-bin               # Office suite compatible with MS Office
-gimp
+gimp with photshop plugin
 davinci-resolve              # Professional video editing and color correction
 
 obs-studio-browser           # Software for video recording and live streaming
@@ -233,6 +227,12 @@ bandwhich                    # Terminal bandwidth utilization monitor
 trippy                       # Network diagnostic tool (visual traceroute)
 avahi                        # Service discovery (mDNS/DNS-SD)
 nss-mdns                     # Hostname resolution via mDNS
+
+
+
+
+
+
 
 # =============================================================================
 # ===============================> OPTIONAL <==================================

@@ -24,6 +24,9 @@
          "icon_theme": "Colloid-Grey"
       }
    },
+   "telemetry": {
+      "system_info": false
+   },
    "launcher_window": {
       "opacity": 0.9,
       "client_side_decorations": {
@@ -59,7 +62,10 @@
          }
       },
       "clipboard": {
-         "enabled": true
+         "enabled": true,
+         "preferences": {
+            "monitoring": false
+         }
       },
       "core": {
          "entrypoints": {

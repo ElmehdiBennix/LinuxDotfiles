@@ -260,8 +260,6 @@ unloadenv() {
 # EXPORTS & ENV VARIABLES
 #########################################################################
 
-eval "$(mise activate zsh)"
-
 export PATH="$PATH:$HOME/.local/bin:$HOME/.local/scripts"
 export EDITOR="zeditor --wait"
 
@@ -343,6 +341,3 @@ bindkey '^[[3;5~'   kill-word                      # Ctrl + Delete (Delete word 
 
 print -Pn "\e]4;2;#8aac8b\a"
 # alias -g copy='| fzf | _copy_to_system_clipboard '
-
-# Run fastfetch at the very end
-fastfetch

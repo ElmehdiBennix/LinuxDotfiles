@@ -1,0 +1,10 @@
+// ────────────── Startup Applications ──────────────
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#spawn-sh-at-startup
+
+    spawn-at-startup "awww-daemon"
+    spawn-at-startup "noctalia"
+    spawn-at-startup "vicinae" "server"
+    
+    spawn-at-startup "niri-scratchpad" "daemon"
+    spawn-at-startup "nirinit"
+    // spawn-at-startup "~/.config/niri/scripts/ProgramAutoStart.sh"
