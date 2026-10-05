@@ -45,8 +45,6 @@
         default-window-height { proportion 0.5; }
     }
 
-
-
     // if you use steam you will probably like these
     window-rule {
         match app-id="steam"

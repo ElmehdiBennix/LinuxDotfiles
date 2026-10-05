@@ -64,7 +64,7 @@
       "clipboard": {
          "enabled": true,
          "preferences": {
-            "monitoring": false
+            "monitoring": true
          }
       },
       "core": {
