@@ -66,6 +66,7 @@
   "show_whitespaces": "selection",
   // "relative_line_numbers": "wrapped",
   "gutter": {
+    "line_numbers": true,
     "min_line_number_digits": 0,
     "folds": false,
   },
